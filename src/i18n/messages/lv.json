@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "title": "PB Finanses – Grāmatvedība un finanšu direktors ārpakalpojumā | Ventspils, Latvija",
+    "description": "Pilna servisa finanšu ārpakalpojumi Latvijā: grāmatvedība, nodokļu konsultācijas un finanšu direktors ārpakalpojumā. Uzticama komanda Ventspilī ar 20+ gadu pieredzi.",
+    "keywords": "grāmatvedība Ventspilī, finanšu direktors ārpakalpojumā, nodokļu konsultācijas Latvijā, grāmatvedības pakalpojumi, CFO ārpakalpojumā, biznesa konsultācijas Latvija"
+  },
+  "nav": {
+    "services": "Pakalpojumi",
+    "about": "Par kompāniju",
+    "insights": "Jaunumi",
+    "contact": "Kontakti",
+    "cta": "Pieteikties"
+  },
+  "announcement": "Nodokļu konsultācija 2026 - piesakies šodien →",
+  "hero": {
+    "eyebrow": "Pilna servisa finanšu kompānija",
+    "headline": "Finanšu pārvaldība",
+    "headlineAccent": "tā ir māksla!",
+    "subtext": "Pilna servisa finanšu ārpakalpojumi - no grāmatvedības līdz finanšu direktora funkcijām. Latvijas un starptautiskiem uzņēmumiem",
+    "audienceQuestions": [
+      "Tikko sākāt jaunu biznesu un vēlaties būt pārliecināts, ka peļņa būs tieši paredzētajā termiņā un esošie resursi būs pietiekami, lai sasniegtu savus mērķus?",
+      "Jūsu pašvaldībā vai NVO nepieciešams uzticams padomdevējs, kas filigrāni pārzina ne tikai biznesa norises, bet arī izprot globālos procesus?",
+      "Esat spēcīga holdinga vadītājs un vēlaties optimizēt savu uzņēmumu darbību ar mērķi gūt vēl lielāku peļņu vai plānojat uzlabot savus finanšu rādītājus, lai kļūtu pievilcīgāks investoriem?"
+    ],
+    "ctaPrimary": "Pieteikties konsultācijai",
+    "ctaSecondary": "Pakalpojumi"
+  },
+  "metrics": {
+    "years": {
+      "value": "20+",
+      "label": "Gadi pieredzē"
+    },
+    "segments": {
+      "value": "3",
+      "label": "Klientu segmenti"
+    },
+    "languages": {
+      "value": "LV · RU · EN",
+      "label": "Valodu atbalsts"
+    }
+  },
+  "sectors": {
+    "title": "Strādājam ar",
+    "items": [
+      {
+        "title": "Jaunu biznesu",
+        "body": "Tikko sākāt uzņēmumu un vēlaties zināt, ka finanses ir kārtībā un nodokļi - pareizi"
+      },
+      {
+        "title": "Holdingiem un korporācijām",
+        "body": "Optimizējam finanšu darbību, uzlabojam rādītājus investoriem un pārvaldām sarežģītas struktūras"
+      },
+      {
+        "title": "Pašvaldībām un NVO",
+        "body": "Uzticams padomdevējs, kas saprot gan publiskā sektora specifiku, gan globālos finanšu procesus"
+      }
+    ]
+  },
+  "services": {
+    "title": "Pakalpojumi",
+    "subtitle": "Pilns finanšu pakalpojumu spektrs vienam uzņēmumam",
+    "learnMore": "Uzzināt vairāk →",
+    "items": [
+      {
+        "name": "Finanšu direktors ārpakalpojumā",
+        "badge": "Populārākais",
+        "description": "Naudas plūsmas pārvaldība, budžeta kontrole, risku analīze un ārējā finansējuma koordinācija bez pastāvīga darbinieka izmaksām",
+        "premium": true
+      },
+      {
+        "name": "Biznesa konsultācijas",
+        "badge": "Premium",
+        "description": "Finansējuma stratēģija, refinansēšana un restrukturizācija. Atbilde uz jautājumu: kas notiks sliktākajā variantā?",
+        "premium": true
+      },
+      {
+        "name": "Nodokļu konsultācijas",
+        "badge": "Aktuāli",
+        "description": "Optimāla nodokļu struktūra, PVN jautājumi, darba spēka nodokļi un nodokļu risku novērtēšana",
+        "premium": false
+      },
+      {
+        "name": "Grāmatvedības pakalpojumi",
+        "badge": "Pamats",
+        "description": "Pilna ārpakalpojuma grāmatvedība - no primārajiem dokumentiem līdz gada pārskatam",
+        "premium": false
+      },
+      {
+        "name": "Start-up risinājumi",
+        "badge": "Jaunuzņēmumiem",
+        "description": "Uzņēmuma reģistrācija, pirmie līgumi, nodokļu atbildes un izaugsmes plānošana",
+        "premium": false
+      },
+      {
+        "name": "Finanšu plānošana un budžetēšana",
+        "badge": "Ilgtermiņa",
+        "description": "Ilgtermiņa finanšu modelēšana, budžeta veidošana un izpildes kontrole",
+        "premium": false
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Ko saka mūsu klienti",
+    "subtitle": "Reāli cilvēki. Reāla pieredze",
+    "items": [
+      {
+        "name": "Agita Puriņa",
+        "role": "DNB bankas Ventspils filiāles direktore",
+        "initials": "AP",
+        "photo": "/images/agita-purina.jpg",
+        "quote": "Viņa prot gan motivēt komandu tālejošu mērķu sasniegšanai, gan pamanīt dažādus riskus uzreiz. Nepārvērtējama profesionālā pieeja un dziļas zināšanas finanšu jomā"
+      },
+      {
+        "name": "Salvis Roga",
+        "role": "Latvijas Tirdzniecības un rūpniecības kamera",
+        "initials": "SR",
+        "photo": "/images/salvis-roga.jpg",
+        "quote": "Ļoti augsti vērtējam līdzšinējo sadarbību ar Agnesi Pastari. Nepārvērtējama ir ne tikai profesionālā pieeja, bet arī ieinteresētība par Latvijas uzņēmumu labklājību"
+      },
+      {
+        "name": "Edgars Jansons",
+        "role": "Uzņēmējs, LSF Holdings",
+        "initials": "EJ",
+        "photo": "/images/edgars-jansons.jpg",
+        "quote": "Ar Agnesi Pastari sadarbojos laikā, kad vadīju tranzītbiznesa kompāniju LSF Holdings - kopā panācām multimiljonu apgrozījumu. Agnesei pilnībā var uzticēties"
+      },
+      {
+        "name": "Natālija Nudga",
+        "role": "Ventspils Biznesa inkubatora vadītāja",
+        "initials": "NN",
+        "photo": "/images/natalija-nudga.jpg",
+        "quote": "Mēs vienmēr esam gatavi sadarbībai ar atvērtiem, komunikabliem un kompetentiem nozares speciālistiem. Pie tādiem noteikti pieder Agnese Pastare"
+      }
+    ]
+  },
+  "founder": {
+    "eyebrow": "Par kompāniju",
+    "name": "Agnese Pastare",
+    "credentials": "Mag.oec  ·  20+ gadi  ·  LTRK Nacionālās stratēģijas padomes locekle",
+    "bio": "PB Finanses dibinātāja Agnese Pastare ieguvusi maģistra grādu (Mag.oec) Latvijas Universitātē un finanšu un uzņēmējdarbības jomā strādā jau vairāk nekā 20 gadus. Vērienīga pieredze gūta banku sektorā, strādājot par DNB bankas filiāles direktori, kā arī tranzītbiznesa un nekustamā īpašuma nozarēs. Agnese ir arī LTRK Nacionālās stratēģijas padomes locekle un brīvi runā latviešu, krievu un angļu valodā. Šodien PB Finanses sniedz augsta līmeņa ārpakalpojumus gan Latvijas, gan starptautiskiem uzņēmumiem",
+    "quote": "Apmierināti klienti ir mūsu vislabākā balva",
+    "contact": "Sazināties ar Agnesi"
+  },
+  "process": {
+    "title": "Kā mēs strādājam",
+    "steps": [
+      {
+        "num": "01",
+        "title": "Novērtējam situāciju",
+        "body": "Bezmaksas konsultācijā izprotam jūsu uzņēmuma specifiku, mērķus un aktuālās finanšu problēmas"
+      },
+      {
+        "num": "02",
+        "title": "Izstrādājam risinājumu",
+        "body": "Piedāvājam individuālu pakalpojumu komplektu - ne universālu, bet tieši jums piemērotu"
+      },
+      {
+        "num": "03",
+        "title": "Strādājam kopā",
+        "body": "Uzņemamies atbildību par rezultātu un esam sasniedzami, kad tas ir nepieciešams"
+      }
+    ]
+  },
+  "insights": {
+    "title": "Jaunumi",
+    "all": "Visi raksti →",
+    "readMore": "Lasīt vairāk →",
+    "items": [
+      {
+        "date": "Janvāris 2026",
+        "tag": "Nodokļi",
+        "title": "Nodokļu izmaiņas 2026 - kas jāzina katra uzņēmuma vadītājam",
+        "excerpt": "Jaunais gads ienāk ar virkni nodokļu grozījumu, kas ietekmē gan darba devējus, gan individuālos uzņēmējus"
+      },
+      {
+        "date": "Decembris 2025",
+        "tag": "Finanšu direktors",
+        "title": "Finanšu direktors ārpakalpojumā - vai tas ir izdevīgi mazajam biznesam?",
+        "excerpt": "Izanalizējam, kad finanšu direktors ārpakalpojumā atmaksājas un ko tas sniedz uzņēmumiem ar 5–50 darbiniekiem"
+      },
+      {
+        "date": "Novembris 2025",
+        "tag": "Start-up",
+        "title": "Start-up dibināšanas 7 biežākās kļūdas Latvijā",
+        "excerpt": "No uzņēmuma formas izvēles līdz PVN reģistrācijai - kļūdas, kas var maksāt ļoti dārgi"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Biežāk uzdotie jautājumi",
+    "items": [
+      {
+        "q": "Kāda ir atšķirība starp grāmatvedi un finanšu konsultantu?",
+        "a": "Grāmatvedis strādā ar faktu un skatās uz pagātni - reģistrē notikušos darījumus un sagatavo pārskatus. Finansists strādā ar plānu un skatās uz nākotni - palīdz pieņemt lēmumus, kas ietekmēs uzņēmuma rezultātus. PB Finanses piedāvā abus - gan ikdienas grāmatvedību, gan finanšu direktora skatījumu uz jūsu biznesu"
+      },
+      {
+        "q": "Vai pirmā konsultācija ir bez maksas?",
+        "a": "Jā. Bezmaksas konsultācijā iepazīstamies ar jūsu uzņēmuma specifiku, mērķiem un aktuālajām finanšu problēmām, lai piedāvātu tieši jums piemērotu risinājumu - nevis universālu paketi"
+      },
+      {
+        "q": "Kādi jautājumi jārisina, tikko dibinot uzņēmumu?",
+        "a": "Uzņēmējdarbības formas izvēle, reģistrācija Uzņēmumu reģistrā un VID, PVN reģistrācijas nepieciešamība, mikronodokļa izdevīguma izvērtējums, sākotnējie līgumi un darbaspēka nodokļi - ar visu to palīdzam jau no pirmās dienas"
+      },
+      {
+        "q": "Vai strādājat arī ar starptautiskiem uzņēmumiem?",
+        "a": "Jā. PB Finanses sniedz augsta līmeņa ārpakalpojumus gan Latvijas, gan starptautiskiem uzņēmumiem, un komanda brīvi runā latviešu, krievu un angļu valodā"
+      },
+      {
+        "q": "Kā tiek noteikta pakalpojuma cena?",
+        "a": "Cena veidojas individuāli - atkarībā no uzņēmuma apjoma, nozares un nepieciešamo pakalpojumu klāsta. Nepiedāvājam universālu paketi, bet gan risinājumu, kas piemērots tieši jūsu situācijai"
+      },
+      {
+        "q": "Vai varat pārņemt finanšu direktora funkcijas bez pilnas slodzes darbinieka?",
+        "a": "Jā, tas ir viens no mūsu populārākajiem pakalpojumiem - naudas plūsmas pārvaldība, budžeta kontrole, risku analīze un ārējā finansējuma koordinācija bez pastāvīga darbinieka izmaksām"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Sazināties",
+    "body": "Pirmā konsultācija ir bez maksas. Pastāstiet par savu uzņēmumu - mēs atradīsim labāko risinājumu",
+    "cta": "Pieteikties konsultācijai →",
+    "phone": "+371 29716434",
+    "email": "info@pbfinanses.lv",
+    "address": "Lielais prospekts 54-9, Ventspils, LV-3601",
+    "languages": "LV · RU · EN",
+    "labels": {
+      "phone": "TELEFONS",
+      "email": "E-PASTS",
+      "address": "ADRESE",
+      "languages": "VALODAS"
+    },
+    "form": {
+      "namePlaceholder": "Jūsu vārds",
+      "emailPlaceholder": "E-pasta adrese",
+      "phonePlaceholder": "Tālruņa numurs (nav obligāti)",
+      "messagePlaceholder": "Pastāstiet īsi par savu uzņēmumu un situāciju",
+      "submit": "Nosūtīt pieprasījumu →",
+      "success": "Paldies! Jūsu e-pasta klients tagad atvērsies, lai nosūtītu pieprasījumu."
+    }
+  },
+  "footer": {
+    "tagline": "Finanšu pārvaldība - tā ir māksla",
+    "nav": {
+      "services": "Pakalpojumi",
+      "about": "Par kompāniju",
+      "insights": "Jaunumi",
+      "contact": "Kontakti"
+    },
+    "copyright": "© 2026 PB Finanses. Visas tiesības aizsargātas"
+  }
+}

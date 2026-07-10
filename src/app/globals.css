@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Color tokens */
+  --color-ink-black: #000000;
+  --color-canvas-white: #ffffff;
+  --color-parchment-rule: #EAEAEA;
+  --color-graphite: #484F5E;
+  --color-stone: #78797C;
+  --color-espresso: #32373A;
+  --color-gilt: #236E74;
+  --color-gilt-dark: #517272;
+  --color-linen-tint: #F5F5F5;
+  --color-parchment-wash: #F9F9F9;
+
+  /* Typography */
+  --font-display: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  --font-body: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Layout */
+  --page-max: 1200px;
+  --section-gap: 96px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-canvas-white);
+  color: var(--color-ink-black);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Gilt gradient text — used ONLY on tagline accent */
+.gilt-text {
+  background: linear-gradient(to right, #236E74, #517272);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: italic;
+}
+
+/* Section wrapper */
+.section-wrap {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Section spacing */
+.section-gap {
+  padding: var(--section-gap) 0;
+}
+
+/* Hairline divider */
+.rule {
+  border: none;
+  border-top: 1px solid var(--color-parchment-rule);
+}
+
+/* Eyebrow label */
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-stone);
+}
+
+/* Photo slideshow */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.slide-photo {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.slide-photo.active {
+  opacity: 1;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-ink-black);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--color-ink-black);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 1.5px solid var(--color-ink-black);
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.btn-ghost:hover {
+  background: var(--color-linen-tint);
+  transform: translateY(-2px);
+}
+
+.btn-teal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-gilt);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s;
+}
+.btn-teal:hover {
+  transform: translateY(-2px);
+  opacity: 0.88;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  :root {
+    --section-gap: 56px;
+  }
+
+  .section-wrap {
+    padding: 0 20px;
+  }
+
+  /* Sectors */
+  .sector-card-grid,
+  [class*="sector"] + div {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Process */
+  #process-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Insights */
+  #insights .section-wrap > div:last-child {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Contact */
+  #contact .section-wrap > div {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 8px !important;
+    align-items: flex-start !important;
+  }
+
+  /* Buttons full-width on mobile */
+  .btn-primary,
+  .btn-ghost,
+  .btn-teal {
+    width: 100%;
+    justify-content: center;
+  }
+}

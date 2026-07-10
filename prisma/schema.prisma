@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  company   String?
+  message   String
+  locale    String   @default("lv")
+  createdAt DateTime @default(now())
+}
+
+model InsightPost {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  titleLv     String
+  titleEn     String
+  titleRu     String
+  excerptLv   String
+  excerptEn   String
+  excerptRu   String
+  contentLv   String
+  contentEn   String
+  contentRu   String
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+}

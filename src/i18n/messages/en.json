@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "title": "PB Finanses – Outsourced Accounting & CFO Services | Ventspils, Latvia",
+    "description": "Full-service financial outsourcing in Latvia: accounting, tax consulting and CFO services. Trusted team based in Ventspils with 20+ years of experience.",
+    "keywords": "accounting Latvia, outsourced CFO, tax consulting Latvia, bookkeeping services Ventspils, financial director outsourcing, business consulting Latvia"
+  },
+  "nav": {
+    "services": "Services",
+    "about": "About",
+    "insights": "Insights",
+    "contact": "Contact",
+    "cta": "Get in touch"
+  },
+  "announcement": "Tax consultation 2026 - book today →",
+  "hero": {
+    "eyebrow": "Full-service financial company",
+    "headline": "Financial management",
+    "headlineAccent": "it is an art!",
+    "subtext": "Full-service financial outsourcing - from bookkeeping to CFO functions. For Latvian and international companies",
+    "audienceQuestions": [
+      "Have you just started a new business and want to be confident that profit will arrive exactly on schedule, with enough resources to reach your goals?",
+      "Does your municipality or NGO need a trusted advisor who not only understands business processes in detail, but also grasps global trends?",
+      "Are you leading a strong holding company and want to optimize operations for even greater profit, or planning to improve your financial indicators to become more attractive to investors?"
+    ],
+    "ctaPrimary": "Request a consultation",
+    "ctaSecondary": "Services"
+  },
+  "metrics": {
+    "years": {
+      "value": "20+",
+      "label": "Years of experience"
+    },
+    "segments": {
+      "value": "3",
+      "label": "Client segments"
+    },
+    "languages": {
+      "value": "LV · RU · EN",
+      "label": "Language support"
+    }
+  },
+  "sectors": {
+    "title": "We work with",
+    "items": [
+      {
+        "title": "New business",
+        "body": "Just started your company and want to know that finances are in order and taxes are done right"
+      },
+      {
+        "title": "Holdings & corporations",
+        "body": "We optimize financial operations, improve investor metrics, and manage complex corporate structures"
+      },
+      {
+        "title": "Municipalities & NGOs",
+        "body": "A trusted advisor who understands both public sector specifics and global financial processes"
+      }
+    ]
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Full spectrum of financial services under one roof",
+    "learnMore": "Learn more →",
+    "items": [
+      {
+        "name": "CFO as a Service",
+        "badge": "Most Popular",
+        "description": "Cash flow management, budget control, risk analysis and external financing coordination - without the cost of a full-time employee",
+        "premium": true
+      },
+      {
+        "name": "Business consulting",
+        "badge": "Premium",
+        "description": "Financing strategy, refinancing and restructuring. Answering the question: what happens in the worst case?",
+        "premium": true
+      },
+      {
+        "name": "Tax consulting",
+        "badge": "Trending",
+        "description": "Optimal tax structure, VAT matters, payroll taxes and tax risk assessment",
+        "premium": false
+      },
+      {
+        "name": "Accounting services",
+        "badge": "Essential",
+        "description": "Full outsourced accounting - from primary documents to annual reports",
+        "premium": false
+      },
+      {
+        "name": "Start-up solutions",
+        "badge": "For Start-ups",
+        "description": "Company registration, first contracts, tax answers and growth planning",
+        "premium": false
+      },
+      {
+        "name": "Financial planning & budgeting",
+        "badge": "Long-term",
+        "description": "Long-term financial modeling, budget creation and execution control",
+        "premium": false
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "What our clients say",
+    "subtitle": "Real people. Real experience",
+    "items": [
+      {
+        "name": "Agita Puriņa",
+        "role": "Director, DNB Bank Ventspils Branch",
+        "initials": "AP",
+        "photo": "/images/agita-purina.jpg",
+        "quote": "She knows how to motivate a team toward ambitious goals and spot various risks at once. Invaluable professional approach and deep knowledge in finance"
+      },
+      {
+        "name": "Salvis Roga",
+        "role": "Latvian Chamber of Commerce and Industry",
+        "initials": "SR",
+        "photo": "/images/salvis-roga.jpg",
+        "quote": "We highly value our ongoing cooperation with Agnese Pastare. Invaluable is not only her professional approach but also her genuine interest in the wellbeing of Latvian businesses"
+      },
+      {
+        "name": "Edgars Jansons",
+        "role": "Entrepreneur, LSF Holdings",
+        "initials": "EJ",
+        "photo": "/images/edgars-jansons.jpg",
+        "quote": "I worked with Agnese Pastare when I led the transit business company LSF Holdings - together we achieved multi-million turnover. Agnese can be fully trusted"
+      },
+      {
+        "name": "Natālija Nudga",
+        "role": "Director, Ventspils Business Incubator",
+        "initials": "NN",
+        "photo": "/images/natalija-nudga.jpg",
+        "quote": "We are always ready to cooperate with open, communicative and competent industry specialists. Agnese Pastare is definitely one of them"
+      }
+    ]
+  },
+  "founder": {
+    "eyebrow": "About the company",
+    "name": "Agnese Pastare",
+    "credentials": "Mag.oec  ·  20+ years  ·  LCCI National Strategy Council member",
+    "bio": "PB Finanses founder Agnese Pastare holds a Master's degree (Mag.oec) from the University of Latvia and has worked in finance and business for over 20 years. Extensive experience gained in the banking sector as Director of a DNB Bank branch, as well as in the transit business and real estate industries. Agnese is also a member of the LCCI National Strategy Council and is fluent in Latvian, Russian and English. Today PB Finanses provides high-level outsourced services to both Latvian and international companies",
+    "quote": "Satisfied clients are our greatest reward",
+    "contact": "Contact Agnese"
+  },
+  "process": {
+    "title": "How we work",
+    "steps": [
+      {
+        "num": "01",
+        "title": "We assess the situation",
+        "body": "In a free consultation we understand your company's specifics, goals and current financial challenges"
+      },
+      {
+        "num": "02",
+        "title": "We develop a solution",
+        "body": "We offer an individual service package - not a universal one, but tailored precisely for you"
+      },
+      {
+        "num": "03",
+        "title": "We work together",
+        "body": "We take responsibility for results and are reachable when you need us"
+      }
+    ]
+  },
+  "insights": {
+    "title": "Insights",
+    "all": "All articles →",
+    "readMore": "Read more →",
+    "items": [
+      {
+        "date": "January 2026",
+        "tag": "Taxes",
+        "title": "Tax changes 2026 - what every business owner needs to know",
+        "excerpt": "The new year brings a range of tax amendments affecting both employers and individual entrepreneurs"
+      },
+      {
+        "date": "December 2025",
+        "tag": "CFO",
+        "title": "CFO as a Service - is it worth it for small business?",
+        "excerpt": "We analyze when an outsourced CFO pays off and what it gives companies with 5–50 employees"
+      },
+      {
+        "date": "November 2025",
+        "tag": "Start-up",
+        "title": "7 most common start-up mistakes in Latvia",
+        "excerpt": "From choosing company form to VAT registration - mistakes that can cost dearly"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "q": "What's the difference between an accountant and a financial consultant?",
+        "a": "An accountant works with fact and looks at the past - recording transactions that already happened and preparing reports. A financier works with a plan and looks at the future - helping you make decisions that will shape the company's results. PB Finanses offers both - everyday bookkeeping and a CFO's perspective on your business"
+      },
+      {
+        "q": "Is the first consultation free?",
+        "a": "Yes. In a free consultation we get to know your company's specifics, goals and current financial challenges, so we can offer a solution tailored to you - not a one-size-fits-all package"
+      },
+      {
+        "q": "What needs to be handled right after starting a company?",
+        "a": "Choosing the right business form, registration with the Register of Enterprises and the State Revenue Service, whether VAT registration is needed, evaluating the micro-tax regime, first contracts and payroll taxes - we help with all of this from day one"
+      },
+      {
+        "q": "Do you work with international companies?",
+        "a": "Yes. PB Finanses provides high-level outsourced services to both Latvian and international companies, and the team is fluent in Latvian, Russian and English"
+      },
+      {
+        "q": "How is the price of a service determined?",
+        "a": "Pricing is set individually - based on company size, industry and the scope of services needed. We don't offer a universal package, but a solution matched to your specific situation"
+      },
+      {
+        "q": "Can you take over CFO functions without hiring a full-time employee?",
+        "a": "Yes, that's one of our most popular services - cash flow management, budget control, risk analysis and external financing coordination, without the cost of a full-time employee"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get in touch",
+    "body": "The first consultation is free. Tell us about your company - we will find the best solution",
+    "cta": "Request a consultation →",
+    "phone": "+371 29716434",
+    "email": "info@pbfinanses.lv",
+    "address": "Lielais prospekts 54-9, Ventspils, LV-3601",
+    "languages": "LV · RU · EN",
+    "labels": {
+      "phone": "PHONE",
+      "email": "EMAIL",
+      "address": "ADDRESS",
+      "languages": "LANGUAGES"
+    },
+    "form": {
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "Email address",
+      "phonePlaceholder": "Phone number (optional)",
+      "messagePlaceholder": "Briefly tell us about your company and situation",
+      "submit": "Send request →",
+      "success": "Thank you! Your email client will now open to send the request."
+    }
+  },
+  "footer": {
+    "tagline": "Financial management - it is an art",
+    "nav": {
+      "services": "Services",
+      "about": "About",
+      "insights": "Insights",
+      "contact": "Contact"
+    },
+    "copyright": "© 2026 PB Finanses. All rights reserved"
+  }
+}

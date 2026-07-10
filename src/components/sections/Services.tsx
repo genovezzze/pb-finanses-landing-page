@@ -20,6 +20,7 @@ export default function Services() {
         {/* Header */}
         <Reveal variant="right">
           <div
+            id="services-header"
             style={{
               display: 'flex',
               justifyContent: 'space-between',
@@ -44,6 +45,7 @@ export default function Services() {
               </h2>
             </div>
             <p
+              id="services-subtitle"
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 17,

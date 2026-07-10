@@ -6,7 +6,7 @@ import { Reveal } from '@/components/ui/reveal'
 export default function FAQ() {
   const t = useTranslations('faq')
   const items = t.raw('items') as Array<{ q: string; a: string }>
-  const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
     <section

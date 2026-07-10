@@ -185,6 +185,17 @@ body {
     grid-template-columns: 1fr !important;
   }
 
+  /* Services header */
+  #services-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px;
+  }
+  #services-subtitle {
+    text-align: left !important;
+    white-space: normal !important;
+  }
+
   /* Contact */
   #contact .section-wrap > div {
     grid-template-columns: 1fr !important;

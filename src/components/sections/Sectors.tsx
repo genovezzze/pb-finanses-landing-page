@@ -44,6 +44,7 @@ export default function Sectors() {
           </h2>
         </Reveal>
         <div
+          className="sector-card-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',

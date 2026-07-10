@@ -31,6 +31,7 @@ export default function Process() {
         </Reveal>
 
         <div
+          id="process-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',

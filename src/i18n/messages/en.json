@@ -31,18 +31,10 @@
     "ctaSecondary": "Services"
   },
   "metrics": {
-    "years": {
-      "value": "20+",
-      "label": "Years of experience"
-    },
-    "segments": {
-      "value": "3",
-      "label": "Client segments"
-    },
-    "languages": {
-      "value": "LV · RU · EN",
-      "label": "Language support"
-    }
+    "years": "Years of experience",
+    "turnover": "Annual turnover",
+    "employees": "Team specialists",
+    "clients": "Clients"
   },
   "sectors": {
     "title": "We work with",
@@ -105,6 +97,7 @@
     ]
   },
   "testimonials": {
+    "eyebrow": "Testimonials",
     "title": "What our clients say",
     "subtitle": "Real people. Real experience",
     "items": [

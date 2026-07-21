@@ -1,31 +1,25 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
 // Placeholder imagery per milestone — swap these for your own photos.
 const MILESTONE_IMAGES = [
-  'https://d8j0ntlcm91z4.cloudfront.net/user_3GG0etPk7kKigScTFkcs4Y7pOC7/hf_20260709_130046_e68e3537-dead-4fd1-97a3-e5809b7a9209.png',
-  'https://d8j0ntlcm91z4.cloudfront.net/user_3GG0etPk7kKigScTFkcs4Y7pOC7/hf_20260709_130048_c00b668c-9acd-4595-8d33-cabc172dfddd.png',
-  'https://d8j0ntlcm91z4.cloudfront.net/user_3GG0etPk7kKigScTFkcs4Y7pOC7/hf_20260709_130050_083c73a9-eda1-4d7d-8080-e656b2e7cbae.png',
+  '/images/unnamed.webp',
+  '/images/dibinata.webp',
+  '/images/sodien.webp',
+]
+
+// Per-image framing (objectPosition / zoom) if a photo needs it.
+const MILESTONE_IMAGE_STYLES: CSSProperties[] = [
+  {},
+  {},
+  {},
 ]
 
 type Milestone = { year: string; title: string; body: string }
 
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v))
-
-// Clamped piecewise-linear interpolation
-function interp(x: number, xs: number[], ys: number[]) {
-  if (x <= xs[0]) return ys[0]
-  if (x >= xs[xs.length - 1]) return ys[ys.length - 1]
-  for (let i = 1; i < xs.length; i++) {
-    if (x <= xs[i]) {
-      const t = (x - xs[i - 1]) / (xs[i] - xs[i - 1])
-      return ys[i - 1] + (ys[i] - ys[i - 1]) * t
-    }
-  }
-  return ys[ys.length - 1]
-}
 
 export default function History() {
   const t = useTranslations('history')
@@ -59,16 +53,17 @@ export default function History() {
     }
   }, [])
 
-  const seg = 1 / n
-  const fade = seg * 0.35
-  const active = Math.min(n - 1, Math.floor(progress * n))
+  const active = Math.min(n - 1, Math.max(0, Math.floor(progress * n)))
+
+  // Сколько экранов прокрутки «держит» каждая веха. Больше — дольше задержка.
+  const HOLD_PER_MILESTONE = 140
 
   return (
     <section id="history" style={{ background: 'var(--color-linen-tint)' }}>
-      {/* Scroll-driven pinned timeline: each milestone holds the full screen */}
+      {/* Scroll-driven pinned timeline: each milestone holds the screen for HOLD_PER_MILESTONE vh */}
       <div
         ref={containerRef}
-        style={{ position: 'relative', height: `${n * 100}vh` }}
+        style={{ position: 'relative', height: `${n * HOLD_PER_MILESTONE}vh` }}
       >
         <div className="pin-sticky">
           {/* Section label, stays in the corner while pinned */}
@@ -81,24 +76,14 @@ export default function History() {
 
           {/* Milestone panels */}
           {milestones.map((m, i) => {
-            const s = i * seg
-            const e = (i + 1) * seg
-            const first = i === 0
-            const last = i === n - 1
-            const xs = [s - fade, s + fade, e - fade, e + fade]
-            const opacity = interp(progress, xs, [first ? 1 : 0, 1, 1, last ? 1 : 0])
-            const scale = interp(progress, xs, [first ? 1 : 0.92, 1, 1, last ? 1 : 0.92])
-            const y = interp(progress, xs, [first ? 0 : 60, 0, 0, last ? 0 : -60])
-
+            const isActive = i === active
             return (
               <div
                 key={m.title}
-                className="pin-panel"
+                className={`pin-panel${isActive ? ' is-active' : ''}`}
                 style={{
-                  opacity,
-                  transform: `translateY(${y}px) scale(${scale})`,
-                  pointerEvents: i === active ? 'auto' : 'none',
-                  willChange: 'opacity, transform',
+                  zIndex: isActive ? 2 : 1,
+                  pointerEvents: isActive ? 'auto' : 'none',
                 }}
               >
                 <div className="section-wrap pin-inner">
@@ -113,7 +98,7 @@ export default function History() {
                       alt={m.title}
                       fill
                       sizes="(max-width: 900px) 100vw, 46vw"
-                      style={{ objectFit: 'cover' }}
+                      style={{ objectFit: 'cover', ...MILESTONE_IMAGE_STYLES[i % MILESTONE_IMAGES.length] }}
                     />
                   </div>
                 </div>
@@ -165,6 +150,13 @@ export default function History() {
           display: flex;
           align-items: center;
           padding-top: 140px;
+          background: var(--color-linen-tint);
+          opacity: 0;
+          transition: opacity 0.5s cubic-bezier(0.22,1,0.36,1);
+        }
+        .pin-panel.is-active { opacity: 1; }
+        @media (prefers-reduced-motion: reduce) {
+          .pin-panel { transition: none; }
         }
         .pin-inner {
           display: grid;

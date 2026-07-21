@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { useLocale } from 'next-intl'
 import { useState, useEffect } from 'react'
 import { motion } from 'motion/react'
+import { AnimatedGridPattern } from '@/components/ui/animated-grid-pattern'
+import { cn } from '@/lib/utils'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 const fadeUp = (delay: number) => ({
@@ -14,9 +16,9 @@ const fadeUp = (delay: number) => ({
 })
 
 const PHOTOS = [
-  '/images/agnese-1-tall.jpg',
-  '/images/agnese-2-tall.jpg',
-  '/images/agnese-3-tall.jpg',
+  '/images/agnese-1-tall-cut.png',
+  '/images/agnese-2-tall-cut.png',
+  '/images/agnese-3-tall-cut.png',
 ]
 
 // The headline must never wrap mid-phrase, so it is sized in `cqi` — a share of
@@ -51,16 +53,32 @@ export default function Hero() {
     <section
       id="hero"
       style={{
-        background: 'var(--color-canvas-white)',
+        position: 'relative',
+        backgroundColor: 'var(--color-canvas-white)',
         padding: '0',
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'stretch',
       }}
     >
+      {/* Animated grid pattern background — brand teal */}
+      <AnimatedGridPattern
+        numSquares={44}
+        maxOpacity={0.28}
+        duration={3}
+        repeatDelay={1}
+        className={cn(
+          'text-[#236E74] stroke-[#236E74]/25',
+          '[mask-image:radial-gradient(120%_110%_at_100%_0%,black,transparent_72%)]',
+          'inset-y-[-25%] h-[150%] skew-y-6',
+        )}
+      />
+
       <div
         className="section-wrap"
         style={{
+          position: 'relative',
+          zIndex: 1,
           display: 'grid',
           gridTemplateColumns: '50fr 50fr',
           gap: 0,
@@ -131,7 +149,8 @@ export default function Hero() {
                   position: 'absolute',
                   inset: 0,
                   fontFamily: 'var(--font-body)',
-                  fontStyle: 'italic',
+                  fontStyle: 'normal',
+                  fontWeight: 700,
                   fontSize: 15,
                   color: 'var(--color-stone)',
                   lineHeight: 1.6,
@@ -178,7 +197,7 @@ export default function Hero() {
                 position: 'absolute',
                 inset: 0,
                 opacity: i === activeIndex ? 1 : 0,
-                transition: 'opacity 0.35s ease-in-out',
+                transition: 'opacity 0.6s ease-in-out',
               }}
             >
               <Image
@@ -194,40 +213,6 @@ export default function Hero() {
               />
             </div>
           ))}
-
-          {/* Dot indicators */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: 16,
-              left: '50%',
-              transform: 'translateX(-50%)',
-              display: 'flex',
-              gap: 6,
-              zIndex: 10,
-            }}
-          >
-            {PHOTOS.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveIndex(i)}
-                style={{
-                  width: i === activeIndex ? 20 : 6,
-                  height: 6,
-                  borderRadius: 3,
-                  background:
-                    i === activeIndex
-                      ? 'var(--color-gilt)'
-                      : 'var(--color-parchment-rule)',
-                  border: 'none',
-                  cursor: 'pointer',
-                  padding: 0,
-                  transition: 'width 0.3s, background 0.3s',
-                }}
-                aria-label={`Photo ${i + 1}`}
-              />
-            ))}
-          </div>
         </div>
       </div>
 

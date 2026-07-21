@@ -1,7 +1,7 @@
 import AnnouncementBar from '@/components/layout/AnnouncementBar'
 import FloatingContact from '@/components/layout/FloatingContact'
 import Hero from '@/components/sections/Hero'
-import Partners from '@/components/sections/Partners'
+import Stats from '@/components/sections/Stats'
 import Sectors from '@/components/sections/Sectors'
 import Services from '@/components/sections/Services'
 import Testimonials from '@/components/sections/Testimonials'
@@ -19,7 +19,7 @@ export default function HomePage() {
     <main>
       <AnnouncementBar />
       <Hero />
-      <Partners />
+      <Stats />
       <Sectors />
       <Services />
       <Testimonials />

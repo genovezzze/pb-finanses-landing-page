@@ -31,18 +31,10 @@
     "ctaSecondary": "Услуги"
   },
   "metrics": {
-    "years": {
-      "value": "20+",
-      "label": "Лет опыта"
-    },
-    "segments": {
-      "value": "3",
-      "label": "Клиентских сегмента"
-    },
-    "languages": {
-      "value": "LV · RU · EN",
-      "label": "Поддержка языков"
-    }
+    "years": "Лет работы",
+    "turnover": "Годовой оборот",
+    "employees": "Специалистов в команде",
+    "clients": "Клиентов"
   },
   "sectors": {
     "title": "Работаем с",
@@ -105,6 +97,7 @@
     ]
   },
   "testimonials": {
+    "eyebrow": "Отзывы",
     "title": "Что говорят наши клиенты",
     "subtitle": "Реальные люди. Реальный опыт",
     "items": [

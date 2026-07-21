@@ -18,9 +18,7 @@ export default function Navbar() {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
-  const [aboutOpen, setAboutOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
-  const [mobileAboutOpen, setMobileAboutOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
   const langRef = useRef<HTMLDivElement>(null)
   const lastY = useRef(0)
@@ -48,8 +46,6 @@ export default function Navbar() {
     }
   }, [])
 
-  const aboutSubmenu = ['history', 'team', 'office'] as const
-
   const switchLocale = (newLocale: string) => {
     const segments = pathname.split('/')
     segments[1] = newLocale
@@ -75,40 +71,13 @@ export default function Navbar() {
 
   const navLinks = ['services', 'about', 'insights', 'contact'] as const
 
-  // Подсветка активного раздела. Порядок соответствует порядку секций на странице;
-  // подразделы «О компании» подсвечивают сам пункт about.
-  const [activeSection, setActiveSection] = useState('')
-  useEffect(() => {
-    const sectionIds = ['services', 'about', 'history', 'team', 'office', 'insights', 'contact']
-    let raf = 0
-    const update = () => {
-      raf = 0
-      const line = 144 // высота хедера + запас, чтобы раздел активировался при подходе к нему
-      let current = ''
-      for (const id of sectionIds) {
-        const el = document.getElementById(id)
-        if (el && el.getBoundingClientRect().top <= line) current = id
-      }
-      setActiveSection(current)
-    }
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update)
-    }
-    update()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      if (raf) cancelAnimationFrame(raf)
-    }
-  }, [])
-
-  // Подразделы «О компании» подсвечивают сам пункт about в верхнем меню.
-  const activeNav = aboutSubmenu.includes(activeSection as (typeof aboutSubmenu)[number])
-    ? 'about'
-    : activeSection
-
   return (
     <>
+      {/* Blurred backdrop behind the mega panel — kept OUTSIDE <header> so its
+          position:fixed resolves against the viewport (a transform on the header
+          would otherwise make it its containing block and collapse this to ~0px). */}
+      <div className="mega-backdrop" data-open={servicesOpen} aria-hidden="true" />
+
       <header
         style={{
           position: 'sticky',
@@ -154,61 +123,6 @@ export default function Navbar() {
             style={{ display: 'flex', gap: 32, alignItems: 'center' }}
           >
             {navLinks.map((key) => {
-              if (key === 'about') {
-                return (
-                  <div
-                    key={key}
-                    style={{ position: 'relative' }}
-                    onMouseEnter={() => setAboutOpen(true)}
-                    onMouseLeave={() => setAboutOpen(false)}
-                  >
-                    <Link
-                      href={`/${locale}#about`}
-                      className={`nav-link${activeNav === 'about' ? ' is-active' : ''}`}
-                      style={{ display: 'flex', alignItems: 'center', gap: 5 }}
-                    >
-                      {t(key)}
-                      <svg
-                        width="8"
-                        height="8"
-                        viewBox="0 0 10 6"
-                        fill="none"
-                        style={{ transform: aboutOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
-                      >
-                        <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </Link>
-
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: '100%',
-                        left: 0,
-                        paddingTop: 12,
-                        opacity: aboutOpen ? 1 : 0,
-                        visibility: aboutOpen ? 'visible' : 'hidden',
-                        transform: aboutOpen ? 'translateY(0)' : 'translateY(-4px)',
-                        transition: 'opacity 0.15s, transform 0.15s',
-                        pointerEvents: aboutOpen ? 'auto' : 'none',
-                      }}
-                    >
-                      <div className="nav-dropdown">
-                        {aboutSubmenu.map((sub) => (
-                          <Link
-                            key={sub}
-                            href={`/${locale}#${sub}`}
-                            onClick={() => setAboutOpen(false)}
-                            className={`nav-sub${activeSection === sub ? ' is-active' : ''}`}
-                          >
-                            {t(`aboutMenu.${sub}`)}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )
-              }
-
               if (key === 'services') {
                 return (
                   <div
@@ -219,7 +133,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={`/${locale}#services`}
-                      className={`nav-link${activeNav === 'services' ? ' is-active' : ''}`}
+                      className="nav-link"
                       style={{ display: 'flex', alignItems: 'center', gap: 5 }}
                     >
                       {t(key)}
@@ -233,9 +147,6 @@ export default function Navbar() {
                         <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </Link>
-
-                    {/* Blurred backdrop behind the mega panel */}
-                    <div className="mega-backdrop" data-open={servicesOpen} aria-hidden="true" />
 
                     {/* Full-width mega panel */}
                     <div className="mega-panel" data-open={servicesOpen}>
@@ -261,7 +172,7 @@ export default function Navbar() {
                 <Link
                   key={key}
                   href={`/${locale}#${key}`}
-                  className={`nav-link${activeNav === key ? ' is-active' : ''}`}
+                  className="nav-link"
                 >
                   {t(key)}
                 </Link>
@@ -364,89 +275,25 @@ export default function Navbar() {
       >
         {/* Nav links */}
         <nav style={{ display: 'flex', flexDirection: 'column', gap: 4, marginBottom: 40 }}>
-          {navLinks.map((key) =>
-            key === 'about' ? (
-              <div key={key} style={{ borderBottom: '1px solid var(--color-parchment-rule)' }}>
-                <button
-                  onClick={() => setMobileAboutOpen((v) => !v)}
-                  style={{
-                    display: 'flex',
-                    width: '100%',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    background: 'none',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontFamily: 'var(--font-body)',
-                    fontSize: 32,
-                    fontWeight: 300,
-                    color: 'var(--color-ink-black)',
-                    padding: '10px 0',
-                    letterSpacing: '-0.01em',
-                  }}
-                >
-                  {t(key)}
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 10 6"
-                    fill="none"
-                    style={{ transform: mobileAboutOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
-                  >
-                    <path d="M1 1l4 4 4-4" stroke="var(--color-stone)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button>
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateRows: mobileAboutOpen ? '1fr' : '0fr',
-                    transition: 'grid-template-rows 0.25s ease',
-                  }}
-                >
-                  <div style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-                    {aboutSubmenu.map((sub) => (
-                      <Link
-                        key={sub}
-                        href={`/${locale}#${sub}`}
-                        onClick={() => {
-                          setMenuOpen(false)
-                          setMobileAboutOpen(false)
-                        }}
-                        style={{
-                          fontFamily: 'var(--font-body)',
-                          fontSize: 20,
-                          fontWeight: 500,
-                          color: 'var(--color-graphite)',
-                          textDecoration: 'none',
-                          padding: '10px 0 10px 16px',
-                        }}
-                      >
-                        {t(`aboutMenu.${sub}`)}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <Link
-                key={key}
-                href={`/${locale}#${key}`}
-                onClick={() => setMenuOpen(false)}
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: 32,
-                  fontWeight: 300,
-                  color: 'var(--color-ink-black)',
-                  textDecoration: 'none',
-                  padding: '10px 0',
-                  borderBottom: '1px solid var(--color-parchment-rule)',
-                  letterSpacing: '-0.01em',
-                }}
-              >
-                {t(key)}
-              </Link>
-            )
-          )}
+          {navLinks.map((key) => (
+            <Link
+              key={key}
+              href={`/${locale}#${key}`}
+              onClick={() => setMenuOpen(false)}
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: 32,
+                fontWeight: 300,
+                color: 'var(--color-ink-black)',
+                textDecoration: 'none',
+                padding: '10px 0',
+                borderBottom: '1px solid var(--color-parchment-rule)',
+                letterSpacing: '-0.01em',
+              }}
+            >
+              {t(key)}
+            </Link>
+          ))}
         </nav>
 
         {/* Contact info */}

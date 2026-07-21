@@ -19,25 +19,55 @@ export default function Testimonials() {
       <div className="section-wrap">
         {/* Header */}
         <Reveal variant="blur">
-          <div style={{ marginBottom: 40 }}>
+          <div className="flex flex-col items-center text-center max-w-[560px] mx-auto" style={{ marginBottom: 48 }}>
+            <span
+              className="inline-flex items-center gap-2"
+              style={{
+                border: '1.5px solid var(--color-gilt)',
+                borderRadius: 100,
+                padding: '7px 18px 7px 14px',
+                fontFamily: 'var(--font-display)',
+                fontSize: 13,
+                fontWeight: 600,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: 'var(--color-gilt)',
+              }}
+            >
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+              </svg>
+              {t('eyebrow')}
+            </span>
             <h2
               style={{
                 fontFamily: 'var(--font-display)',
                 fontWeight: 700,
-                fontSize: 'clamp(32px, 4vw, 48px)',
+                fontSize: 'clamp(34px, 4.4vw, 52px)',
                 color: 'var(--color-ink-black)',
                 letterSpacing: '-0.02em',
+                lineHeight: 1.1,
+                marginTop: 20,
               }}
             >
               {t('title')}
             </h2>
             <p
               style={{
-                fontFamily: 'var(--font-display)',
+                fontFamily: 'var(--font-body)',
                 fontSize: 17,
-                fontStyle: 'italic',
                 color: 'var(--color-stone)',
-                marginTop: 6,
+                marginTop: 14,
               }}
             >
               {t('subtitle')}

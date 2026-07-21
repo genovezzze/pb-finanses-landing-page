@@ -7,8 +7,8 @@
   --color-ink-black: #000000;
   --color-canvas-white: #ffffff;
   --color-parchment-rule: #EAEAEA;
-  --color-graphite: #484F5E;
-  --color-stone: #78797C;
+  --color-graphite: #000000;
+  --color-stone: #000000;
   --color-espresso: #32373A;
   --color-gilt: #236E74;
   --color-gilt-dark: #517272;
@@ -16,9 +16,10 @@
   --color-parchment-wash: #F9F9F9;
 
   /* Typography */
-  --font-display: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  --font-display: var(--font-playfair), 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains), 'JetBrains Mono', ui-monospace, monospace;
+  /* Was JetBrains Mono — retired; mapped to the body sans so it is never used again */
+  --font-mono: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
 
   /* Layout */
   --page-max: 1200px;
@@ -33,7 +34,7 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -42,7 +43,7 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100vw;
 }
 
@@ -52,7 +53,6 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-style: italic;
 }
 
 /* Section wrapper */

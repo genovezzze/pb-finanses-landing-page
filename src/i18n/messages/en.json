@@ -9,7 +9,12 @@
     "about": "About",
     "insights": "Insights",
     "contact": "Contact",
-    "cta": "Get in touch"
+    "cta": "Get in touch",
+    "aboutMenu": {
+      "history": "History",
+      "team": "Team",
+      "office": "Office"
+    }
   },
   "announcement": "Tax consultation 2026 - book today →",
   "hero": {
@@ -130,16 +135,87 @@
         "initials": "NN",
         "photo": "/images/natalija-nudga.jpg",
         "quote": "We are always ready to cooperate with open, communicative and competent industry specialists. Agnese Pastare is definitely one of them"
+      },
+      {
+        "name": "Mārtiņš Ozoliņš",
+        "role": "Board Member, Ozoliņš & Partners Ltd",
+        "initials": "MO",
+        "photo": "",
+        "quote": "Agnese Pastare impressed us with her deep understanding of tax optimisation. Thanks to her recommendations, our company saves a significant amount every year"
+      },
+      {
+        "name": "Ilze Krastiņa",
+        "role": "Owner, Retail Business",
+        "initials": "IK",
+        "photo": "",
+        "quote": "The PB Finanses team is exceptionally responsible and precise. My company has worked with them for 7 years and I have no plans to change — they are the most reliable finance team I know"
+      },
+      {
+        "name": "Jānis Bērziņš",
+        "role": "Founder, IT Company",
+        "initials": "JB",
+        "photo": "",
+        "quote": "As a tech company, we needed a finance expert who understands the international environment. Agnese delivers exactly that — responsive, precise, and forward-looking"
+      },
+      {
+        "name": "Sandra Liepiņa",
+        "role": "Real Estate Developer",
+        "initials": "SL",
+        "photo": "",
+        "quote": "In complex transactions, PB Finanses was our reliable partner. Their ability to quickly navigate intricate financial structures is truly impressive"
       }
     ]
   },
   "founder": {
     "eyebrow": "About the company",
     "name": "Agnese Pastare",
-    "credentials": "Mag.oec  ·  20+ years  ·  LCCI National Strategy Council member",
-    "bio": "PB Finanses founder Agnese Pastare holds a Master's degree (Mag.oec) from the University of Latvia and has worked in finance and business for over 20 years. Extensive experience gained in the banking sector as Director of a DNB Bank branch, as well as in the transit business and real estate industries. Agnese is also a member of the LCCI National Strategy Council and is fluent in Latvian, Russian and English. Today PB Finanses provides high-level outsourced services to both Latvian and international companies",
+    "credentials": "Mag.oec  ·  25+ years  ·  IFRS  ·  LCCI National Strategy Council member",
+    "bio": [
+      "PB Finanses founder Agnese Pastare holds a Master's degree in economics (Mag.oec) from Riga Technical University and has worked in finance and business for more than 25 years.",
+      "Her experience spans the banking sector — as deputy head of the Ventspils branch and corporate lending specialist at Pirmā Banka (today Luminor) — international accounting practice, the transit business and real estate.",
+      "She holds IAB certificates in international accounting, IFRS reporting and financial analysis, chairs the board of ABZ Finance, and serves on the LCCI Kurzeme Entrepreneurs Council and the LCCI National Strategy Council.",
+      "Agnese is fluent in Latvian, Russian and English. Beyond finance she is an internationally titled art photographer (AFIAP) and a recipient of the Ventspils City Award for her contribution to the city's economic and cultural development."
+    ],
     "quote": "Satisfied clients are our greatest reward",
-    "contact": "Contact Agnese"
+    "contact": "Contact Agnese",
+    "readMore": "Read more",
+    "close": "Close"
+  },
+  "history": {
+    "eyebrow": "Our path",
+    "title": "History",
+    "intro": "PB Finanses grew from a simple idea - combine the precision of bookkeeping with the mindset of a CFO",
+    "milestones": [
+      {
+        "year": "2003",
+        "title": "First accounting office",
+        "body": "After three years in banking, Agnese Pastare takes over the management of an accounting office in Ventspils serving Latvian, EU and third-country companies to international standards"
+      },
+      {
+        "year": "2011",
+        "title": "PB Finanses is founded",
+        "body": "A full-service finance company: international accounting, IFRS reporting, financial analysis and tax consulting under one roof"
+      },
+      {
+        "year": "Today",
+        "title": "Latvian and international clients",
+        "body": "PB Finanses serves Latvian and international businesses and is an active member of the LCCI, keeping an individual approach to every client"
+      }
+    ]
+  },
+  "team": {
+    "eyebrow": "People",
+    "title": "Team",
+    "intro": "A small team of accounting, tax and financial management specialists united by one approach - understand the client's business, not just keep the books",
+    "note": "The team grows together with PB Finanses clients - ask about the current team during a consultation"
+  },
+  "office": {
+    "eyebrow": "Where we are",
+    "title": "Office",
+    "intro": "The PB Finanses office is based in Ventspils - we meet in person or work remotely, whichever suits the client best",
+    "addressLabel": "ADDRESS",
+    "hoursLabel": "OFFICE HOURS",
+    "hours": "Mon-Fri, 9:00-18:00 (by appointment)"
   },
   "process": {
     "title": "How we work",
@@ -217,6 +293,7 @@
   },
   "contact": {
     "title": "Get in touch",
+    "floatingTitle": "Let's talk about your business?",
     "body": "The first consultation is free. Tell us about your company - we will find the best solution",
     "cta": "Request a consultation →",
     "phone": "+371 29716434",
@@ -247,5 +324,8 @@
       "contact": "Contact"
     },
     "copyright": "© 2026 PB Finanses. All rights reserved"
+  },
+  "partners": {
+    "label": "We work with trusted tools and platforms"
   }
 }

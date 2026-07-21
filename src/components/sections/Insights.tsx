@@ -32,7 +32,7 @@ export default function Insights() {
             <h2
               style={{
                 fontFamily: 'var(--font-display)',
-                fontWeight: 300,
+                fontWeight: 700,
                 fontSize: 'clamp(32px, 4vw, 48px)',
                 color: 'var(--color-ink-black)',
                 letterSpacing: '-0.02em',

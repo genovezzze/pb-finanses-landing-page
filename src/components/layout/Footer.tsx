@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getLocale, getTranslations } from 'next-intl/server'
 
 export default async function Footer() {
@@ -28,17 +29,22 @@ export default async function Footer() {
       >
         {/* Brand */}
         <div>
-          <div
+          <Image
+            src="/images/PBFinanses_LOGO_500.png"
+            alt="PB Finanses"
+            width={500}
+            height={270}
             style={{
-              fontFamily: 'var(--font-display)',
-              fontWeight: 300,
-              fontSize: 22,
-              letterSpacing: '0.12em',
-              marginBottom: 12,
+              width: 'auto',
+              height: 64,
+              display: 'block',
+              marginBottom: 16,
+              /* logo is teal + grey; knock it out to white on the dark footer */
+              filter: 'brightness(0) invert(1)',
+              opacity: 0.92,
             }}
-          >
-            PB FINANSES
-          </div>
+          />
+
           <p
             style={{
               fontFamily: 'var(--font-body)',

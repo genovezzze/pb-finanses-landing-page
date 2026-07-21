@@ -23,7 +23,7 @@ const config: Config = {
       fontFamily: {
         display: ['var(--font-cormorant)', 'Cormorant Garamond', 'Georgia', 'serif'],
         body: ['var(--font-inter)', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-jetbrains)', 'JetBrains Mono', 'ui-monospace', 'monospace'],
+        mono: ['var(--font-inter)', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
         page: '1200px',

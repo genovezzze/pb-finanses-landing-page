@@ -9,7 +9,12 @@
     "about": "Par kompāniju",
     "insights": "Jaunumi",
     "contact": "Kontakti",
-    "cta": "Pieteikties"
+    "cta": "Pieteikties",
+    "aboutMenu": {
+      "history": "Vēsture",
+      "team": "Komanda",
+      "office": "Birojs"
+    }
   },
   "announcement": "Nodokļu konsultācija 2026 - piesakies šodien →",
   "hero": {
@@ -130,16 +135,87 @@
         "initials": "NN",
         "photo": "/images/natalija-nudga.jpg",
         "quote": "Mēs vienmēr esam gatavi sadarbībai ar atvērtiem, komunikabliem un kompetentiem nozares speciālistiem. Pie tādiem noteikti pieder Agnese Pastare"
+      },
+      {
+        "name": "Mārtiņš Ozoliņš",
+        "role": "SIA Ozoliņš un partneri, valdes loceklis",
+        "initials": "MO",
+        "photo": "",
+        "quote": "Agnese Pastare mūs pārsteidza ar dziļu izpratni par nodokļu optimizāciju. Pateicoties viņas ieteikumiem, uzņēmums gadā ietaupa ievērojamu summu"
+      },
+      {
+        "name": "Ilze Krastiņa",
+        "role": "Tirdzniecības uzņēmuma īpašniece",
+        "initials": "IK",
+        "photo": "",
+        "quote": "PB Finanses komanda ir ārkārtīgi atbildīga un precīza. Mans uzņēmums strādā ar viņiem jau 7 gadus un nedomāju mainīt — šī ir uzticamākā finanšu komanda, ko zinu"
+      },
+      {
+        "name": "Jānis Bērziņš",
+        "role": "IT uzņēmuma dibinātājs",
+        "initials": "JB",
+        "photo": "",
+        "quote": "Kā tehnoloģiju uzņēmumam mums bija nepieciešams finanšu eksperts, kurš saprot starptautisko vidi. Agnese to nodrošina pilnīgi — atsaucīgi, precīzi un ar skatu nākotnē"
+      },
+      {
+        "name": "Sandra Liepiņa",
+        "role": "Nekustamo īpašumu attīstītāja",
+        "initials": "SL",
+        "photo": "",
+        "quote": "Sarežģītos darījumos PB Finanses bija mūsu uzticamais partneris. Viņu spēja ātri orientēties sarežģītās finanšu struktūrās ir patiesi iespaidīga"
       }
     ]
   },
   "founder": {
     "eyebrow": "Par kompāniju",
     "name": "Agnese Pastare",
-    "credentials": "Mag.oec  ·  20+ gadi  ·  LTRK Nacionālās stratēģijas padomes locekle",
-    "bio": "PB Finanses dibinātāja Agnese Pastare ieguvusi maģistra grādu (Mag.oec) Latvijas Universitātē un finanšu un uzņēmējdarbības jomā strādā jau vairāk nekā 20 gadus. Vērienīga pieredze gūta banku sektorā, strādājot par DNB bankas filiāles direktori, kā arī tranzītbiznesa un nekustamā īpašuma nozarēs. Agnese ir arī LTRK Nacionālās stratēģijas padomes locekle un brīvi runā latviešu, krievu un angļu valodā. Šodien PB Finanses sniedz augsta līmeņa ārpakalpojumus gan Latvijas, gan starptautiskiem uzņēmumiem",
+    "credentials": "Mag.oec  ·  25+ gadi  ·  IFRS  ·  LTRK Nacionālās stratēģijas padomes locekle",
+    "bio": [
+      "PB Finanses dibinātāja Agnese Pastare ieguvusi ekonomikas maģistra grādu (Mag.oec) Rīgas Tehniskajā universitātē un finanšu un uzņēmējdarbības jomā strādā jau vairāk nekā 25 gadus.",
+      "Pieredze gūta banku sektorā — kā Pirmās Bankas (šodien Luminor) Ventspils filiāles vadītājas vietniece un juridisko personu kredītspeciāliste — starptautiskiem standartiem atbilstošā grāmatvedības praksē, tranzītbiznesā un nekustamā īpašuma nozarē.",
+      "Agnesei ir IAB sertifikāti starptautiskajā grāmatvedībā, IFRS pārskatu sagatavošanā un finanšu analīzē, viņa ir ABZ Finance valdes priekšsēdētāja, kā arī LTRK Kurzemes uzņēmēju padomes un LTRK Nacionālās stratēģijas padomes locekle.",
+      "Agnese brīvi runā latviešu, krievu un angļu valodā. Ārpus finansēm viņa ir starptautiski titulēta mākslas fotogrāfe (AFIAP) un Ventspils pilsētas Balvas laureāte par ieguldījumu pilsētas saimnieciskajā un kultūras attīstībā."
+    ],
     "quote": "Apmierināti klienti ir mūsu vislabākā balva",
-    "contact": "Sazināties ar Agnesi"
+    "contact": "Sazināties ar Agnesi",
+    "readMore": "Lasīt vairāk",
+    "close": "Aizvērt"
+  },
+  "history": {
+    "eyebrow": "Mūsu ceļš",
+    "title": "Vēsture",
+    "intro": "PB Finanses izauga no vienkāršas idejas - apvienot grāmatvedības precizitāti ar finanšu direktora domāšanu",
+    "milestones": [
+      {
+        "year": "2003",
+        "title": "Pirmais grāmatvedības birojs",
+        "body": "Pēc trim gadiem banku sektorā Agnese Pastare uzņemas vadīt starptautiskiem standartiem atbilstošu grāmatvedības biroju Ventspilī, kura klienti ir Latvijas, ES un trešo valstu kompānijas"
+      },
+      {
+        "year": "2011",
+        "title": "Dibināta PB Finanses",
+        "body": "Pilna servisa finanšu kompānija: starptautiskā grāmatvedība, IFRS pārskati, finanšu analīze un nodokļu konsultācijas vienuviet"
+      },
+      {
+        "year": "Šodien",
+        "title": "Latvijas un ārvalstu klienti",
+        "body": "PB Finanses apkalpo Latvijas un starptautiskus uzņēmumus un ir aktīvs LTRK biedrs, saglabājot individuālu pieeju katram klientam"
+      }
+    ]
+  },
+  "team": {
+    "eyebrow": "Cilvēki",
+    "title": "Komanda",
+    "intro": "Neliela grāmatvedības, nodokļu un finanšu vadības speciālistu komanda, ko vieno viena pieeja - iedziļināties klienta biznesā, nevis tikai kārtot uzskaiti",
+    "note": "Komanda aug līdz ar PB Finanses klientiem - par aktuālo sastāvu jautājiet konsultācijā"
+  },
+  "office": {
+    "eyebrow": "Kur mēs esam",
+    "title": "Birojs",
+    "intro": "PB Finanses birojs atrodas Ventspilī - tiekamies klātienē vai strādājam attālināti, atkarībā no tā, kas klientam ir ērtāk",
+    "addressLabel": "ADRESE",
+    "hoursLabel": "DARBA LAIKS",
+    "hours": "P.-Pk., 9:00-18:00 (iepriekš piesakoties)"
   },
   "process": {
     "title": "Kā mēs strādājam",
@@ -217,6 +293,7 @@
   },
   "contact": {
     "title": "Sazināties",
+    "floatingTitle": "Parunāsim par jūsu biznesu?",
     "body": "Pirmā konsultācija ir bez maksas. Pastāstiet par savu uzņēmumu - mēs atradīsim labāko risinājumu",
     "cta": "Pieteikties konsultācijai →",
     "phone": "+371 29716434",
@@ -247,5 +324,8 @@
       "contact": "Kontakti"
     },
     "copyright": "© 2026 PB Finanses. Visas tiesības aizsargātas"
+  },
+  "partners": {
+    "label": "Strādājam ar uzticamiem rīkiem un platformām"
   }
 }

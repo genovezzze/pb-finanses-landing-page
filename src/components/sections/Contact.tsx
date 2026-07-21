@@ -66,7 +66,7 @@ export default function Contact() {
             <h2
               style={{
                 fontFamily: 'var(--font-display)',
-                fontWeight: 300,
+                fontWeight: 700,
                 fontSize: 'clamp(36px, 4vw, 56px)',
                 color: '#fff',
                 letterSpacing: '-0.02em',

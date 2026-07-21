@@ -26,7 +26,7 @@ export default function FAQ() {
             <h2
               style={{
                 fontFamily: 'var(--font-display)',
-                fontWeight: 300,
+                fontWeight: 700,
                 fontSize: 'clamp(28px, 3.2vw, 40px)',
                 color: 'var(--color-ink-black)',
                 letterSpacing: '-0.02em',

@@ -1,23 +1,19 @@
-import { Cormorant_Garamond, Inter, JetBrains_Mono } from 'next/font/google'
+import { Inter } from 'next/font/google'
 
-export const cormorant = Cormorant_Garamond({
-  subsets: ['latin', 'latin-ext'],
-  weight: ['300', '400', '600'],
-  style: ['normal', 'italic'],
-  variable: '--font-cormorant',
+// Inter: modern geometric sans-serif for both display and body.
+// Supports Latvian diacritics (latin-ext) and Cyrillic (ru locale).
+// Display uses weight 700-800 for bold headings; body uses 400-500.
+export const playfair = Inter({
+  subsets: ['latin', 'latin-ext', 'cyrillic'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-playfair',
   display: 'swap',
 })
 
 export const inter = Inter({
   subsets: ['latin', 'latin-ext', 'cyrillic'],
-  weight: ['400', '500', '600'],
+  weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-inter',
   display: 'swap',
 })
 
-export const jetbrains = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-jetbrains',
-  display: 'swap',
-})

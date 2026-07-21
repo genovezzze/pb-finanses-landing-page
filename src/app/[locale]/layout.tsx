@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
-import { cormorant, inter, jetbrains } from '@/lib/fonts'
+import { playfair, inter } from '@/lib/fonts'
 import '../globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -89,9 +89,18 @@ export default async function LocaleLayout({ children, params }: Props) {
     },
     areaServed: 'LV',
     priceRange: '$$',
+    foundingDate: '2011',
     founder: {
       '@type': 'Person',
       name: 'Agnese Pastare',
+      jobTitle: 'Owner and Board Member',
+      email: 'agnese.pastare@pbfinanses.lv',
+      telephone: '+37129716434',
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'Riga Technical University',
+      },
+      knowsLanguage: ['lv', 'ru', 'en', 'de', 'it'],
     },
     sameAs: [],
   }
@@ -99,7 +108,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html
       lang={locale}
-      className={`${cormorant.variable} ${inter.variable} ${jetbrains.variable}`}
+      className={`${playfair.variable} ${inter.variable}`}
     >
       <body>
         <script

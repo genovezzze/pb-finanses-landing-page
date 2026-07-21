@@ -32,7 +32,7 @@ export default function Sectors() {
           <h2
             style={{
               fontFamily: 'var(--font-display)',
-              fontWeight: 300,
+              fontWeight: 700,
               fontSize: 'clamp(36px, 4vw, 52px)',
               color: 'var(--color-ink-black)',
               letterSpacing: '-0.02em',
@@ -60,7 +60,8 @@ export default function Sectors() {
                 overflow: 'hidden',
                 height: '100%',
                 borderRadius: 12,
-                transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1)',
+                boxShadow: '0 1px 2px rgba(12,10,7,0.04)',
+                transition: 'transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s cubic-bezier(0.16,1,0.3,1)',
               }}
             >
               {/* Image block */}
@@ -102,11 +103,12 @@ export default function Sectors() {
                   <h3
                     style={{
                       fontFamily: 'var(--font-display)',
-                      fontWeight: 400,
+                      fontWeight: 700,
                       fontSize: 22,
                       color: 'var(--color-ink-black)',
                       marginBottom: 10,
                       lineHeight: 1.2,
+                      letterSpacing: '-0.02em',
                     }}
                   >
                     {item.title}
@@ -129,11 +131,27 @@ export default function Sectors() {
       </div>
 
       <style>{`
+        .sector-card h3 {
+          transition: color 0.3s ease;
+        }
+        .sector-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 30px 50px -24px rgba(12,10,7,0.28);
+        }
         .sector-card:hover .sector-img {
-          transform: scale(1.04);
+          transform: scale(1.06);
         }
         .sector-card:hover .sector-overlay {
           opacity: 1;
+        }
+        .sector-card:hover h3 {
+          color: var(--color-gilt);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .sector-card, .sector-card .sector-img, .sector-card .sector-overlay, .sector-card h3 {
+            transition: none;
+          }
+          .sector-card:hover { transform: none; }
         }
         @media (max-width: 768px) {
           .sector-card-grid { grid-template-columns: 1fr !important; }

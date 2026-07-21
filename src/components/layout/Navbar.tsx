@@ -1,20 +1,54 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
+import NavSearch from './NavSearch'
 
 const LANGUAGES = ['lv', 'en', 'ru'] as const
 
 export default function Navbar() {
   const t = useTranslations('nav')
   const c = useTranslations('contact')
+  const s = useTranslations('services')
+  const serviceItems = s.raw('items') as { name: string; description: string }[]
   const locale = useLocale()
   const router = useRouter()
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
+  const [aboutOpen, setAboutOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false)
+  const [hidden, setHidden] = useState(false)
   const langRef = useRef<HTMLDivElement>(null)
+  const lastY = useRef(0)
+
+  // Hide the header on scroll down, reveal on scroll up (always shown near the top)
+  useEffect(() => {
+    lastY.current = window.scrollY
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const y = window.scrollY
+      const delta = y - lastY.current
+      if (y < 80) setHidden(false)
+      else if (delta > 4) setHidden(true)
+      else if (delta < -4) setHidden(false)
+      lastY.current = y
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [])
+
+  const aboutSubmenu = ['history', 'team', 'office'] as const
 
   const switchLocale = (newLocale: string) => {
     const segments = pathname.split('/')
@@ -41,6 +75,38 @@ export default function Navbar() {
 
   const navLinks = ['services', 'about', 'insights', 'contact'] as const
 
+  // Подсветка активного раздела. Порядок соответствует порядку секций на странице;
+  // подразделы «О компании» подсвечивают сам пункт about.
+  const [activeSection, setActiveSection] = useState('')
+  useEffect(() => {
+    const sectionIds = ['services', 'about', 'history', 'team', 'office', 'insights', 'contact']
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const line = 144 // высота хедера + запас, чтобы раздел активировался при подходе к нему
+      let current = ''
+      for (const id of sectionIds) {
+        const el = document.getElementById(id)
+        if (el && el.getBoundingClientRect().top <= line) current = id
+      }
+      setActiveSection(current)
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [])
+
+  // Подразделы «О компании» подсвечивают сам пункт about в верхнем меню.
+  const activeNav = aboutSubmenu.includes(activeSection as (typeof aboutSubmenu)[number])
+    ? 'about'
+    : activeSection
+
   return (
     <>
       <header
@@ -50,6 +116,8 @@ export default function Navbar() {
           zIndex: 100,
           background: 'var(--color-canvas-white)',
           borderBottom: '1px solid var(--color-parchment-rule)',
+          transform: hidden && !menuOpen ? 'translateY(-100%)' : 'translateY(0)',
+          transition: 'transform 0.55s cubic-bezier(0.22,1,0.36,1)',
         }}
       >
         <nav
@@ -66,16 +134,18 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href={`/${locale}`}
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontWeight: 300,
-              fontSize: 20,
-              letterSpacing: '0.12em',
-              color: 'var(--color-ink-black)',
-              textDecoration: 'none',
-            }}
+            aria-label="PB Finanses"
+            style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}
           >
-            PB FINANSES
+            <Image
+              src="/images/PBFinanses_LOGO_500.png"
+              alt="PB Finanses"
+              width={500}
+              height={270}
+              priority
+              className="brand-logo"
+              style={{ width: 'auto', height: 46, display: 'block' }}
+            />
           </Link>
 
           {/* Desktop nav links */}
@@ -83,137 +153,149 @@ export default function Navbar() {
             className="desktop-nav"
             style={{ display: 'flex', gap: 32, alignItems: 'center' }}
           >
-            {navLinks.map((key) => (
-              <Link
-                key={key}
-                href={`/${locale}#${key}`}
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 17,
-                  fontWeight: 600,
-                  color: 'var(--color-graphite)',
-                  textDecoration: 'none',
-                  transition: 'color 0.15s',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-ink-black)')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-graphite)')}
-              >
-                {t(key)}
-              </Link>
-            ))}
+            {navLinks.map((key) => {
+              if (key === 'about') {
+                return (
+                  <div
+                    key={key}
+                    style={{ position: 'relative' }}
+                    onMouseEnter={() => setAboutOpen(true)}
+                    onMouseLeave={() => setAboutOpen(false)}
+                  >
+                    <Link
+                      href={`/${locale}#about`}
+                      className={`nav-link${activeNav === 'about' ? ' is-active' : ''}`}
+                      style={{ display: 'flex', alignItems: 'center', gap: 5 }}
+                    >
+                      {t(key)}
+                      <svg
+                        width="8"
+                        height="8"
+                        viewBox="0 0 10 6"
+                        fill="none"
+                        style={{ transform: aboutOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
+                      >
+                        <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </Link>
+
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '100%',
+                        left: 0,
+                        paddingTop: 12,
+                        opacity: aboutOpen ? 1 : 0,
+                        visibility: aboutOpen ? 'visible' : 'hidden',
+                        transform: aboutOpen ? 'translateY(0)' : 'translateY(-4px)',
+                        transition: 'opacity 0.15s, transform 0.15s',
+                        pointerEvents: aboutOpen ? 'auto' : 'none',
+                      }}
+                    >
+                      <div className="nav-dropdown">
+                        {aboutSubmenu.map((sub) => (
+                          <Link
+                            key={sub}
+                            href={`/${locale}#${sub}`}
+                            onClick={() => setAboutOpen(false)}
+                            className={`nav-sub${activeSection === sub ? ' is-active' : ''}`}
+                          >
+                            {t(`aboutMenu.${sub}`)}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )
+              }
+
+              if (key === 'services') {
+                return (
+                  <div
+                    key={key}
+                    className="mega-wrap"
+                    onMouseEnter={() => setServicesOpen(true)}
+                    onMouseLeave={() => setServicesOpen(false)}
+                  >
+                    <Link
+                      href={`/${locale}#services`}
+                      className={`nav-link${activeNav === 'services' ? ' is-active' : ''}`}
+                      style={{ display: 'flex', alignItems: 'center', gap: 5 }}
+                    >
+                      {t(key)}
+                      <svg
+                        width="8"
+                        height="8"
+                        viewBox="0 0 10 6"
+                        fill="none"
+                        style={{ transform: servicesOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
+                      >
+                        <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </Link>
+
+                    {/* Blurred backdrop behind the mega panel */}
+                    <div className="mega-backdrop" data-open={servicesOpen} aria-hidden="true" />
+
+                    {/* Full-width mega panel */}
+                    <div className="mega-panel" data-open={servicesOpen}>
+                      <div className="mega-inner">
+                        {serviceItems.map((item, i) => (
+                          <Link
+                            key={i}
+                            href={`/${locale}#services`}
+                            onClick={() => setServicesOpen(false)}
+                            className="mega-item"
+                          >
+                            <span className="mega-item-name">{item.name}</span>
+                            <span className="mega-item-desc">{item.description}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )
+              }
+
+              return (
+                <Link
+                  key={key}
+                  href={`/${locale}#${key}`}
+                  className={`nav-link${activeNav === key ? ' is-active' : ''}`}
+                >
+                  {t(key)}
+                </Link>
+              )
+            })}
           </div>
 
           {/* Right side */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            {/* Phone + address (desktop) */}
-            <div
-              className="navbar-contact"
-              style={{ display: 'flex', alignItems: 'center', gap: 10, whiteSpace: 'nowrap' }}
-            >
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                <a
-                  href={`tel:${c('phone').replace(/\s/g, '')}`}
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: 15,
-                    fontWeight: 600,
-                    color: 'var(--color-ink-black)',
-                    textDecoration: 'none',
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {c('phone')}
-                </a>
-                <span
-                  className="navbar-address"
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: 11,
-                    color: 'var(--color-stone)',
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {c('address')}
-                </span>
-              </div>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
-                <path
-                  d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1.1L6.6 10.8z"
-                  fill="var(--color-ink-black)"
-                />
-              </svg>
-            </div>
+            {/* Search (desktop) */}
+            <NavSearch />
 
             {/* Language dropdown (desktop) */}
-            <div ref={langRef} className="desktop-lang" style={{ position: 'relative', marginLeft: -4 }}>
-              <button
-                onClick={() => setLangOpen((v) => !v)}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 4,
-                  background: 'none',
-                  border: '1px solid var(--color-parchment-rule)',
-                  borderRadius: 3,
-                  padding: '3px 7px',
-                  cursor: 'pointer',
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: 10,
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  color: 'var(--color-ink-black)',
-                  transition: 'border-color 0.15s',
-                }}
-              >
+            <div ref={langRef} className="desktop-lang" style={{ position: 'relative' }}>
+              <button className="lang-btn" onClick={() => setLangOpen((v) => !v)}>
                 {locale.toUpperCase()}
                 <svg
-                  width="7"
-                  height="7"
+                  width="8"
+                  height="8"
                   viewBox="0 0 10 6"
                   fill="none"
                   style={{ transform: langOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
                 >
-                  <path d="M1 1l4 4 4-4" stroke="var(--color-stone)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
 
               {langOpen && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 'calc(100% + 6px)',
-                    right: 0,
-                    background: 'var(--color-canvas-white)',
-                    border: '1px solid var(--color-parchment-rule)',
-                    borderRadius: 4,
-                    boxShadow: '0 12px 24px -12px rgba(12,10,7,0.25)',
-                    overflow: 'hidden',
-                    minWidth: 80,
-                    zIndex: 200,
-                  }}
-                >
+                <div className="nav-dropdown lang-dropdown">
                   {LANGUAGES.map((lang) => (
                     <button
                       key={lang}
                       onClick={() => switchLocale(lang)}
-                      style={{
-                        display: 'block',
-                        width: '100%',
-                        textAlign: 'left',
-                        background: locale === lang ? 'var(--color-parchment-wash)' : 'none',
-                        border: 'none',
-                        cursor: 'pointer',
-                        padding: '8px 12px',
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: 12,
-                        fontWeight: locale === lang ? 600 : 400,
-                        letterSpacing: '0.06em',
-                        color: locale === lang ? 'var(--color-gilt)' : 'var(--color-graphite)',
-                      }}
-                      onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--color-parchment-wash)')}
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.background = locale === lang ? 'var(--color-parchment-wash)' : 'none')
-                      }
+                      className={`lang-item${locale === lang ? ' is-active' : ''}`}
                     >
                       {lang.toUpperCase()}
                     </button>
@@ -282,25 +364,89 @@ export default function Navbar() {
       >
         {/* Nav links */}
         <nav style={{ display: 'flex', flexDirection: 'column', gap: 4, marginBottom: 40 }}>
-          {navLinks.map((key) => (
-            <Link
-              key={key}
-              href={`/${locale}#${key}`}
-              onClick={() => setMenuOpen(false)}
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 32,
-                fontWeight: 300,
-                color: 'var(--color-ink-black)',
-                textDecoration: 'none',
-                padding: '10px 0',
-                borderBottom: '1px solid var(--color-parchment-rule)',
-                letterSpacing: '-0.01em',
-              }}
-            >
-              {t(key)}
-            </Link>
-          ))}
+          {navLinks.map((key) =>
+            key === 'about' ? (
+              <div key={key} style={{ borderBottom: '1px solid var(--color-parchment-rule)' }}>
+                <button
+                  onClick={() => setMobileAboutOpen((v) => !v)}
+                  style={{
+                    display: 'flex',
+                    width: '100%',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: 32,
+                    fontWeight: 300,
+                    color: 'var(--color-ink-black)',
+                    padding: '10px 0',
+                    letterSpacing: '-0.01em',
+                  }}
+                >
+                  {t(key)}
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 10 6"
+                    fill="none"
+                    style={{ transform: mobileAboutOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
+                  >
+                    <path d="M1 1l4 4 4-4" stroke="var(--color-stone)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateRows: mobileAboutOpen ? '1fr' : '0fr',
+                    transition: 'grid-template-rows 0.25s ease',
+                  }}
+                >
+                  <div style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+                    {aboutSubmenu.map((sub) => (
+                      <Link
+                        key={sub}
+                        href={`/${locale}#${sub}`}
+                        onClick={() => {
+                          setMenuOpen(false)
+                          setMobileAboutOpen(false)
+                        }}
+                        style={{
+                          fontFamily: 'var(--font-body)',
+                          fontSize: 20,
+                          fontWeight: 500,
+                          color: 'var(--color-graphite)',
+                          textDecoration: 'none',
+                          padding: '10px 0 10px 16px',
+                        }}
+                      >
+                        {t(`aboutMenu.${sub}`)}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={key}
+                href={`/${locale}#${key}`}
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 32,
+                  fontWeight: 300,
+                  color: 'var(--color-ink-black)',
+                  textDecoration: 'none',
+                  padding: '10px 0',
+                  borderBottom: '1px solid var(--color-parchment-rule)',
+                  letterSpacing: '-0.01em',
+                }}
+              >
+                {t(key)}
+              </Link>
+            )
+          )}
         </nav>
 
         {/* Contact info */}
@@ -335,7 +481,7 @@ export default function Navbar() {
           className="btn-primary"
           style={{ alignSelf: 'flex-start', marginBottom: 32 }}
         >
-          Pieteikties konsultācijai →
+          {c('cta')}
         </Link>
 
         {/* Language switcher */}
@@ -363,21 +509,275 @@ export default function Navbar() {
         </div>
       </div>
 
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
+        .nav-link {
+          position: relative;
+          font-family: var(--font-body);
+          font-size: 15px;
+          font-weight: 500;
+          letter-spacing: 0.01em;
+          color: var(--color-gilt);
+          text-decoration: none;
+          padding: 4px 0;
+          transition: color 0.18s ease;
+        }
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 1.5px;
+          background: var(--color-gilt);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.22s cubic-bezier(0.16,1,0.3,1);
+        }
+        .nav-link:hover,
+        .nav-link.is-active { color: var(--color-gilt); }
+        .nav-link:hover::after,
+        .nav-link.is-active::after { transform: scaleX(1); }
+        @media (prefers-reduced-motion: reduce) {
+          .nav-link::after { transition: none; }
+        }
+
+        .nav-dropdown {
+          min-width: 216px;
+          background: var(--color-canvas-white);
+          border: 1px solid var(--color-parchment-rule);
+          border-top: 2px solid var(--color-gilt);
+          box-shadow: 0 18px 40px -20px rgba(12,10,7,0.30);
+          padding: 6px 0;
+        }
+        .nav-sub {
+          position: relative;
+          display: block;
+          padding: 13px 24px;
+          font-family: var(--font-display);
+          font-size: 15px;
+          font-weight: 400;
+          letter-spacing: 0.01em;
+          color: #2C2C2E;
+          text-decoration: none;
+          white-space: nowrap;
+          transition: color 0.18s ease, padding-left 0.22s cubic-bezier(0.16,1,0.3,1);
+        }
+        .nav-sub + .nav-sub { border-top: 1px solid var(--color-parchment-rule); }
+        .nav-sub::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 10px;
+          bottom: 10px;
+          width: 2px;
+          background: var(--color-gilt);
+          transform: scaleY(0);
+          transform-origin: center;
+          transition: transform 0.22s cubic-bezier(0.16,1,0.3,1);
+        }
+        .nav-sub:hover,
+        .nav-sub.is-active { color: var(--color-gilt); }
+        .nav-sub:hover::before,
+        .nav-sub.is-active::before { transform: scaleY(1); }
+        .nav-sub:hover,
+        .nav-sub.is-active { padding-left: 30px; }
+        @media (prefers-reduced-motion: reduce) {
+          .nav-sub, .nav-sub::before { transition: none; }
+        }
+
+        .nav-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: transparent;
+          border: 1px solid var(--color-gilt);
+          color: var(--color-gilt);
+          font-family: var(--font-mono);
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          text-decoration: none;
+          white-space: nowrap;
+          padding: 10px 18px;
+          transition: background 0.2s ease, color 0.2s ease;
+        }
+        .nav-cta-arrow {
+          display: inline-block;
+          transition: transform 0.22s cubic-bezier(0.16,1,0.3,1);
+        }
+        .nav-cta:hover {
+          background: var(--color-gilt);
+          color: #fff;
+        }
+        .nav-cta:hover .nav-cta-arrow { transform: translateX(4px); }
+        @media (prefers-reduced-motion: reduce) {
+          .nav-cta-arrow { transition: none; }
+        }
+
+        .lang-btn {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          background: none;
+          border: none;
+          padding: 6px 2px;
+          cursor: pointer;
+          font-family: var(--font-mono);
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 0.1em;
+          color: #2C2C2E;
+          transition: color 0.18s ease;
+        }
+        .lang-btn:hover { color: var(--color-gilt); }
+
+        .lang-dropdown {
+          position: absolute;
+          top: calc(100% + 10px);
+          right: 0;
+          min-width: 86px;
+          z-index: 200;
+        }
+        .lang-item {
+          position: relative;
+          display: block;
+          width: 100%;
+          text-align: left;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 10px 18px;
+          font-family: var(--font-mono);
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 0.1em;
+          color: #2C2C2E;
+          transition: color 0.18s ease, padding-left 0.22s cubic-bezier(0.16,1,0.3,1);
+        }
+        .lang-item + .lang-item { border-top: 1px solid var(--color-parchment-rule); }
+        .lang-item::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 8px;
+          bottom: 8px;
+          width: 2px;
+          background: var(--color-gilt);
+          transform: scaleY(0);
+          transition: transform 0.22s cubic-bezier(0.16,1,0.3,1);
+        }
+        .lang-item:hover,
+        .lang-item.is-active { color: var(--color-gilt); padding-left: 24px; }
+        .lang-item:hover::before,
+        .lang-item.is-active::before { transform: scaleY(1); }
+        @media (prefers-reduced-motion: reduce) {
+          .lang-item, .lang-item::before { transition: none; }
+        }
+
+        /* ===== Mega menu (Services) ===== */
+        .mega-wrap {
+          height: 64px;
+          display: flex;
+          align-items: center;
+        }
+        .mega-backdrop {
+          position: fixed;
+          left: 0;
+          right: 0;
+          top: 64px;
+          bottom: 0;
+          background: rgba(20,16,12,0.16);
+          backdrop-filter: blur(7px);
+          -webkit-backdrop-filter: blur(7px);
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          transition: opacity 0.28s ease, visibility 0.28s ease;
+          z-index: 80;
+        }
+        .mega-backdrop[data-open="true"] {
+          opacity: 1;
+          visibility: visible;
+        }
+        .mega-panel {
+          position: fixed;
+          left: 0;
+          right: 0;
+          top: 64px;
+          background: var(--color-canvas-white);
+          border-top: 2px solid var(--color-gilt);
+          border-bottom: 1px solid var(--color-parchment-rule);
+          box-shadow: 0 30px 60px -28px rgba(12,10,7,0.35);
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-8px);
+          pointer-events: none;
+          transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.16,1,0.3,1), visibility 0.22s ease;
+          z-index: 90;
+        }
+        .mega-panel[data-open="true"] {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+          pointer-events: auto;
+        }
+        .mega-inner {
+          max-width: 1600px;
+          margin: 0 auto;
+          padding: 40px 40px 44px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 4px 40px;
+        }
+        .mega-item {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          padding: 16px 18px;
+          text-decoration: none;
+          border-left: 2px solid transparent;
+          transition: border-color 0.2s ease, background 0.2s ease, padding-left 0.22s cubic-bezier(0.16,1,0.3,1);
+        }
+        .mega-item:hover {
+          border-left-color: var(--color-gilt);
+          background: var(--color-linen-tint);
+          padding-left: 24px;
+        }
+        .mega-item-name {
+          font-family: var(--font-display);
+          font-size: 18px;
+          font-weight: 500;
+          letter-spacing: -0.01em;
+          color: var(--color-ink-black);
+          transition: color 0.18s ease;
+        }
+        .mega-item:hover .mega-item-name { color: var(--color-gilt); }
+        .mega-item-desc {
+          font-family: var(--font-body);
+          font-size: 13px;
+          line-height: 1.5;
+          color: var(--color-stone);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .mega-panel, .mega-item, .mega-backdrop { transition: none; }
+        }
+
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
-          .navbar-address { display: none !important; }
-          .navbar-contact { display: none !important; }
+          .nav-cta { display: none !important; }
           .desktop-lang { display: none !important; }
           .hamburger { display: flex !important; }
           .mobile-menu { display: flex !important; }
           nav { padding: 0 20px !important; }
+          .brand-logo { height: 38px !important; }
         }
         @media (min-width: 769px) {
           .mobile-menu { display: none !important; }
           .hamburger { display: none !important; }
         }
-      `}</style>
+      ` }} />
     </>
   )
 }

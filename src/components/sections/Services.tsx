@@ -12,7 +12,31 @@ export default function Services() {
     premium: boolean
   }>
 
-  const icons = ['◈', '◆', '◉', '◻', '◇', '◎']
+  // Геометрические маркеры как SVG: юникод-глифы вроде ◻ на части систем
+  // подменяются цветными emoji-шрифтами.
+  const icons = [
+    // ромб в ромбе
+    <>
+      <path d="M12 2 22 12 12 22 2 12Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M12 7.5 16.5 12 12 16.5 7.5 12Z" fill="currentColor" />
+    </>,
+    // закрашенный ромб
+    <path d="M12 2 22 12 12 22 2 12Z" fill="currentColor" />,
+    // круг с точкой
+    <>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="12" cy="12" r="4.5" fill="currentColor" />
+    </>,
+    // квадрат
+    <rect x="3" y="3" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" />,
+    // контурный ромб
+    <path d="M12 2 22 12 12 22 2 12Z" fill="none" stroke="currentColor" strokeWidth="1.5" />,
+    // кольцо
+    <>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="12" cy="12" r="5.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+    </>,
+  ]
 
   return (
     <section id="services" className="section-gap" style={{ background: 'var(--color-canvas-white)' }}>
@@ -34,7 +58,7 @@ export default function Services() {
               <h2
                 style={{
                   fontFamily: 'var(--font-display)',
-                  fontWeight: 300,
+                  fontWeight: 700,
                   fontSize: 'clamp(36px, 4vw, 52px)',
                   color: 'var(--color-ink-black)',
                   letterSpacing: '-0.02em',
@@ -74,6 +98,7 @@ export default function Services() {
               key={item.name}
               className="service-card"
               style={{
+                position: 'relative',
                 borderTop: `1px solid var(--color-parchment-rule)`,
                 paddingTop: 24,
                 paddingBottom: 32,
@@ -88,15 +113,15 @@ export default function Services() {
                   marginBottom: 14,
                 }}
               >
-                <span
-                  style={{
-                    fontSize: 26,
-                    lineHeight: 1,
-                    color: 'var(--color-gilt)',
-                  }}
+                <svg
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  style={{ display: 'block', flexShrink: 0, color: 'var(--color-gilt)' }}
                 >
                   {icons[i % icons.length]}
-                </span>
+                </svg>
                 <span
                   style={{
                     fontFamily: 'var(--font-display)',
@@ -118,7 +143,7 @@ export default function Services() {
                 <h3
                   style={{
                     fontFamily: 'var(--font-display)',
-                    fontWeight: 400,
+                    fontWeight: 700,
                     fontSize: 22,
                     color: 'var(--color-ink-black)',
                     lineHeight: 1.2,
@@ -160,11 +185,48 @@ export default function Services() {
       <style
         dangerouslySetInnerHTML={{
           __html: `
+        /* Gilt accent line that sweeps across the top border on hover */
+        .service-card::before {
+          content: '';
+          position: absolute;
+          top: -1px;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: var(--color-gilt);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+        }
+        .service-card:hover::before {
+          transform: scaleX(1);
+        }
         .service-card:hover {
-          transform: translateY(-4px);
+          transform: translateY(-6px);
         }
         .service-card:hover h3 {
           color: var(--color-gilt) !important;
+        }
+        /* Icon nudges up and scales slightly */
+        .service-card svg {
+          transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
+        }
+        .service-card:hover svg {
+          transform: scale(1.15) translateY(-2px);
+        }
+        /* "Uzzināt vairāk" link slides right */
+        .service-card a {
+          display: inline-block;
+          transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), color 0.25s ease;
+        }
+        .service-card:hover a {
+          transform: translateX(5px);
+          color: var(--color-gilt-dark) !important;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .service-card, .service-card::before, .service-card svg, .service-card a {
+            transition: none;
+          }
         }
         @media (max-width: 768px) {
           #services .section-wrap > div:last-child {

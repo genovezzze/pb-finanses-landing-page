@@ -19,10 +19,17 @@ const PHOTOS = [
   '/images/agnese-3-tall.jpg',
 ]
 
+// The headline must never wrap mid-phrase, so it is sized in `cqi` — a share of
+// #hero-left's own content width — instead of `vw`. That keeps it fitting the column
+// in both the 2-col desktop layout and the 1-col mobile one. The coefficient is
+// 100 / (longest line length x average glyph width), so it differs per locale:
+// lv "Finanšu pārvaldība" 18 chars, en "Financial management" 20, ru 21 (wider Cyrillic).
+// The max is set to the size the widest desktop column already yields, so the
+// 1-col layout near 768px does not balloon past it.
 const HEADLINE_SIZE: Record<string, string> = {
-  lv: 'clamp(40px, 5.4vw, 75px)',
-  en: 'clamp(38px, 4.2vw, 60px)',
-  ru: 'clamp(36px, 3.5vw, 51px)',
+  lv: 'clamp(26px, 11cqi, 56px)',
+  en: 'clamp(25px, 10cqi, 51px)',
+  ru: 'clamp(24px, 8.7cqi, 46px)',
 }
 
 export default function Hero() {
@@ -63,17 +70,27 @@ export default function Hero() {
         }}
       >
         {/* ── LEFT: text content ── */}
-        <div id="hero-left" style={{ alignSelf: 'flex-start', padding: '64px 48px 72px 40px' }}>
+        <div
+          id="hero-left"
+          style={{
+            alignSelf: 'flex-start',
+            padding: '64px 48px 72px 40px',
+            // makes cqi units in the headline resolve against this column's width
+            containerType: 'inline-size',
+          }}
+        >
           <motion.h1
             {...fadeUp(0)}
             style={{
               fontFamily: 'var(--font-display)',
-              fontWeight: 300,
+              fontWeight: 700,
               fontSize: HEADLINE_SIZE[locale] ?? HEADLINE_SIZE.lv,
               lineHeight: 1.0,
               letterSpacing: '-0.035em',
               color: 'var(--color-ink-black)',
               marginBottom: 4,
+              // each line stays intact; the explicit <br/> below is the only break
+              whiteSpace: 'nowrap',
             }}
           >
             {t('headline')}
@@ -131,9 +148,9 @@ export default function Hero() {
           <motion.div id="hero-cta" {...fadeUp(0.3)} style={{ display: 'flex', gap: 12, marginTop: 20, flexWrap: 'wrap' }}>
             <Link
               href={`/${locale}#contact`}
-              className="btn-primary"
+              className="btn-teal"
             >
-              {t('ctaPrimary')} →
+              {t('ctaPrimary')}
             </Link>
             <Link
               href={`/${locale}#services`}

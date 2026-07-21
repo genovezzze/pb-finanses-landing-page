@@ -1,10 +1,35 @@
 'use client'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function AnnouncementBar() {
   const t = useTranslations()
   const [visible, setVisible] = useState(true)
+  const [hidden, setHidden] = useState(false)
+  const lastY = useRef(0)
+
+  // Hide on scroll down, reveal on scroll up (always shown near the top)
+  useEffect(() => {
+    lastY.current = window.scrollY
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const y = window.scrollY
+      const delta = y - lastY.current
+      if (y < 80) setHidden(false)
+      else if (delta > 4) setHidden(true)
+      else if (delta < -4) setHidden(false)
+      lastY.current = y
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [])
 
   if (!visible) return null
 
@@ -23,6 +48,8 @@ export default function AnnouncementBar() {
         fontWeight: 500,
         letterSpacing: '0.04em',
         cursor: 'pointer',
+        transform: hidden ? 'translateY(calc(-100% - 64px))' : 'translateY(0)',
+        transition: 'transform 0.55s cubic-bezier(0.22,1,0.36,1)',
       }}
     >
       {t('announcement')}

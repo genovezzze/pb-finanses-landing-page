@@ -7,8 +7,9 @@ export default function Testimonials() {
   const t = useTranslations('testimonials')
   const items = t.raw('items') as Testimonial[]
 
-  const firstColumn = items.slice(0, 2)
-  const secondColumn = items.slice(2, 4)
+  const firstColumn = items.slice(0, 3)
+  const secondColumn = items.slice(3, 6)
+  const thirdColumn = items.slice(6, 8)
 
   return (
     <section
@@ -22,7 +23,7 @@ export default function Testimonials() {
             <h2
               style={{
                 fontFamily: 'var(--font-display)',
-                fontWeight: 300,
+                fontWeight: 700,
                 fontSize: 'clamp(32px, 4vw, 48px)',
                 color: 'var(--color-ink-black)',
                 letterSpacing: '-0.02em',
@@ -50,7 +51,12 @@ export default function Testimonials() {
           <TestimonialsColumn
             testimonials={secondColumn}
             className="hidden md:block"
-            duration={22}
+            duration={25}
+          />
+          <TestimonialsColumn
+            testimonials={thirdColumn}
+            className="hidden lg:block"
+            duration={21}
           />
         </div>
       </div>

@@ -52,7 +52,7 @@ function CountUp({
   )
 }
 
-export default function Stats() {
+export default function Stats({ embedded = false }: { embedded?: boolean }) {
   const m = useTranslations('metrics')
 
   const stats = [
@@ -79,13 +79,14 @@ export default function Stats() {
   return (
     <section
       ref={ref}
+      className={embedded ? 'hero-stats' : 'stats-section'}
       style={{
-        background: 'var(--color-canvas-white)',
-        borderTop: '1px solid var(--color-parchment-rule)',
-        padding: '72px 0',
+        background: embedded ? 'transparent' : 'var(--color-canvas-white)',
+        borderTop: embedded ? 'none' : '1px solid var(--color-parchment-rule)',
+        padding: embedded ? 0 : '72px 0',
       }}
     >
-      <div className="section-wrap">
+      <div className={embedded ? undefined : 'section-wrap'}>
         <div id="stats-row">
           {stats.map((s, i) => (
             <div
@@ -150,12 +151,42 @@ export default function Stats() {
           letter-spacing: 0.07em;
           color: var(--color-stone);
         }
+        .hero-stats {
+          position: absolute;
+          z-index: 5;
+          top: 130px;
+          right: 3.8%;
+          width: 310px;
+        }
+        .hero-stats #stats-row {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 38px 24px;
+        }
+        .hero-stats #stats-row .stat { min-width: 0; align-items: flex-start; text-align: left; }
+        .hero-stats #stats-row .stat-num {
+          font-size: 40px;
+          background: none;
+          color: #f1ede3;
+          -webkit-text-fill-color: currentColor;
+        }
+        .hero-stats #stats-row .stat-label {
+          margin-top: 8px;
+          font-family: var(--font-body);
+          font-size: 10px;
+          font-weight: 500;
+          line-height: 1.35;
+          letter-spacing: .09em;
+          text-transform: uppercase;
+          color: rgba(241, 237, 227, .58);
+        }
         @keyframes statPop {
           0%   { transform: scale(0.82); }
           60%  { transform: scale(1.06); }
           100% { transform: scale(1); }
         }
         @media (max-width: 768px) {
+          .hero-stats { display: none; }
           #stats-row { gap: 34px 24px; }
           #stats-row .stat { min-width: 40%; flex: 1 1 40%; }
         }

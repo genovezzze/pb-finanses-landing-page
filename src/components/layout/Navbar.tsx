@@ -1,6 +1,5 @@
 'use client'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
@@ -10,6 +9,7 @@ const LANGUAGES = ['lv', 'en', 'ru'] as const
 
 export default function Navbar() {
   const t = useTranslations('nav')
+  const h = useTranslations('hero')
   const c = useTranslations('contact')
   const s = useTranslations('services')
   const serviceItems = s.raw('items') as { name: string; description: string }[]
@@ -20,6 +20,9 @@ export default function Navbar() {
   const [langOpen, setLangOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
+  // True while the header is still sitting on top of the dark hero, where it
+  // has to invert to cream-on-teal instead of the usual ink-on-white.
+  const [overHero, setOverHero] = useState(false)
   const langRef = useRef<HTMLDivElement>(null)
   const lastY = useRef(0)
 
@@ -34,8 +37,11 @@ export default function Navbar() {
       if (y < 80) setHidden(false)
       else if (delta > 4) setHidden(true)
       else if (delta < -4) setHidden(false)
+      const hero = document.getElementById('hero')
+      setOverHero(!!hero && hero.getBoundingClientRect().bottom > 72)
       lastY.current = y
     }
+    update()
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update)
     }
@@ -69,7 +75,9 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
-  const navLinks = ['services', 'about', 'insights', 'contact'] as const
+  const navLinks = ['services', 'about', 'clients', 'insights', 'contact'] as const
+  // "Klienti" points at the industries block — that is where the client base lives
+  const anchorFor = (key: string) => (key === 'clients' ? 'industries' : key)
 
   return (
     <>
@@ -79,48 +87,40 @@ export default function Navbar() {
       <div className="mega-backdrop" data-open={servicesOpen} aria-hidden="true" />
 
       <header
+        data-over-hero={overHero && !menuOpen ? 'true' : undefined}
         style={{
           position: 'sticky',
           top: 0,
           zIndex: 100,
-          background: 'var(--color-canvas-white)',
-          borderBottom: '1px solid var(--color-parchment-rule)',
+          /* matches the hero ground, so bar and hero read as one dark band */
+          background: overHero && !menuOpen ? '#001d20' : 'var(--color-canvas-white)',
+          borderBottom:
+            overHero && !menuOpen ? 'none' : '1px solid var(--color-parchment-rule)',
           transform: hidden && !menuOpen ? 'translateY(-100%)' : 'translateY(0)',
-          transition: 'transform 0.55s cubic-bezier(0.22,1,0.36,1)',
+          transition:
+            'transform 0.55s cubic-bezier(0.22,1,0.36,1), background 0.35s ease, border-color 0.35s ease',
         }}
       >
         <nav
           style={{
-            maxWidth: 1600,
+            maxWidth: 1672,
             margin: '0 auto',
             padding: '0 40px',
-            height: 64,
+            height: 72,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}
         >
-          {/* Logo */}
-          <Link
-            href={`/${locale}`}
-            aria-label="PB Finanses"
-            style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}
-          >
-            <Image
-              src="/images/PBFinanses_LOGO_500.png"
-              alt="PB Finanses"
-              width={500}
-              height={270}
-              priority
-              className="brand-logo"
-              style={{ width: 'auto', height: 46, display: 'block' }}
-            />
+          {/* Typographic wordmark — the company name set in the editorial serif */}
+          <Link href={`/${locale}`} aria-label="PB Finanses" className="brand-mark">
+            PB Finanses
           </Link>
 
           {/* Desktop nav links */}
           <div
             className="desktop-nav"
-            style={{ display: 'flex', gap: 32, alignItems: 'center' }}
+            style={{ display: 'flex', gap: 36, alignItems: 'center', marginLeft: 'auto', marginRight: 42 }}
           >
             {navLinks.map((key) => {
               if (key === 'services') {
@@ -171,7 +171,7 @@ export default function Navbar() {
               return (
                 <Link
                   key={key}
-                  href={`/${locale}#${key}`}
+                  href={`/${locale}#${anchorFor(key)}`}
                   className="nav-link"
                 >
                   {t(key)}
@@ -183,7 +183,7 @@ export default function Navbar() {
           {/* Right side */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
             {/* Search (desktop) */}
-            <NavSearch />
+            <div className="reference-nav-tools"><NavSearch /></div>
 
             {/* Language dropdown (desktop) */}
             <div ref={langRef} className="desktop-lang" style={{ position: 'relative' }}>
@@ -214,6 +214,11 @@ export default function Navbar() {
                 </div>
               )}
             </div>
+
+            {/* Consultation pill */}
+            <Link href={`/${locale}#contact`} className="nav-pill">
+              {h('ctaPrimary')}
+            </Link>
 
             {/* Hamburger (mobile only) */}
             <button
@@ -262,7 +267,7 @@ export default function Navbar() {
         style={{
           position: 'fixed',
           inset: 0,
-          top: 64,
+        top: 72,
           background: 'var(--color-canvas-white)',
           zIndex: 99,
           display: 'flex',
@@ -357,11 +362,52 @@ export default function Navbar() {
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
+        .brand-mark {
+          font-family: var(--font-editorial-serif), 'Bodoni 72', Didot, Georgia, serif;
+          font-size: 25px;
+          font-weight: 400;
+          letter-spacing: 0.005em;
+          color: var(--color-ink-black);
+          text-decoration: none;
+          flex-shrink: 0;
+          transition: color 0.35s ease;
+        }
+        .nav-pill {
+          font-family: var(--font-body);
+          font-size: 12px;
+          font-weight: 500;
+          min-width: 164px;
+          min-height: 42px;
+          padding: 0 20px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 999px;
+          text-decoration: none;
+          white-space: nowrap;
+          background: var(--color-gilt);
+          color: var(--color-canvas-white);
+          transition: background 0.3s ease, color 0.3s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1);
+        }
+        .nav-pill:hover { transform: translateY(-1px); }
+
+        /* Sitting on the dark hero: the whole bar inverts to ivory. */
+        header[data-over-hero='true'] .brand-mark,
+        header[data-over-hero='true'] .nav-link,
+        header[data-over-hero='true'] .lang-btn { color: #EFE9DC; }
+        header[data-over-hero='true'] .nav-pill {
+          background: #EFE9DC;
+          color: #001d20;
+        }
+        header[data-over-hero='true'] .hamburger span { background: #EFE9DC !important; }
+        header[data-over-hero='true'] .nav-search-btn,
+        header[data-over-hero='true'] .nav-search-toggle { color: #EFE9DC; }
+
         .nav-link {
           position: relative;
           font-family: var(--font-body);
-          font-size: 15px;
-          font-weight: 500;
+          font-size: 13px;
+          font-weight: 400;
           letter-spacing: 0.01em;
           color: var(--color-gilt);
           text-decoration: none;
@@ -524,7 +570,7 @@ export default function Navbar() {
 
         /* ===== Mega menu (Services) ===== */
         .mega-wrap {
-          height: 64px;
+          height: 72px;
           display: flex;
           align-items: center;
         }
@@ -532,7 +578,7 @@ export default function Navbar() {
           position: fixed;
           left: 0;
           right: 0;
-          top: 64px;
+          top: 72px;
           bottom: 0;
           background: rgba(20,16,12,0.16);
           backdrop-filter: blur(7px);
@@ -551,7 +597,7 @@ export default function Navbar() {
           position: fixed;
           left: 0;
           right: 0;
-          top: 64px;
+          top: 72px;
           background: var(--color-canvas-white);
           border-top: 2px solid var(--color-gilt);
           border-bottom: 1px solid var(--color-parchment-rule);
@@ -570,7 +616,7 @@ export default function Navbar() {
           pointer-events: auto;
         }
         .mega-inner {
-          max-width: 1600px;
+          max-width: 1672px;
           margin: 0 auto;
           padding: 40px 40px 44px;
           display: grid;
@@ -618,11 +664,12 @@ export default function Navbar() {
           .hamburger { display: flex !important; }
           .mobile-menu { display: flex !important; }
           nav { padding: 0 20px !important; }
-          .brand-logo { height: 38px !important; }
+          .brand-mark { font-size: 19px; }
         }
         @media (min-width: 769px) {
           .mobile-menu { display: none !important; }
           .hamburger { display: none !important; }
+          .reference-nav-tools, .desktop-lang { display: none !important; }
         }
       ` }} />
     </>

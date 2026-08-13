@@ -20,6 +20,7 @@ export function Reveal({
   variant = 'up',
   delay = 0,
   duration = 0.6,
+  once = false,
   className,
   style,
 }: {
@@ -27,6 +28,7 @@ export function Reveal({
   variant?: RevealVariant
   delay?: number
   duration?: number
+  once?: boolean
   className?: string
   style?: CSSProperties
 }) {
@@ -35,7 +37,9 @@ export function Reveal({
     <motion.div
       initial={initial}
       whileInView={animate}
-      viewport={{ once: true, margin: '-10% 0px -10% 0px' }}
+      // re-animate every time the element enters the viewport — scrolling
+      // both down and back up replays the reveal instead of firing only once
+      viewport={{ once, margin: '-10% 0px -10% 0px', amount: 0.15 }}
       transition={{ duration, delay, ease: EASE }}
       className={className}
       style={style}

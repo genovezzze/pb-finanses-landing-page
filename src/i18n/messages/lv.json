@@ -6,8 +6,9 @@
   },
   "nav": {
     "services": "Pakalpojumi",
-    "about": "Par kompāniju",
-    "insights": "Jaunumi",
+    "about": "Par mums",
+    "clients": "Klienti",
+    "insights": "Resursi",
     "contact": "Kontakti",
     "cta": "Pieteikties",
     "aboutMenu": {
@@ -19,16 +20,18 @@
   "announcement": "Nodokļu konsultācija 2026 - piesakies šodien →",
   "hero": {
     "eyebrow": "Pilna servisa finanšu kompānija",
-    "headline": "Finanšu pārvaldība",
-    "headlineAccent": "tā ir māksla!",
-    "subtext": "Pilna servisa finanšu ārpakalpojumi - no grāmatvedības līdz finanšu direktora funkcijām. Latvijas un starptautiskiem uzņēmumiem",
+    "headline": "Skaidrība naudā.",
+    "headlineAccent": "Pārliecība lēmumos.",
+    "subtext": "Ārpakalpojuma grāmatvedība uzņēmumiem, kuri vēlas redzēt vairāk nekā tikai ciparus.",
     "audienceQuestions": [
       "Tikko sākāt jaunu biznesu un vēlaties būt pārliecināts, ka peļņa būs tieši paredzētajā termiņā un esošie resursi būs pietiekami, lai sasniegtu savus mērķus?",
       "Jūsu pašvaldībā vai NVO nepieciešams uzticams padomdevējs, kas filigrāni pārzina ne tikai biznesa norises, bet arī izprot globālos procesus?",
       "Esat spēcīga holdinga vadītājs un vēlaties optimizēt savu uzņēmumu darbību ar mērķi gūt vēl lielāku peļņu vai plānojat uzlabot savus finanšu rādītājus, lai kļūtu pievilcīgāks investoriem?"
     ],
-    "ctaPrimary": "Pieteikties konsultācijai",
-    "ctaSecondary": "Pakalpojumi"
+    "ctaPrimary": "Pieteikt konsultāciju",
+    "ctaSecondary": "Uzzināt vairāk",
+    "statLabel": "Klientu uzticēšanās",
+    "statValue": "98%"
   },
   "metrics": {
     "years": "Gadu pieredze",
@@ -50,6 +53,38 @@
       {
         "title": "Pašvaldībām un NVO",
         "body": "Uzticams padomdevējs, kas saprot gan publiskā sektora specifiku, gan globālos finanšu procesus"
+      }
+    ]
+  },
+  "industries": {
+    "title": "Nozares, kuras pārzinām",
+    "subtitle": "Seši virzieni, kuros mums ir visvairāk klientu un praktiskās pieredzes",
+    "clients": "klienti",
+    "note": "Kopumā apkalpojam 120+ uzņēmumus 13 nozarēs — no transporta un ražošanas līdz medijiem un sportam. Ja jūsu nozares sarakstā nav, pastāstiet par savu biznesu — mēs iedziļināsimies tā specifikā.",
+    "items": [
+      {
+        "title": "IT, programmatūra un robotika",
+        "body": "Ārvalstu klienti un apakšuzņēmēji, izmaksu uzskaite pa projektiem, attālinātas komandas un IT nozarei raksturīgie PVN jautājumi."
+      },
+      {
+        "title": "Būvniecība un attīstība",
+        "body": "Uzskaite pa objektiem, apakšuzņēmēju plūsma, būvniecības reversā PVN kārtība un atskaites bankām un pasūtītājiem."
+      },
+      {
+        "title": "Kokapstrāde, mežsaimniecība un agro",
+        "body": "Izejvielu iepirkums, eksporta darījumi, sezonalitāte un atbalsta programmu uzskaite."
+      },
+      {
+        "title": "Tirdzniecība un preču aprite",
+        "body": "Noliktavas un atlikumu uzskaite, e-komercija un tirdzniecības platformas, PVN darījumos Eiropas Savienībā."
+      },
+      {
+        "title": "Viesmīlība, tūrisms un nekustamais īpašums",
+        "body": "Sezonas personāls, dažādas PVN likmes, īpašumu un nomas darījumu uzskaite, katra objekta rentabilitāte."
+      },
+      {
+        "title": "Biznesa pakalpojumi, mārketings un izglītība",
+        "body": "Liels skaits nelielu darījumu, uzņēmuma līgumi un autoratlīdzības, rentabilitāte pa klientiem."
       }
     ]
   },
@@ -239,19 +274,36 @@
         "date": "Janvāris 2026",
         "tag": "Nodokļi",
         "title": "Nodokļu izmaiņas 2026 - kas jāzina katra uzņēmuma vadītājam",
-        "excerpt": "Jaunais gads ienāk ar virkni nodokļu grozījumu, kas ietekmē gan darba devējus, gan individuālos uzņēmējus"
+        "excerpt": "Jaunais gads ienāk ar virkni nodokļu grozījumu, kas ietekmē gan darba devējus, gan individuālos uzņēmējus",
+        "readTime": "4 min. lasīšana"
       },
       {
         "date": "Decembris 2025",
         "tag": "Finanšu direktors",
         "title": "Finanšu direktors ārpakalpojumā - vai tas ir izdevīgi mazajam biznesam?",
-        "excerpt": "Izanalizējam, kad finanšu direktors ārpakalpojumā atmaksājas un ko tas sniedz uzņēmumiem ar 5–50 darbiniekiem"
+        "excerpt": "Izanalizējam, kad finanšu direktors ārpakalpojumā atmaksājas un ko tas sniedz uzņēmumiem ar 5–50 darbiniekiem",
+        "readTime": "6 min. lasīšana"
       },
       {
         "date": "Novembris 2025",
         "tag": "Start-up",
         "title": "Start-up dibināšanas 7 biežākās kļūdas Latvijā",
-        "excerpt": "No uzņēmuma formas izvēles līdz PVN reģistrācijai - kļūdas, kas var maksāt ļoti dārgi"
+        "excerpt": "No uzņēmuma formas izvēles līdz PVN reģistrācijai - kļūdas, kas var maksāt ļoti dārgi",
+        "readTime": "5 min. lasīšana"
+      },
+      {
+        "date": "Oktobris 2025",
+        "tag": "Gada pārskats",
+        "title": "Gada pārskats 2025 - termiņi, ko vērts atzīmēt kalendārā jau tagad",
+        "excerpt": "Kad sākt gatavoties, kādi dokumenti jāsavāc un kāpēc decembris ir pēdējais brīdis kļūdu labošanai",
+        "readTime": "3 min. lasīšana"
+      },
+      {
+        "date": "Septembris 2025",
+        "tag": "Algas",
+        "title": "Minimālā alga un darbaspēka nodokļi - ko ielikt nākamā gada budžetā",
+        "excerpt": "Aprēķinām, cik reāli maksā viens darbinieks, un kā izmaiņas ietekmē mazus un vidējus uzņēmumus",
+        "readTime": "4 min. lasīšana"
       }
     ]
   },

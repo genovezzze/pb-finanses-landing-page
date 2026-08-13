@@ -7,6 +7,7 @@
   "nav": {
     "services": "Services",
     "about": "About",
+    "clients": "Clients",
     "insights": "Insights",
     "contact": "Contact",
     "cta": "Get in touch",
@@ -19,16 +20,18 @@
   "announcement": "Tax consultation 2026 - book today →",
   "hero": {
     "eyebrow": "Full-service financial company",
-    "headline": "Financial management",
-    "headlineAccent": "it is an art!",
-    "subtext": "Full-service financial outsourcing - from bookkeeping to CFO functions. For Latvian and international companies",
+    "headline": "Clarity in the numbers.",
+    "headlineAccent": "Confidence in decisions.",
+    "subtext": "Outsourced accounting for companies that want to see more than figures.",
     "audienceQuestions": [
       "Have you just started a new business and want to be confident that profit will arrive exactly on schedule, with enough resources to reach your goals?",
       "Does your municipality or NGO need a trusted advisor who not only understands business processes in detail, but also grasps global trends?",
       "Are you leading a strong holding company and want to optimize operations for even greater profit, or planning to improve your financial indicators to become more attractive to investors?"
     ],
     "ctaPrimary": "Request a consultation",
-    "ctaSecondary": "Services"
+    "ctaSecondary": "Learn more",
+    "statLabel": "Client trust",
+    "statValue": "98%"
   },
   "metrics": {
     "years": "Years of experience",
@@ -50,6 +53,38 @@
       {
         "title": "Municipalities & NGOs",
         "body": "A trusted advisor who understands both public sector specifics and global financial processes"
+      }
+    ]
+  },
+  "industries": {
+    "title": "Industries we know best",
+    "subtitle": "Six sectors where we have the most clients and hands-on experience",
+    "clients": "clients",
+    "note": "In total we serve 120+ companies across 13 industries — from transport and manufacturing to media and sport. If your industry is not on the list, tell us about your business and we will get into its specifics.",
+    "items": [
+      {
+        "title": "IT, software and robotics",
+        "body": "Foreign clients and contractors, project-level cost tracking, remote teams and the VAT questions typical for IT."
+      },
+      {
+        "title": "Construction and development",
+        "body": "Object-level accounting, subcontractor flows, the construction VAT reverse charge, and reporting for banks and clients."
+      },
+      {
+        "title": "Woodworking, forestry and agro",
+        "body": "Raw material purchasing, export transactions, seasonality and accounting for support programmes."
+      },
+      {
+        "title": "Retail and goods",
+        "body": "Inventory and stock accounting, e-commerce and marketplaces, VAT on intra-EU transactions."
+      },
+      {
+        "title": "Hospitality, tourism and real estate",
+        "body": "Seasonal staff, mixed VAT rates, property and lease accounting, profitability per property."
+      },
+      {
+        "title": "Business services, marketing and education",
+        "body": "High volume of small transactions, contractor and royalty agreements, profitability per client."
       }
     ]
   },
@@ -239,19 +274,36 @@
         "date": "January 2026",
         "tag": "Taxes",
         "title": "Tax changes 2026 - what every business owner needs to know",
-        "excerpt": "The new year brings a range of tax amendments affecting both employers and individual entrepreneurs"
+        "excerpt": "The new year brings a range of tax amendments affecting both employers and individual entrepreneurs",
+        "readTime": "4 min read"
       },
       {
         "date": "December 2025",
         "tag": "CFO",
         "title": "CFO as a Service - is it worth it for small business?",
-        "excerpt": "We analyze when an outsourced CFO pays off and what it gives companies with 5–50 employees"
+        "excerpt": "We analyze when an outsourced CFO pays off and what it gives companies with 5–50 employees",
+        "readTime": "6 min read"
       },
       {
         "date": "November 2025",
         "tag": "Start-up",
         "title": "7 most common start-up mistakes in Latvia",
-        "excerpt": "From choosing company form to VAT registration - mistakes that can cost dearly"
+        "excerpt": "From choosing company form to VAT registration - mistakes that can cost dearly",
+        "readTime": "5 min read"
+      },
+      {
+        "date": "October 2025",
+        "tag": "Annual report",
+        "title": "Annual report 2025 - the deadlines worth marking in your calendar now",
+        "excerpt": "When to start preparing, which documents to collect and why December is the last chance to fix mistakes",
+        "readTime": "3 min read"
+      },
+      {
+        "date": "September 2025",
+        "tag": "Payroll",
+        "title": "Minimum wage and labour taxes - what to budget for next year",
+        "excerpt": "We calculate what one employee actually costs and how the changes hit small and mid-sized companies",
+        "readTime": "4 min read"
       }
     ]
   },

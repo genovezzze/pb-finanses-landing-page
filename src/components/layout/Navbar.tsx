@@ -22,7 +22,10 @@ export default function Navbar() {
   const [hidden, setHidden] = useState(false)
   // True while the header is still sitting on top of the dark hero, where it
   // has to invert to cream-on-teal instead of the usual ink-on-white.
-  const [overHero, setOverHero] = useState(false)
+  const isHome = /^\/(lv|en|ru)?\/?$/.test(pathname)
+  const [overHero, setOverHero] = useState(isHome)
+  // Flipped one frame after mount so the bar has a state to animate *from*.
+  const [ready, setReady] = useState(false)
   const langRef = useRef<HTMLDivElement>(null)
   const lastY = useRef(0)
 
@@ -50,6 +53,11 @@ export default function Navbar() {
       window.removeEventListener('scroll', onScroll)
       if (raf) cancelAnimationFrame(raf)
     }
+  }, [])
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setReady(true))
+    return () => cancelAnimationFrame(id)
   }, [])
 
   const switchLocale = (newLocale: string) => {
@@ -88,6 +96,7 @@ export default function Navbar() {
 
       <header
         data-over-hero={overHero && !menuOpen ? 'true' : undefined}
+        data-ready={ready ? 'true' : undefined}
         style={{
           position: 'sticky',
           top: 0,
@@ -97,8 +106,7 @@ export default function Navbar() {
           borderBottom:
             overHero && !menuOpen ? 'none' : '1px solid var(--color-parchment-rule)',
           transform: hidden && !menuOpen ? 'translateY(-100%)' : 'translateY(0)',
-          transition:
-            'transform 0.55s cubic-bezier(0.22,1,0.36,1), background 0.35s ease, border-color 0.35s ease',
+          transition: 'transform 0.55s cubic-bezier(0.22,1,0.36,1)',
         }}
       >
         <nav
@@ -391,17 +399,72 @@ export default function Navbar() {
         }
         .nav-pill:hover { transform: translateY(-1px); }
 
+        /* Entrance: the bar assembles left to right on load. Transform is kept
+           off .mega-wrap on purpose — a transformed ancestor would become the
+           containing block for the fixed mega panel and collapse its width. */
+        .brand-mark,
+        .desktop-nav .nav-link,
+        .desktop-lang,
+        .nav-pill,
+        .hamburger {
+          opacity: 0;
+          transform: translateY(-8px);
+          transition: opacity .55s cubic-bezier(.16,1,.3,1),
+                      transform .55s cubic-bezier(.16,1,.3,1),
+                      color .35s ease, background .3s ease;
+        }
+        header[data-ready='true'] .brand-mark,
+        header[data-ready='true'] .desktop-nav .nav-link,
+        header[data-ready='true'] .desktop-lang,
+        header[data-ready='true'] .nav-pill,
+        header[data-ready='true'] .hamburger {
+          opacity: 1;
+          transform: none;
+        }
+        header[data-ready='true'] .brand-mark { transition-delay: .06s; }
+        header[data-ready='true'] .desktop-nav > *:nth-child(1) .nav-link { transition-delay: .16s; }
+        header[data-ready='true'] .desktop-nav > *:nth-child(2).nav-link { transition-delay: .22s; }
+        header[data-ready='true'] .desktop-nav > *:nth-child(3).nav-link { transition-delay: .28s; }
+        header[data-ready='true'] .desktop-nav > *:nth-child(4).nav-link { transition-delay: .34s; }
+        header[data-ready='true'] .desktop-nav > *:nth-child(5).nav-link { transition-delay: .40s; }
+        header[data-ready='true'] .desktop-lang { transition-delay: .46s; }
+        header[data-ready='true'] .nav-pill { transition-delay: .5s; }
+        header[data-ready='true'] .hamburger { transition-delay: .2s; }
+        @media (prefers-reduced-motion: reduce) {
+          .brand-mark, .desktop-nav .nav-link, .desktop-lang, .nav-pill, .hamburger {
+            opacity: 1;
+            transform: none;
+            transition: none;
+          }
+        }
+
         /* Sitting on the dark hero: the whole bar inverts to ivory. */
         header[data-over-hero='true'] .brand-mark,
         header[data-over-hero='true'] .nav-link,
-        header[data-over-hero='true'] .lang-btn { color: #EFE9DC; }
+        header[data-over-hero='true'] .lang-btn { color: #f1ede3; }
         header[data-over-hero='true'] .nav-pill {
-          background: #EFE9DC;
+          background: #f1ede3;
           color: #001d20;
         }
-        header[data-over-hero='true'] .hamburger span { background: #EFE9DC !important; }
+        header[data-over-hero='true'] .hamburger span { background: #f1ede3 !important; }
         header[data-over-hero='true'] .nav-search-btn,
-        header[data-over-hero='true'] .nav-search-toggle { color: #EFE9DC; }
+        header[data-over-hero='true'] .nav-search-toggle { color: #f1ede3; }
+
+        /* The services panel drops out of the header, so over the hero it has to
+           carry the same dark ground instead of a white sheet. */
+        header[data-over-hero='true'] .mega-panel {
+          background: #001d20;
+          border-top-color: rgba(239,233,220,0.22);
+          border-bottom-color: rgba(239,233,220,0.12);
+          box-shadow: 0 30px 60px -28px rgba(0,0,0,0.6);
+        }
+        header[data-over-hero='true'] .mega-item-name { color: #f1ede3; }
+        header[data-over-hero='true'] .mega-item-desc { color: rgba(239,233,220,0.62); }
+        header[data-over-hero='true'] .mega-item:hover {
+          background: rgba(239,233,220,0.06);
+          border-left-color: #f1ede3;
+        }
+        header[data-over-hero='true'] .mega-item:hover .mega-item-name { color: #f1ede3; }
 
         .nav-link {
           position: relative;

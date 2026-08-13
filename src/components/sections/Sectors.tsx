@@ -1,6 +1,7 @@
+'use client'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import { Reveal } from '@/components/ui/reveal'
+import { useEffect, useRef, useState } from 'react'
 
 const SECTOR_IMAGES = [
   'https://d8j0ntlcm91z4.cloudfront.net/user_3GG0etPk7kKigScTFkcs4Y7pOC7/hf_20260709_130046_e68e3537-dead-4fd1-97a3-e5809b7a9209.png',
@@ -18,8 +19,26 @@ export default function Sectors() {
   const t = useTranslations('sectors')
   const items = t.raw('items') as Array<{ title: string; body: string }>
 
+  const ref = useRef<HTMLElement>(null)
+  const [inView, setInView] = useState(false)
+
+  // One observer for the section, stagger handled in CSS — same pattern as the
+  // hero, and it replays when the section is scrolled back to.
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => setInView(e.isIntersecting)),
+      { threshold: 0.2 },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
   return (
     <section
+      ref={ref}
+      className={inView ? 'is-in' : undefined}
       style={{
         background: 'var(--color-linen-tint)',
         padding: '64px 0',
@@ -28,8 +47,8 @@ export default function Sectors() {
       }}
     >
       <div className="section-wrap">
-        <Reveal variant="left">
-          <h2
+        <h2
+            id="sectors-title"
             style={{
               fontFamily: 'var(--font-display)',
               fontWeight: 700,
@@ -42,7 +61,6 @@ export default function Sectors() {
           >
             {t('title')}
           </h2>
-        </Reveal>
         <div
           className="sector-card-grid"
           style={{
@@ -61,7 +79,8 @@ export default function Sectors() {
                 height: '100%',
                 borderRadius: 12,
                 boxShadow: '0 1px 2px rgba(12,10,7,0.04)',
-                transition: 'transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s cubic-bezier(0.16,1,0.3,1)',
+                transition:
+                  'opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s cubic-bezier(0.16,1,0.3,1)',
               }}
             >
               {/* Image block */}
@@ -99,7 +118,6 @@ export default function Sectors() {
 
               {/* Text */}
               <div style={{ padding: '24px 28px 28px' }}>
-                <Reveal variant="up" duration={0.4}>
                   <h3
                     style={{
                       fontFamily: 'var(--font-display)',
@@ -123,7 +141,6 @@ export default function Sectors() {
                   >
                     {item.body}
                   </p>
-                </Reveal>
               </div>
             </div>
           ))}
@@ -131,6 +148,24 @@ export default function Sectors() {
       </div>
 
       <style>{`
+        /* Entrance: heading first, then the cards left to right. Delays are
+           cleared on hover so the lift stays instant. */
+        #sectors-title, .sector-card {
+          opacity: 0;
+          transform: translateY(26px);
+        }
+        #sectors-title {
+          transition: opacity .7s cubic-bezier(0.16,1,0.3,1), transform .7s cubic-bezier(0.16,1,0.3,1);
+        }
+        .is-in #sectors-title { opacity: 1; transform: none; }
+        .is-in .sector-card { opacity: 1; transform: none; }
+        .is-in .sector-card:nth-child(1) { transition-delay: .12s; }
+        .is-in .sector-card:nth-child(2) { transition-delay: .22s; }
+        .is-in .sector-card:nth-child(3) { transition-delay: .32s; }
+        .sector-card:hover { transition-delay: 0s; }
+        @media (prefers-reduced-motion: reduce) {
+          #sectors-title, .sector-card { opacity: 1; transform: none; transition: none; }
+        }
         .sector-card h3 {
           transition: color 0.3s ease;
         }

@@ -180,6 +180,16 @@ export default function Stats({ embedded = false }: { embedded?: boolean }) {
           text-transform: uppercase;
           color: rgba(241, 237, 227, .58);
         }
+        /* On the wide layout the metrics block carries more weight — it sits in
+           open space to the right of the headline, where the reference size read
+           as an afterthought. Kept to the same breakpoint as the rest of the
+           large-screen hero tuning, so narrow screens are untouched. */
+        @media (min-width: 1673px) {
+          .hero-stats { width: 380px; }
+          .hero-stats #stats-row { gap: 46px 28px; }
+          .hero-stats #stats-row .stat-num { font-size: 54px; }
+          .hero-stats #stats-row .stat-label { margin-top: 10px; font-size: 11px; }
+        }
         @keyframes statPop {
           0%   { transform: scale(0.82); }
           60%  { transform: scale(1.06); }

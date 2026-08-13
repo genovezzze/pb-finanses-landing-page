@@ -20,7 +20,7 @@ export function Reveal({
   variant = 'up',
   delay = 0,
   duration = 0.6,
-  once = false,
+  once = true,
   className,
   style,
 }: {
@@ -37,9 +37,10 @@ export function Reveal({
     <motion.div
       initial={initial}
       whileInView={animate}
-      // re-animate every time the element enters the viewport — scrolling
-      // both down and back up replays the reveal instead of firing only once
-      viewport={{ once, margin: '-10% 0px -10% 0px', amount: 0.15 }}
+      // Reveal once and stay. Replaying on every crossing made blocks flicker:
+      // the -10% margins shrank the trigger area, so a tall card could be fully
+      // on screen yet counted as "out of view" and animated back to opacity 0.
+      viewport={{ once, amount: 0.15 }}
       transition={{ duration, delay, ease: EASE }}
       className={className}
       style={style}

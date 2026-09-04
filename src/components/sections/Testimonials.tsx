@@ -20,20 +20,7 @@ export default function Testimonials() {
         {/* Header */}
         <Reveal variant="blur">
           <div className="flex flex-col items-center text-center max-w-[560px] mx-auto" style={{ marginBottom: 48 }}>
-            <span
-              className="inline-flex items-center gap-2"
-              style={{
-                border: '1.5px solid var(--color-gilt)',
-                borderRadius: 100,
-                padding: '7px 18px 7px 14px',
-                fontFamily: 'var(--font-display)',
-                fontSize: 13,
-                fontWeight: 600,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                color: 'var(--color-gilt)',
-              }}
-            >
+            <span className="eyebrow">
               <svg
                 width="15"
                 height="15"

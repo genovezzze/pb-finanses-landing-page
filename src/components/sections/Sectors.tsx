@@ -10,9 +10,9 @@ const SECTOR_IMAGES = [
 ]
 
 const SECTOR_ALTS = [
-  'Jauns bizness — zelta pildspalva uz krēmkrāsas papīra',
-  'Holdingi un korporācijas — biroju ēkas arhitektūra',
-  'Pašvaldības un NVO — klasiskā arhitektūra',
+  'Jauns bizness - zelta pildspalva uz krēmkrāsas papīra',
+  'Holdingi un korporācijas - biroju ēkas arhitektūra',
+  'Pašvaldības un NVO - klasiskā arhitektūra',
 ]
 
 export default function Sectors() {
@@ -22,7 +22,7 @@ export default function Sectors() {
   const ref = useRef<HTMLElement>(null)
   const [inView, setInView] = useState(false)
 
-  // One observer for the section, stagger handled in CSS — same pattern as the
+  // One observer for the section, stagger handled in CSS - same pattern as the
   // hero, and it replays when the section is scrolled back to.
   useEffect(() => {
     const el = ref.current
@@ -42,8 +42,6 @@ export default function Sectors() {
       style={{
         background: 'var(--color-linen-tint)',
         padding: '64px 0',
-        borderTop: '1px solid var(--color-parchment-rule)',
-        borderBottom: '1px solid var(--color-parchment-rule)',
       }}
     >
       <div className="section-wrap">
@@ -88,7 +86,7 @@ export default function Sectors() {
                 style={{
                   position: 'relative',
                   width: '100%',
-                  aspectRatio: '4/3',
+                  aspectRatio: '16/9',
                   overflow: 'hidden',
                 }}
               >

@@ -1,10 +1,12 @@
 import Hero from '@/components/sections/Hero'
+import Stats from '@/components/sections/Stats'
+import Credentials from '@/components/sections/Credentials'
 import Sectors from '@/components/sections/Sectors'
 import Industries from '@/components/sections/Industries'
 import Services from '@/components/sections/Services'
+import PricingCta from '@/components/sections/PricingCta'
 import Testimonials from '@/components/sections/Testimonials'
 import Founder from '@/components/sections/Founder'
-import History from '@/components/sections/History'
 import Team from '@/components/sections/Team'
 import Office from '@/components/sections/Office'
 import Insights from '@/components/sections/Insights'
@@ -15,12 +17,14 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
+      <Stats />
+      <Credentials />
       <Sectors />
       <Industries />
       <Services />
+      <PricingCta />
       <Testimonials />
       <Founder />
-      <History />
       <Team />
       <Office />
       <Insights />

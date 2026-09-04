@@ -1,14 +1,13 @@
 'use client'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import { Reveal } from '@/components/ui/reveal'
 
-// Клиентская база по отраслям (внутренняя аналитика 2026). Порядок = топ по числу клиентов.
-const COUNTS = [13, 10, 8, 7, 7, 6]
-const MAX = Math.max(...COUNTS)
+// Карточек ровно столько, сколько фотографий ниже. Порядок = топ по числу клиентов.
+const CARD_COUNT = 6
 
-// Фото под каждую карточку (16:9). Пока пусто — рендерится льняная заглушка.
+// Фото под каждую карточку (2:1). Пока пусто - рендерится льняная заглушка.
 const IMAGES = [
   '/images/industries/it-robotics.png',
   '/images/industries/construction-development.png',
@@ -20,26 +19,12 @@ const IMAGES = [
 
 export default function Industries() {
   const t = useTranslations('industries')
+  const locale = useLocale()
   const items = t.raw('items') as Array<{ title: string; body: string }>
-
-  const ref = useRef<HTMLElement>(null)
-  const [inView, setInView] = useState(false)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && setInView(true)),
-      { threshold: 0.2 },
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [])
 
   return (
     <section
       id="industries"
-      ref={ref}
       className="section-gap"
       style={{ background: 'var(--color-canvas-white)' }}
     >
@@ -53,8 +38,7 @@ export default function Industries() {
               justifyContent: 'space-between',
               alignItems: 'flex-end',
               marginBottom: 48,
-              paddingBottom: 24,
-              borderBottom: '1px solid var(--color-parchment-rule)',
+              paddingBottom: 8,
             }}
           >
             <h2
@@ -69,18 +53,7 @@ export default function Industries() {
             >
               {t('title')}
             </h2>
-            <p
-              id="industries-subtitle"
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 17,
-                fontStyle: 'italic',
-                color: 'var(--color-stone)',
-                textAlign: 'right',
-                lineHeight: 1.5,
-                maxWidth: 380,
-              }}
-            >
+            <p id="industries-subtitle" className="eyebrow">
               {t('subtitle')}
             </p>
           </div>
@@ -88,7 +61,7 @@ export default function Industries() {
 
         {/* Cards */}
         <div className="industry-grid">
-          {items.slice(0, COUNTS.length).map((item, i) => (
+          {items.slice(0, CARD_COUNT).map((item, i) => (
             <Reveal key={item.title} variant="up" duration={0.5} delay={i * 0.06} once>
               <article className="industry-card">
                 <div className="industry-media">
@@ -104,24 +77,15 @@ export default function Industries() {
                 </div>
 
                 <div className="industry-card-body">
-                <div className="industry-card-top">
-                  <span className="industry-rank">{String(i + 1).padStart(2, '0')}</span>
-                  <span className="industry-count">
-                    <strong>{COUNTS[i]}</strong> {t('clients')}
-                  </span>
-                </div>
-
                 <h3 className="industry-title">{item.title}</h3>
                 <p className="industry-text">{item.body}</p>
 
-                <div className="industry-track">
-                  <div
-                    className="industry-fill"
-                    style={{
-                      width: inView ? `${(COUNTS[i] / MAX) * 100}%` : '0%',
-                      transitionDelay: `${i * 90}ms`,
-                    }}
-                  />
+                {/* Space for the invitation is reserved whether or not it is
+                    showing, so hovering never changes the card's height. */}
+                <div className="industry-card-foot">
+                  <Link href={`/${locale}#contact`} className="industry-cta">
+                    {t('cardCta')} <span aria-hidden="true">→</span>
+                  </Link>
                 </div>
                 </div>
               </article>
@@ -129,9 +93,6 @@ export default function Industries() {
           ))}
         </div>
 
-        <Reveal variant="up" duration={0.4}>
-          <p className="industry-note">{t('note')}</p>
-        </Reveal>
       </div>
 
       <style
@@ -177,14 +138,13 @@ export default function Industries() {
         }
         .industry-card:hover::before { transform: scaleX(1); }
         .industry-card:hover .industry-title { color: var(--color-gilt); }
-        .industry-card:hover .industry-rank { opacity: 1; }
         .industry-card:hover .industry-img { transform: scale(1.06); }
         .industry-card:hover .industry-media-veil { opacity: 1; }
 
         .industry-media {
           position: relative;
           width: 100%;
-          aspect-ratio: 16 / 9;
+          aspect-ratio: 2 / 1;
           overflow: hidden;
           border-bottom: 1px solid var(--color-parchment-rule);
           background: var(--color-linen-tint);
@@ -218,86 +178,66 @@ export default function Industries() {
           display: flex;
           flex-direction: column;
           flex: 1;
-          padding: 22px 26px 24px;
-        }
-
-        .industry-card-top {
-          display: flex;
-          align-items: baseline;
-          justify-content: space-between;
-          gap: 12px;
-          margin-bottom: 14px;
-        }
-        .industry-rank {
-          font-family: var(--font-display);
-          font-weight: 700;
-          font-size: 30px;
-          line-height: 1;
-          letter-spacing: -0.03em;
-          font-variant-numeric: tabular-nums;
-          color: var(--color-gilt);
-          opacity: 0.4;
-          transition: opacity 0.35s ease;
-        }
-        .industry-count {
-          font-family: var(--font-body);
-          font-size: 11px;
-          font-weight: 500;
-          text-transform: uppercase;
-          letter-spacing: 0.07em;
-          color: var(--color-stone);
-          white-space: nowrap;
-        }
-        .industry-count strong {
-          font-family: var(--font-display);
-          font-size: 18px;
-          font-weight: 800;
-          letter-spacing: -0.02em;
-          font-variant-numeric: tabular-nums;
-          color: var(--color-espresso);
-          margin-right: 4px;
+          padding: 18px 20px 18px;
         }
 
         .industry-title {
           font-family: var(--font-display);
           font-weight: 700;
-          font-size: 21px;
-          line-height: 1.2;
+          font-size: 18px;
+          line-height: 1.25;
           letter-spacing: -0.02em;
           color: var(--color-ink-black);
-          margin-bottom: 10px;
+          margin-bottom: 8px;
           transition: color 0.3s ease;
         }
         .industry-text {
           font-family: var(--font-body);
-          font-size: 14px;
-          line-height: 1.65;
+          font-size: 13.5px;
+          line-height: 1.55;
           color: var(--color-graphite);
-          margin-bottom: 22px;
+          margin-bottom: 16px;
         }
 
-        .industry-track {
-          height: 5px;
+        .industry-card-foot {
+          position: relative;
           margin-top: auto;
-          border-radius: 999px;
-          background: var(--color-linen-tint);
-          overflow: hidden;
+          min-height: 20px;
+          display: flex;
+          align-items: center;
         }
-        .industry-fill {
-          height: 100%;
-          border-radius: 999px;
-          background: linear-gradient(90deg, var(--color-gilt-dark), var(--color-gilt));
-          transition: width 1.1s cubic-bezier(0.16,1,0.3,1);
+        .industry-cta {
+          position: relative;
+          font-family: var(--font-body);
+          font-size: 13px;
+          font-weight: 500;
+          letter-spacing: 0.01em;
+          color: var(--color-gilt);
+          text-decoration: none;
+          white-space: nowrap;
+          opacity: 0;
+          transform: translateY(4px);
+          pointer-events: none;
+          transition: opacity 0.32s ease, transform 0.32s cubic-bezier(0.16,1,0.3,1);
         }
-
-        .industry-note {
-          margin-top: 32px;
-          font-family: var(--font-display);
-          font-size: 15px;
-          font-style: italic;
-          line-height: 1.6;
-          color: var(--color-stone);
-          max-width: 70ch;
+        .industry-cta span {
+          display: inline-block;
+          margin-left: 6px;
+          transition: transform 0.22s cubic-bezier(0.16,1,0.3,1);
+        }
+        .industry-card:hover .industry-cta,
+        .industry-cta:focus-visible {
+          opacity: 1;
+          transform: none;
+          pointer-events: auto;
+        }
+        .industry-cta:hover span { transform: translateX(4px); }
+        /* No hover to give: touch devices get the invitation outright. */
+        @media (hover: none) {
+          .industry-cta { opacity: 1; transform: none; pointer-events: auto; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .industry-cta, .industry-cta span { transition: none; }
         }
 
         @media (max-width: 1024px) {
@@ -309,17 +249,14 @@ export default function Industries() {
             align-items: flex-start;
             gap: 14px;
           }
-          #industries-subtitle {
-            text-align: left;
-            max-width: 100%;
-          }
+          #industries-subtitle { align-self: flex-start; }
         }
         @media (max-width: 640px) {
           .industry-grid { grid-template-columns: 1fr; }
           .industry-card:hover { transform: none; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .industry-card, .industry-card::before, .industry-rank, .industry-title, .industry-fill {
+          .industry-card, .industry-card::before, .industry-title {
             transition: none;
           }
         }

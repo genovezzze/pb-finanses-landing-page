@@ -102,7 +102,7 @@ export default function NavSearch() {
 
           <div className="nav-search-results">
             {results.length === 0 ? (
-              <div className="nav-search-empty">—</div>
+              <div className="nav-search-empty">-</div>
             ) : (
               results.map((r, i) => (
                 <Link

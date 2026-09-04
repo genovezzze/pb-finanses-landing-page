@@ -1,11 +1,13 @@
 {
   "meta": {
-    "title": "PB Finanses – Outsourced Accounting & CFO Services | Ventspils, Latvia",
+    "title": "PB Finanses - Outsourced Accounting & CFO Services | Ventspils, Latvia",
     "description": "Full-service financial outsourcing in Latvia: accounting, tax consulting and CFO services. Trusted team based in Ventspils with 20+ years of experience.",
     "keywords": "accounting Latvia, outsourced CFO, tax consulting Latvia, bookkeeping services Ventspils, financial director outsourcing, business consulting Latvia"
   },
   "nav": {
+    "home": "Home",
     "services": "Services",
+    "pricing": "Pricing",
     "about": "About",
     "clients": "Clients",
     "insights": "Insights",
@@ -20,16 +22,15 @@
   "announcement": "Tax consultation 2026 - book today →",
   "hero": {
     "eyebrow": "Full-service financial company",
-    "headline": "Clarity in the numbers.",
-    "headlineAccent": "Confidence in decisions.",
-    "subtext": "Outsourced accounting for companies that want to see more than figures.",
+    "headline": "Accounting is an intimate business",
+    "subtext": "We often know more about your business than you do. That makes it a matter of trust - and we guard it.",
     "audienceQuestions": [
       "Have you just started a new business and want to be confident that profit will arrive exactly on schedule, with enough resources to reach your goals?",
       "Does your municipality or NGO need a trusted advisor who not only understands business processes in detail, but also grasps global trends?",
       "Are you leading a strong holding company and want to optimize operations for even greater profit, or planning to improve your financial indicators to become more attractive to investors?"
     ],
     "ctaPrimary": "Request a consultation",
-    "ctaSecondary": "Learn more",
+    "ctaSecondary": "Services",
     "statLabel": "Client trust",
     "statValue": "98%"
   },
@@ -38,6 +39,22 @@
     "turnover": "Annual turnover",
     "employees": "Team specialists",
     "clients": "Clients"
+  },
+  "credentials": {
+    "items": [
+      {
+        "tag": "AGL0000018",
+        "caption": "Licensed outsourced accountant: State Revenue Service licence No. AGL0000018"
+      },
+      {
+        "tag": "LTRK",
+        "caption": "Member of: The Latvian Chamber of Commerce and Industry"
+      },
+      {
+        "tag": "ROTARY",
+        "caption": "Member of: Rotary Club of Ventspils"
+      }
+    ]
   },
   "sectors": {
     "title": "We work with",
@@ -60,7 +77,7 @@
     "title": "Industries we know best",
     "subtitle": "Six sectors where we have the most clients and hands-on experience",
     "clients": "clients",
-    "note": "In total we serve 120+ companies across 13 industries — from transport and manufacturing to media and sport. If your industry is not on the list, tell us about your business and we will get into its specifics.",
+    "cardCta": "Request a consultation",
     "items": [
       {
         "title": "IT, software and robotics",
@@ -90,7 +107,6 @@
   },
   "services": {
     "title": "Services",
-    "subtitle": "Full spectrum of financial services under one roof",
     "learnMore": "Learn more →",
     "items": [
       {
@@ -130,6 +146,122 @@
         "premium": false
       }
     ]
+  },
+  "pricingCta": {
+    "eyebrow": "Pricing",
+    "title": "A price you know before signing",
+    "body": "Two models - a fixed monthly fee or a volume-based fee from EUR 100. The surcharge list and the working rules are published too.",
+    "button": "See pricing",
+    "secondary": "Request a consultation"
+  },
+  "pricing": {
+    "eyebrow": "Pricing and how we work",
+    "title": "A price you know before signing",
+    "subtitle": "Two models - you pick the one that matches your document flow. The model is fixed in the contract.",
+    "plans": [
+      {
+        "name": "Fixed monthly fee",
+        "price": "Individual",
+        "priceSuffix": "",
+        "priceNote": "based on volume and industry",
+        "body": "One amount every month regardless of the season. Suits companies with a stable, predictable document flow.",
+        "featured": true,
+        "features": [
+          "One amount every month, known in advance",
+          "Price and volume fixed in the contract",
+          "Unaffected by seasonal swings",
+          "Budget can be planned a year ahead"
+        ],
+        "fine": "If the actual number of transactions exceeds the agreed volume for at least two consecutive months, the excess is charged at EUR 1.30 + VAT per transaction."
+      },
+      {
+        "name": "Variable fee by volume",
+        "price": "from EUR 100",
+        "priceSuffix": "/ per month",
+        "priceNote": "+ VAT, 80 transactions included",
+        "body": "You pay for what actually happens - suits seasonal businesses with an uneven document flow.",
+        "featured": false,
+        "features": [
+          "80 transactions included in the base fee",
+          "Each further transaction EUR 1.30 + VAT",
+          "You pay for the real volume",
+          "In quiet months you pay the minimum"
+        ],
+        "fine": "Example: 500 transactions in June = 100 + 1.30 × 420 = EUR 646 + VAT. A month is booked in the following month, so the invoice follows one month behind."
+      }
+    ],
+    "includedTitle": "Included in both models",
+    "included": [
+      "Full accounting and processing of source documents",
+      "Payroll, hiring and termination paperwork",
+      "Tax reporting to the State Revenue Service",
+      "VAT annexes and reports on EU transactions",
+      "Management report 4 × a year (as needed)",
+      "One free hour of consultation",
+      "Day-to-day communication with the State Revenue Service",
+      "Templates for contracts, orders and travel reports",
+      "Any number of bank accounts - no surcharge"
+    ],
+    "extrasTitle": "Additional services",
+    "extras": [
+      {
+        "name": "Issuing an invoice",
+        "price": "EUR 3 + VAT"
+      },
+      {
+        "name": "Issuing an e-invoice",
+        "price": "EUR 5 + VAT"
+      },
+      {
+        "name": "Correcting a declaration caused by the client",
+        "price": "EUR 50 + VAT"
+      },
+      {
+        "name": "Annual report (13th payment)",
+        "price": "90% of the average monthly fee"
+      },
+      {
+        "name": "Statistical reports, uploading payments to the bank",
+        "price": "at the hourly rate"
+      },
+      {
+        "name": "Hourly rate outside the contract",
+        "price": "EUR 100/h + VAT"
+      }
+    ],
+    "extrasNote": "The annual report has a minimum fee of EUR 100 + VAT, or EUR 500 + VAT if the company has an auditor. Volume discounts may apply to the hourly rate.",
+    "termsTitle": "How the work runs",
+    "terms": [
+      {
+        "title": "Documents - electronic only",
+        "body": "Send them to info@pbfinanses.lv as soon as they reach you, whether or not they are paid. Our client portal opens this year, and documents will be uploaded there."
+      },
+      {
+        "title": "Deadline - the 7th of the month",
+        "body": "All documents for the previous month must reach us by the 7th of the following month. After the 10th they count as late."
+      },
+      {
+        "title": "Access",
+        "body": "We need view-only access to all company bank accounts, with no right to make payments, and full access to the EDS system."
+      },
+      {
+        "title": "Software and your data",
+        "body": "We work in Tildes Jumis. If the contract ends, you receive a copy of the database - the data stays with you."
+      },
+      {
+        "title": "Your team",
+        "body": "One accountant is responsible for your company, covered by an assigned colleague during holidays or sick leave. Day-to-day questions go to the accountant, strategic ones to the company's owner."
+      },
+      {
+        "title": "Ending the contract",
+        "body": "One month's notice. Within 5-10 days you receive all registers, the general ledger, the digital document folder and a copy of the database. The final month is booked in the month after it - which is what the notice period is for."
+      }
+    ],
+    "cta": "Request a consultation",
+    "ctaNote": "We set the exact price once we see your document volume and industry.",
+    "badge": "Most chosen",
+    "metaTitle": "Pricing - outsourced accounting | PB Finanses",
+    "metaDescription": "PB Finanses pricing: a fixed monthly fee or a volume-based fee from EUR 100 + VAT. Surcharges and working terms included."
   },
   "testimonials": {
     "eyebrow": "Testimonials",
@@ -176,14 +308,14 @@
         "role": "Owner, Retail Business",
         "initials": "IK",
         "photo": "",
-        "quote": "The PB Finanses team is exceptionally responsible and precise. My company has worked with them for 7 years and I have no plans to change — they are the most reliable finance team I know"
+        "quote": "The PB Finanses team is exceptionally responsible and precise. My company has worked with them for 7 years and I have no plans to change - they are the most reliable finance team I know"
       },
       {
         "name": "Jānis Bērziņš",
         "role": "Founder, IT Company",
         "initials": "JB",
         "photo": "",
-        "quote": "As a tech company, we needed a finance expert who understands the international environment. Agnese delivers exactly that — responsive, precise, and forward-looking"
+        "quote": "As a tech company, we needed a finance expert who understands the international environment. Agnese delivers exactly that - responsive, precise, and forward-looking"
       },
       {
         "name": "Sandra Liepiņa",
@@ -200,7 +332,7 @@
     "credentials": "Mag.oec  ·  25+ years  ·  IFRS  ·  LCCI National Strategy Council member",
     "bio": [
       "PB Finanses founder Agnese Pastare holds a Master's degree in economics (Mag.oec) from Riga Technical University and has worked in finance and business for more than 25 years.",
-      "Her experience spans the banking sector — as deputy head of the Ventspils branch and corporate lending specialist at Pirmā Banka (today Luminor) — international accounting practice, the transit business and real estate.",
+      "Her experience spans the banking sector - as deputy head of the Ventspils branch and corporate lending specialist at Pirmā Banka (today Luminor) - international accounting practice, the transit business and real estate.",
       "She holds IAB certificates in international accounting, IFRS reporting and financial analysis, chairs the board of ABZ Finance, and serves on the LCCI Kurzeme Entrepreneurs Council and the LCCI National Strategy Council.",
       "Agnese is fluent in Latvian, Russian and English. Beyond finance she is an internationally titled art photographer (AFIAP) and a recipient of the Ventspils City Award for her contribution to the city's economic and cultural development."
     ],
@@ -251,7 +383,7 @@
       {
         "num": "01",
         "title": "We assess the situation",
-        "body": "In a free consultation we understand your company's specifics, goals and current financial challenges"
+        "body": "In the consultation we understand your company's specifics, goals and current financial challenges"
       },
       {
         "num": "02",
@@ -281,7 +413,7 @@
         "date": "December 2025",
         "tag": "CFO",
         "title": "CFO as a Service - is it worth it for small business?",
-        "excerpt": "We analyze when an outsourced CFO pays off and what it gives companies with 5–50 employees",
+        "excerpt": "We analyze when an outsourced CFO pays off and what it gives companies with 5-50 employees",
         "readTime": "6 min read"
       },
       {
@@ -315,8 +447,8 @@
         "a": "An accountant works with fact and looks at the past - recording transactions that already happened and preparing reports. A financier works with a plan and looks at the future - helping you make decisions that will shape the company's results. PB Finanses offers both - everyday bookkeeping and a CFO's perspective on your business"
       },
       {
-        "q": "Is the first consultation free?",
-        "a": "Yes. In a free consultation we get to know your company's specifics, goals and current financial challenges, so we can offer a solution tailored to you - not a one-size-fits-all package"
+        "q": "How much does a consultation cost?",
+        "a": "A consultation costs EUR 100. If you become our client afterwards, we do not charge for it. In the consultation we get to know your company's specifics, goals and current financial challenges, so we can offer a solution tailored to you - not a one-size-fits-all package"
       },
       {
         "q": "What needs to be handled right after starting a company?",
@@ -339,7 +471,7 @@
   "contact": {
     "title": "Get in touch",
     "floatingTitle": "Let's talk about your business?",
-    "body": "The first consultation is free. Tell us about your company - we will find the best solution",
+    "body": "A consultation costs EUR 100 - and is free if you become our client afterwards. Tell us about your company and we will find the best solution",
     "cta": "Request a consultation →",
     "phone": "+371 29716434",
     "email": "info@pbfinanses.lv",

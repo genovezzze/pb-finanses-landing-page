@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 import { Reveal } from '@/components/ui/reveal'
 
-// Served from public/images/logos — remote logo CDNs 404'd on several of these,
+// Served from public/images/logos - remote logo CDNs 404'd on several of these,
 // so the marks are vendored to keep the strip from rendering broken images.
 const logos = [
   { src: '/images/logos/microsoft.svg', alt: 'Microsoft' },
@@ -21,24 +21,11 @@ export default function Partners() {
     <div
       style={{
         background: 'var(--color-canvas-white)',
-        borderTop: '1px solid var(--color-parchment-rule)',
-        borderBottom: '1px solid var(--color-parchment-rule)',
         padding: '24px 0',
       }}
     >
       <Reveal variant="blur">
-        <p
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: 11,
-            fontWeight: 500,
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            color: 'var(--color-stone)',
-            textAlign: 'center',
-            marginBottom: 20,
-          }}
-        >
+        <p className="eyebrow" style={{ marginBottom: 20 }}>
           {t('label')}
         </p>
       </Reveal>

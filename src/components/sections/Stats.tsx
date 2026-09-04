@@ -35,7 +35,7 @@ function CountUp({
     const start = performance.now()
     const tick = (now: number) => {
       const p = Math.min(1, (now - start) / duration)
-      const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p) // easeOutExpo — резкий старт, мягкая посадка
+      const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p) // easeOutExpo - резкий старт, мягкая посадка
       setVal(Math.round(end * eased))
       if (p < 1) raf.current = requestAnimationFrame(tick)
     }
@@ -82,8 +82,7 @@ export default function Stats({ embedded = false }: { embedded?: boolean }) {
       className={embedded ? 'hero-stats' : 'stats-section'}
       style={{
         background: embedded ? 'transparent' : 'var(--color-canvas-white)',
-        borderTop: embedded ? 'none' : '1px solid var(--color-parchment-rule)',
-        padding: embedded ? 0 : '72px 0',
+        padding: embedded ? 0 : '64px 0 44px',
       }}
     >
       <div className={embedded ? undefined : 'section-wrap'}>
@@ -142,14 +141,21 @@ export default function Stats({ embedded = false }: { embedded?: boolean }) {
         #stats-row .stat.in .stat-num {
           animation: statPop 0.8s cubic-bezier(0.34,1.56,0.64,1) both;
         }
+        /* Same chip as the section labels: soft grey pill, sentence case, no
+           letterspacing - see .eyebrow in globals.css. */
         #stats-row .stat-label {
-          margin-top: 14px;
+          margin-top: 16px;
+          display: inline-flex;
+          align-items: center;
+          padding: 8px 18px;
+          border-radius: 999px;
+          background: var(--color-linen-tint);
           font-family: var(--font-body);
           font-size: 13px;
           font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 0.07em;
-          color: var(--color-stone);
+          text-transform: none;
+          letter-spacing: 0;
+          color: var(--color-ink-black);
         }
         .hero-stats {
           position: absolute;
@@ -180,7 +186,7 @@ export default function Stats({ embedded = false }: { embedded?: boolean }) {
           text-transform: uppercase;
           color: rgba(241, 237, 227, .58);
         }
-        /* On the wide layout the metrics block carries more weight — it sits in
+        /* On the wide layout the metrics block carries more weight - it sits in
            open space to the right of the headline, where the reference size read
            as an afterthought. Kept to the same breakpoint as the rest of the
            large-screen hero tuning, so narrow screens are untouched. */

@@ -19,12 +19,12 @@
   --font-heading: var(--font-playfair), 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-playfair), 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  /* Was JetBrains Mono — retired; mapped to the body sans so it is never used again */
+  /* Was JetBrains Mono - retired; mapped to the body sans so it is never used again */
   --font-mono: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
 
   /* Layout */
   --page-max: 1200px;
-  --section-gap: 96px;
+  --section-gap: 36px;
 }
 
 * {
@@ -55,7 +55,7 @@ h2 {
   font-weight: 700 !important;
 }
 
-/* Gilt gradient text — used ONLY on tagline accent */
+/* Gilt gradient text - used ONLY on tagline accent */
 .gilt-text {
   background: linear-gradient(to right, #236E74, #517272);
   -webkit-background-clip: text;
@@ -82,12 +82,21 @@ h2 {
 }
 
 /* Eyebrow label */
+/* Section label chip. Set in sentence case on a soft grey pill rather than
+   letterspaced capitals - one shape, used above every section heading. */
 .eyebrow {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--color-stone);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--color-linen-tint);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-ink-black);
 }
 
 /* Photo slideshow */
@@ -172,7 +181,7 @@ h2 {
 /* Mobile */
 @media (max-width: 768px) {
   :root {
-    --section-gap: 56px;
+    --section-gap: 32px;
   }
 
   .section-wrap {
@@ -200,10 +209,6 @@ h2 {
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 8px;
-  }
-  #services-subtitle {
-    text-align: left !important;
-    white-space: normal !important;
   }
 
   /* Contact */

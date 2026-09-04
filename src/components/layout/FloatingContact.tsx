@@ -9,7 +9,10 @@ export default function FloatingContact() {
   const [dismissed, setDismissed] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
-  // Reveal after the hero, hide again near the footer/contact section
+  // Reveal once the services block is on screen, hide again near the
+  // footer/contact section. Anchoring on #services rather than a pixel offset
+  // keeps the card from landing on the hero when the layout changes; pages
+  // without that block fall back to a plain scroll distance.
   useEffect(() => {
     let raf = 0
     const update = () => {
@@ -18,7 +21,11 @@ export default function FloatingContact() {
       const doc = document.documentElement.scrollHeight
       const vh = window.innerHeight
       const nearBottom = y + vh > doc - 900
-      setShow(y > 700 && !nearBottom)
+      const services = document.getElementById('services')
+      const reached = services
+        ? services.getBoundingClientRect().top <= vh * 0.6
+        : y > 700
+      setShow(reached && !nearBottom)
     }
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update)

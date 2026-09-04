@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
-// Placeholder imagery per milestone — swap these for your own photos.
+// Placeholder imagery per milestone - swap these for your own photos.
 const MILESTONE_IMAGES = [
   '/images/unnamed.webp',
   '/images/dibinata.webp',
@@ -55,7 +55,7 @@ export default function History() {
 
   const active = Math.min(n - 1, Math.max(0, Math.floor(progress * n)))
 
-  // Сколько экранов прокрутки «держит» каждая веха. Больше — дольше задержка.
+  // Сколько экранов прокрутки «держит» каждая веха. Больше - дольше задержка.
   const HOLD_PER_MILESTONE = 140
 
   return (
@@ -66,14 +66,6 @@ export default function History() {
         style={{ position: 'relative', height: `${n * HOLD_PER_MILESTONE}vh` }}
       >
         <div className="pin-sticky">
-          {/* Section label, stays in the corner while pinned */}
-          <div className="pin-heading section-wrap">
-            <div className="pin-label">
-              <span className="pin-label-bar" />
-              {t('eyebrow')} · {t('title')}
-            </div>
-          </div>
-
           {/* Milestone panels */}
           {milestones.map((m, i) => {
             const isActive = i === active
@@ -120,36 +112,12 @@ export default function History() {
           align-items: center;
           background: var(--color-linen-tint);
         }
-        .pin-heading {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          padding-top: 132px;
-          z-index: 3;
-          pointer-events: none;
-        }
-        .pin-label {
-          display: inline-flex;
-          align-items: center;
-          gap: 14px;
-          font-family: var(--font-display);
-          font-size: 17px;
-          font-weight: 700;
-          letter-spacing: -0.01em;
-          color: var(--color-ink-black);
-        }
-        .pin-label-bar {
-          width: 40px;
-          height: 2px;
-          background: var(--color-gilt);
-        }
         .pin-panel {
           position: absolute;
           inset: 0;
           display: flex;
           align-items: center;
-          padding-top: 140px;
+          padding-top: 40px;
           background: var(--color-linen-tint);
           opacity: 0;
           transition: opacity 0.5s cubic-bezier(0.22,1,0.36,1);

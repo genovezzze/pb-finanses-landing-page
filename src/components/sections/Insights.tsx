@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { Reveal } from '@/components/ui/reveal'
 
-// Article art. Deliberately thematic rather than portraits of the team — these
+// Article art. Deliberately thematic rather than portraits of the team - these
 // headlines are placeholders, and a real colleague's face next to one would read
 // as a byline they never wrote. Swap per article once the blog is real.
 const COVERS = [
@@ -41,8 +41,6 @@ export default function Insights() {
               justifyContent: 'space-between',
               alignItems: 'baseline',
               marginBottom: 22,
-              paddingBottom: 14,
-              borderBottom: '1px solid var(--color-parchment-rule)',
             }}
           >
             <h2

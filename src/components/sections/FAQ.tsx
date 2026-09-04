@@ -19,8 +19,6 @@ export default function FAQ() {
           <div
             style={{
               marginBottom: 32,
-              paddingBottom: 18,
-              borderBottom: '1px solid var(--color-parchment-rule)',
             }}
           >
             <h2

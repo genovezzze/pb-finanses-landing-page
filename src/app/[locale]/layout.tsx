@@ -103,6 +103,24 @@ export default async function LocaleLayout({ children, params }: Props) {
       knowsLanguage: ['lv', 'ru', 'en', 'de', 'it'],
     },
     sameAs: [],
+    taxID: '41203042116',
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'license',
+      name: 'Outsourced accountant licence AGL0000018',
+      identifier: 'AGL0000018',
+      recognizedBy: {
+        '@type': 'GovernmentOrganization',
+        name: 'Valsts ieņēmumu dienests',
+      },
+      validFrom: '2021-07-14',
+      expires: '2031-07-13',
+    },
+    memberOf: {
+      '@type': 'Organization',
+      name: 'Latvijas Tirdzniecības un rūpniecības kamera',
+      alternateName: 'LTRK',
+    },
   }
 
   return (

@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
@@ -83,13 +84,16 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
-  const navLinks = ['services', 'about', 'clients', 'insights', 'contact'] as const
-  // "Klienti" points at the industries block — that is where the client base lives
+  const navLinks = ['services', 'pricing', 'about', 'clients', 'insights', 'contact'] as const
+  // "Klienti" points at the industries block - that is where the client base lives
   const anchorFor = (key: string) => (key === 'clients' ? 'industries' : key)
+  // Pricing lives on its own page; everything else is an anchor on the home page.
+  const hrefFor = (key: string) =>
+    key === 'pricing' ? `/${locale}/cenas` : `/${locale}#${anchorFor(key)}`
 
   return (
     <>
-      {/* Blurred backdrop behind the mega panel — kept OUTSIDE <header> so its
+      {/* Blurred backdrop behind the mega panel - kept OUTSIDE <header> so its
           position:fixed resolves against the viewport (a transform on the header
           would otherwise make it its containing block and collapse this to ~0px). */}
       <div className="mega-backdrop" data-open={servicesOpen} aria-hidden="true" />
@@ -120,9 +124,17 @@ export default function Navbar() {
             justifyContent: 'space-between',
           }}
         >
-          {/* Typographic wordmark — the company name set in the editorial serif */}
+          {/* Brand logo. The file is teal + grey, which reads on the white bar;
+              over the dark hero it is knocked out to ivory by CSS below. */}
           <Link href={`/${locale}`} aria-label="PB Finanses" className="brand-mark">
-            PB Finanses
+            <Image
+              src="/images/PBFinanses_LOGO_500.png"
+              alt="PB Finanses - pilna servisa finanšu kompānija"
+              width={500}
+              height={270}
+              priority
+              className="brand-logo"
+            />
           </Link>
 
           {/* Desktop nav links */}
@@ -177,11 +189,7 @@ export default function Navbar() {
               }
 
               return (
-                <Link
-                  key={key}
-                  href={`/${locale}#${anchorFor(key)}`}
-                  className="nav-link"
-                >
+                <Link key={key} href={hrefFor(key)} className="nav-link">
                   {t(key)}
                 </Link>
               )
@@ -291,7 +299,7 @@ export default function Navbar() {
           {navLinks.map((key) => (
             <Link
               key={key}
-              href={`/${locale}#${key}`}
+              href={hrefFor(key)}
               onClick={() => setMenuOpen(false)}
               style={{
                 fontFamily: 'var(--font-body)',
@@ -371,14 +379,18 @@ export default function Navbar() {
 
       <style dangerouslySetInnerHTML={{ __html: `
         .brand-mark {
-          font-family: var(--font-editorial-serif), 'Bodoni 72', Didot, Georgia, serif;
-          font-size: 25px;
-          font-weight: 400;
-          letter-spacing: 0.005em;
-          color: var(--color-ink-black);
+          display: inline-flex;
+          align-items: center;
           text-decoration: none;
           flex-shrink: 0;
-          transition: color 0.35s ease;
+        }
+        .brand-logo {
+          width: auto;
+          /* The full mark carries the tagline under the wordmark, so it needs
+             more height than the plain lockup did to stay legible. */
+          height: 48px;
+          display: block;
+          transition: filter 0.35s ease, opacity 0.35s ease;
         }
         .nav-pill {
           font-family: var(--font-body);
@@ -400,7 +412,7 @@ export default function Navbar() {
         .nav-pill:hover { transform: translateY(-1px); }
 
         /* Entrance: the bar assembles left to right on load. Transform is kept
-           off .mega-wrap on purpose — a transformed ancestor would become the
+           off .mega-wrap on purpose - a transformed ancestor would become the
            containing block for the fixed mega panel and collapse its width. */
         .brand-mark,
         .desktop-nav .nav-link,
@@ -439,7 +451,11 @@ export default function Navbar() {
         }
 
         /* Sitting on the dark hero: the whole bar inverts to ivory. */
-        header[data-over-hero='true'] .brand-mark,
+        /* over the dark hero the teal/grey logo is knocked out to ivory */
+        header[data-over-hero='true'] .brand-logo {
+          filter: brightness(0) invert(1);
+          opacity: 0.92;
+        }
         header[data-over-hero='true'] .nav-link,
         header[data-over-hero='true'] .lang-btn { color: #f1ede3; }
         header[data-over-hero='true'] .nav-pill {
@@ -727,7 +743,7 @@ export default function Navbar() {
           .hamburger { display: flex !important; }
           .mobile-menu { display: flex !important; }
           nav { padding: 0 20px !important; }
-          .brand-mark { font-size: 19px; }
+          .brand-logo { height: 34px; }
         }
         @media (min-width: 769px) {
           .mobile-menu { display: none !important; }

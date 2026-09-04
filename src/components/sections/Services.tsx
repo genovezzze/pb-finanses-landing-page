@@ -50,8 +50,7 @@ export default function Services() {
               justifyContent: 'space-between',
               alignItems: 'flex-end',
               marginBottom: 48,
-              paddingBottom: 24,
-              borderBottom: '1px solid var(--color-parchment-rule)',
+              paddingBottom: 8,
             }}
           >
             <div>
@@ -68,20 +67,7 @@ export default function Services() {
                 {t('title')}
               </h2>
             </div>
-            <p
-              id="services-subtitle"
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 17,
-                fontStyle: 'italic',
-                color: 'var(--color-stone)',
-                textAlign: 'right',
-                lineHeight: 1.5,
-                whiteSpace: 'nowrap',
-              }}
-            >
-              {t('subtitle')}
-            </p>
+
           </div>
         </Reveal>
 
@@ -99,7 +85,6 @@ export default function Services() {
               className="service-card"
               style={{
                 position: 'relative',
-                borderTop: `1px solid var(--color-parchment-rule)`,
                 paddingTop: 24,
                 paddingBottom: 32,
                 transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1)',
@@ -186,21 +171,6 @@ export default function Services() {
         dangerouslySetInnerHTML={{
           __html: `
         /* Gilt accent line that sweeps across the top border on hover */
-        .service-card::before {
-          content: '';
-          position: absolute;
-          top: -1px;
-          left: 0;
-          right: 0;
-          height: 2px;
-          background: var(--color-gilt);
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
-        }
-        .service-card:hover::before {
-          transform: scaleX(1);
-        }
         .service-card:hover {
           transform: translateY(-6px);
         }
@@ -224,7 +194,7 @@ export default function Services() {
           color: var(--color-gilt-dark) !important;
         }
         @media (prefers-reduced-motion: reduce) {
-          .service-card, .service-card::before, .service-card svg, .service-card a {
+          .service-card, .service-card svg, .service-card a {
             transition: none;
           }
         }

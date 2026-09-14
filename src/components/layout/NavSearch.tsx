@@ -21,14 +21,14 @@ export default function NavSearch() {
   const index = useMemo<Entry[]>(() => {
     const serviceItems = s.raw('items') as { name: string }[]
     return [
-      { label: t('services'), href: `/${locale}#services` },
-      { label: t('about'), href: `/${locale}#about` },
-      { label: t('aboutMenu.history'), href: `/${locale}#history` },
-      { label: t('aboutMenu.team'), href: `/${locale}#team` },
-      { label: t('aboutMenu.office'), href: `/${locale}#office` },
-      { label: t('insights'), href: `/${locale}#insights` },
-      { label: t('contact'), href: `/${locale}#contact` },
-      ...serviceItems.map((it) => ({ label: it.name, href: `/${locale}#services` })),
+      { label: t('services'), href: `/${locale}/pakalpojumi` },
+      { label: t('about'), href: `/${locale}/par-mums` },
+      { label: t('aboutMenu.history'), href: `/${locale}/par-mums#history` },
+      { label: t('aboutMenu.team'), href: `/${locale}/par-mums#team` },
+      { label: t('aboutMenu.office'), href: `/${locale}/par-mums#office` },
+      { label: t('insights'), href: `/${locale}/jaunumi` },
+      { label: t('contact'), href: `/${locale}/kontakti` },
+      ...serviceItems.map((it) => ({ label: it.name, href: `/${locale}/pakalpojumi#services` })),
     ]
   }, [t, s, locale])
 

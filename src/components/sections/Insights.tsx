@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl'
+import { useLocale } from 'next-intl'
 import Image from 'next/image'
 import { Reveal } from '@/components/ui/reveal'
 
@@ -21,18 +22,20 @@ type Item = {
   readTime: string
 }
 
-export default function Insights() {
+export default function Insights({ compact = false }: { compact?: boolean }) {
   const t = useTranslations('insights')
-  const items = t.raw('items') as Item[]
+  const locale = useLocale()
+  const allItems = t.raw('items') as Item[]
+  const items = compact ? allItems.slice(0, 3) : allItems
 
   const [featured, ...rest] = items
 
   return (
     <section
       id="insights"
-      style={{ background: 'var(--color-linen-tint)', padding: '52px 0 56px' }}
+      style={{ background: 'var(--color-linen-tint)', padding: '36px 0 48px' }}
     >
-      <div className="section-wrap">
+      <div className="section-wrap insights-wrap">
         {/* Header */}
         <Reveal variant="scale">
           <div
@@ -40,21 +43,21 @@ export default function Insights() {
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'baseline',
-              marginBottom: 22,
+              marginBottom: 30,
             }}
           >
             <h2
               style={{
                 fontFamily: 'var(--font-display)',
                 fontWeight: 700,
-                fontSize: 'clamp(26px, 3vw, 36px)',
+                fontSize: 'clamp(26px, 2.6vw, 36px)',
                 color: 'var(--color-ink-black)',
                 letterSpacing: '-0.02em',
               }}
             >
               {t('title')}
             </h2>
-            <a href="#" className="insights-all">
+            <a href={`/${locale}/jaunumi`} className="insights-all">
               {t('all')}
             </a>
           </div>
@@ -117,7 +120,7 @@ export default function Insights() {
           __html: `
         .insights-all {
           font-family: var(--font-body);
-          font-size: 13px;
+          font-size: 17px;
           font-weight: 500;
           color: var(--color-gilt);
           text-decoration: none;
@@ -127,16 +130,18 @@ export default function Insights() {
 
         .insights-layout {
           display: grid;
-          grid-template-columns: 1.02fr 1fr;
-          gap: 14px;
+          grid-template-columns: 1.04fr 1fr;
+          gap: 20px;
           align-items: stretch;
+          height: clamp(600px, 42vw, 720px);
         }
+        .insights-wrap { max-width: 1672px; }
         .insight-feature-wrap { height: 100%; }
         .insight-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           grid-auto-rows: 1fr;
-          gap: 14px;
+          gap: 20px;
         }
         .insight-grid > * { min-width: 0; height: 100%; }
 
@@ -147,14 +152,14 @@ export default function Insights() {
           display: flex;
           flex-direction: column;
           height: 100%;
-          border-radius: 16px;
+          border-radius: 22px;
           background: var(--color-linen-tint);
           cursor: pointer;
         }
         .insight-media {
           position: relative;
           width: 100%;
-          border-radius: 16px;
+          border-radius: 22px;
           overflow: hidden;
           background: var(--color-parchment-wash);
         }
@@ -165,8 +170,8 @@ export default function Insights() {
           flex-direction: column;
           flex: 1;
           background: var(--color-canvas-white);
-          border-radius: 16px;
-          box-shadow: 0 10px 30px -18px rgba(12,10,7,0.28);
+          border-radius: 22px;
+          box-shadow: 0 14px 34px -22px rgba(12,10,7,0.24);
           transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
         }
         .insight-card:hover .insight-panel {
@@ -177,10 +182,10 @@ export default function Insights() {
 
         .insight-tag {
           font-family: var(--font-body);
-          font-size: 11px;
+          font-size: 12px;
           font-weight: 500;
           text-transform: uppercase;
-          letter-spacing: 0.13em;
+          letter-spacing: 0.14em;
           color: var(--color-stone);
           opacity: 0.62;
           display: block;
@@ -198,13 +203,13 @@ export default function Insights() {
         }
         .insight-excerpt {
           font-family: var(--font-body);
-          font-size: 13.5px;
-          line-height: 1.6;
+          font-size: 15px;
+          line-height: 1.55;
           color: var(--color-graphite);
         }
         .insight-meta {
           font-family: var(--font-body);
-          font-size: 12px;
+          font-size: 13px;
           color: var(--color-gilt-dark);
           margin-top: auto;
         }
@@ -212,36 +217,46 @@ export default function Insights() {
 
         /* Featured */
         .insight-feature .insight-media {
-          flex: 1;
-          min-height: 190px;
+          height: 52%;
+          flex: 0 0 52%;
         }
         .insight-feature .insight-panel {
-          margin: -48px 18px 0;
-          padding: 18px 22px 18px;
+          margin: -70px 26px 0;
+          padding: 28px 32px 24px;
         }
         .insight-feature .insight-title {
-          font-size: clamp(18px, 1.55vw, 21px);
-          margin: 8px 0 9px;
+          max-width: 26ch;
+          font-size: clamp(20px, 1.7vw, 26px);
+          margin: 12px 0 12px;
         }
-        .insight-feature .insight-meta { padding-top: 16px; }
+        .insight-feature .insight-meta { padding-top: 24px; }
 
         /* Small */
-        .insight-small .insight-media { aspect-ratio: 16 / 9; }
+        .insight-small .insight-media {
+          height: 58%;
+          flex: 0 0 58%;
+        }
         .insight-small .insight-panel {
-          margin: -30px 11px 0;
-          padding: 13px 15px 14px;
+          margin: -34px 16px 0;
+          padding: 18px 22px 16px;
         }
         .insight-small .insight-title {
-          font-size: 14.5px;
-          margin: 7px 0 10px;
+          font-size: clamp(15px, 1.2vw, 19px);
+          margin: 10px 0 12px;
         }
 
         @media (max-width: 900px) {
-          .insights-layout { grid-template-columns: 1fr; }
-          .insight-feature .insight-media { min-height: 200px; aspect-ratio: 16 / 10; flex: none; }
+          .insights-layout { grid-template-columns: 1fr; height: auto; }
+          .insight-feature .insight-media { height: auto; min-height: 320px; aspect-ratio: 16 / 10; flex: none; }
+          .insight-grid { grid-auto-rows: minmax(340px, auto); }
         }
         @media (max-width: 560px) {
           .insight-grid { grid-template-columns: 1fr; }
+          .insight-feature .insight-media { min-height: 230px; }
+          .insight-feature .insight-panel { margin: -42px 12px 0; padding: 22px 20px; }
+          .insight-feature .insight-title { font-size: 22px; }
+          .insight-excerpt { font-size: 15px; }
+          .insight-small .insight-panel { margin: -34px 10px 0; }
         }
         @media (prefers-reduced-motion: reduce) {
           .insight-panel { transition: none; }

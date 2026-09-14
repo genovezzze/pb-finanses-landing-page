@@ -37,7 +37,7 @@ export default function Industries() {
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'flex-end',
-              marginBottom: 48,
+              marginBottom: 32,
               paddingBottom: 8,
             }}
           >
@@ -45,7 +45,7 @@ export default function Industries() {
               style={{
                 fontFamily: 'var(--font-display)',
                 fontWeight: 700,
-                fontSize: 'clamp(36px, 4vw, 52px)',
+                fontSize: 'clamp(26px, 2.6vw, 36px)',
                 color: 'var(--color-ink-black)',
                 letterSpacing: '-0.02em',
                 lineHeight: 1.1,
@@ -83,7 +83,7 @@ export default function Industries() {
                 {/* Space for the invitation is reserved whether or not it is
                     showing, so hovering never changes the card's height. */}
                 <div className="industry-card-foot">
-                  <Link href={`/${locale}#contact`} className="industry-cta">
+                  <Link href={`/${locale}/kontakti`} className="industry-cta">
                     {t('cardCta')} <span aria-hidden="true">→</span>
                   </Link>
                 </div>
@@ -101,7 +101,7 @@ export default function Industries() {
         .industry-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
+          gap: 16px;
           align-items: stretch;
         }
         .industry-grid > * { min-width: 0; }
@@ -178,25 +178,25 @@ export default function Industries() {
           display: flex;
           flex-direction: column;
           flex: 1;
-          padding: 18px 20px 18px;
+          padding: 14px 16px;
         }
 
         .industry-title {
           font-family: var(--font-display);
           font-weight: 700;
-          font-size: 18px;
+          font-size: 16px;
           line-height: 1.25;
           letter-spacing: -0.02em;
           color: var(--color-ink-black);
-          margin-bottom: 8px;
+          margin-bottom: 7px;
           transition: color 0.3s ease;
         }
         .industry-text {
           font-family: var(--font-body);
-          font-size: 13.5px;
-          line-height: 1.55;
+          font-size: 12.5px;
+          line-height: 1.5;
           color: var(--color-graphite);
-          margin-bottom: 16px;
+          margin-bottom: 14px;
         }
 
         .industry-card-foot {

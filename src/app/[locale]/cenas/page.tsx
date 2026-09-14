@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import Pricing from '@/components/sections/Pricing'
 import Contact from '@/components/sections/Contact'
@@ -38,43 +38,59 @@ export async function generateMetadata({
   }
 }
 
-export default async function PricingPage({
-  params,
-}: {
-  params: { locale: string }
-}) {
-  const { locale } = params
-  const t = await getTranslations({ locale, namespace: 'nav' })
-
+export default function PricingPage() {
   return (
     <main>
-      <div className="section-wrap" style={{ paddingTop: 28 }}>
-        <Link href={`/${locale}`} className="page-back">
-          <span aria-hidden="true">←</span> {t('home')}
-        </Link>
+      {/* Wide banner under the navbar, same pattern as the Par mums page. */}
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: 'clamp(96px, 11vw, 150px)',
+          overflow: 'hidden',
+        }}
+      >
+        <Image
+          src="/images/481015454_1556450015297497_8823412931938160365_n.jpg"
+          alt="PB Finanses"
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', objectPosition: 'center 55%', transform: 'scale(1.6)' }}
+        />
       </div>
 
       <Pricing />
-      <Contact />
 
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-        .page-back {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          font-family: var(--font-body);
-          font-size: 13.5px;
-          font-weight: 500;
-          color: var(--color-stone);
-          text-decoration: none;
-          transition: color 0.2s ease;
-        }
-        .page-back:hover { color: var(--color-gilt); }
-      `,
+      {/* Vertical (9:16) video block. Poster is a placeholder until the real
+          thumbnail is added at /images/konsultacija-thumb.jpg. */}
+      <section
+        style={{
+          background: 'var(--color-linen-tint)',
+          padding: 'clamp(40px, 6vw, 72px) 0',
+          display: 'flex',
+          justifyContent: 'center',
         }}
-      />
+      >
+        <video
+          src="/videos/konsultacija.mp4"
+          poster="/images/konsultacija-thumb.jpg"
+          controls
+          playsInline
+          preload="metadata"
+          style={{
+            width: 'min(340px, 82vw)',
+            aspectRatio: '9 / 16',
+            height: 'auto',
+            objectFit: 'cover',
+            borderRadius: 18,
+            background: '#001d20',
+            boxShadow: '0 30px 60px -30px rgba(12,10,7,0.4)',
+          }}
+        />
+      </section>
+
+      <Contact />
     </main>
   )
 }

@@ -27,13 +27,14 @@ export default function Credentials() {
   const items = t.raw('items') as Item[]
 
   return (
-    <section className="credentials">
-      <div className="section-wrap">
+    <section id="partners" className="credentials">
+      <div className="section-wrap credentials-wrap">
+        <h2 className="credentials-title">{t('title')}</h2>
         <div className="credentials-grid">
           {items.map((item, i) => {
             const emblem = EMBLEMS[item.tag]
             return (
-              <Reveal key={item.tag} variant="up" duration={0.5} delay={i * 0.07}>
+              <Reveal key={item.tag} variant="up" duration={0.6} delay={i * 0.1}>
                 <article className="credential">
                   <div className="credential-mark">
                     {emblem ? (
@@ -62,14 +63,25 @@ export default function Credentials() {
           __html: `
         .credentials {
           background: var(--color-canvas-white);
-          padding: 0 0 64px;
+          padding: 80px 0 48px;
         }
         .credentials-grid {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 28px 20px;
+          gap: 16px 16px;
           max-width: 840px;
           margin: 0 auto;
+        }
+        .credentials-wrap { max-width: 1000px; }
+        .credentials-title {
+          margin: 0 0 28px;
+          text-align: center;
+          font-family: var(--font-display);
+          font-size: clamp(26px, 2.6vw, 36px);
+          font-weight: 700;
+          line-height: 1.15;
+          letter-spacing: -0.02em;
+          color: var(--color-ink-black);
         }
         .credential { text-align: center; }
         /* One fixed row height for the marks, so a wide lockup, a square logo
@@ -78,12 +90,12 @@ export default function Credentials() {
           display: flex;
           align-items: center;
           justify-content: center;
-          height: 104px;
-          margin-bottom: 18px;
+          height: 92px;
+          margin-bottom: 14px;
         }
         .credential-emblem {
-          max-width: 190px;
-          max-height: 88px;
+          max-width: 168px;
+          max-height: 80px;
           width: auto;
           height: auto;
         }
@@ -92,11 +104,11 @@ export default function Credentials() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 4px;
-          min-width: 188px;
-          padding: 14px 24px;
+          gap: 3px;
+          min-width: 200px;
+          padding: 12px 20px;
           border: 1px solid rgba(35, 110, 116, 0.38);
-          border-radius: 12px;
+          border-radius: 10px;
           background: var(--color-canvas-white);
         }
         .credential-plate-top,
@@ -111,7 +123,7 @@ export default function Credentials() {
         .credential-plate-main {
           font-family: var(--font-display);
           font-weight: 700;
-          font-size: 24px;
+          font-size: 20px;
           letter-spacing: 0.02em;
           color: var(--color-gilt);
         }
@@ -127,20 +139,20 @@ export default function Credentials() {
            half-circles, so the family keeps its shape at a fixed 20px. */
         .credential-caption {
           display: inline-block;
-          max-width: 34ch;
-          padding: 12px 20px;
-          border-radius: 20px;
+          max-width: 30ch;
+          padding: 10px 16px;
+          border-radius: 16px;
           background: var(--color-linen-tint);
           font-family: var(--font-body);
-          font-size: 13px;
+          font-size: 12px;
           font-weight: 600;
-          line-height: 1.5;
+          line-height: 1.45;
           color: var(--color-ink-black);
           text-align: center;
         }
 
         @media (max-width: 860px) {
-          .credentials-grid { grid-template-columns: 1fr; gap: 36px; }
+          .credentials-grid { grid-template-columns: 1fr; gap: 28px; }
         }
         @media (max-width: 720px) {
           .credentials { padding: 0 0 48px; }

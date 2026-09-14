@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 import { Reveal } from '@/components/ui/reveal'
@@ -126,36 +125,6 @@ const ExpandIcon = () => (
 export default function Team() {
   const t = useTranslations('team')
   const locale = useLocale()
-  const trackRef = useRef<HTMLDivElement>(null)
-  const [atStart, setAtStart] = useState(true)
-  const [atEnd, setAtEnd] = useState(false)
-
-  // Arrows disable at the ends instead of looping: with twelve cards a silent
-  // wrap-around leaves the reader unsure whether they have seen everyone.
-  useEffect(() => {
-    const el = trackRef.current
-    if (!el) return
-    const update = () => {
-      setAtStart(el.scrollLeft <= 2)
-      setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 2)
-    }
-    update()
-    el.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update)
-    return () => {
-      el.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
-    }
-  }, [])
-
-  const scrollByCards = (direction: 1 | -1) => {
-    const el = trackRef.current
-    if (!el) return
-    const card = el.querySelector<HTMLElement>('.person')
-    // One card plus its gap, so a click never leaves a card half cut off.
-    const step = card ? card.offsetWidth + 20 : el.clientWidth * 0.8
-    el.scrollBy({ left: direction * step, behavior: 'smooth' })
-  }
 
   return (
     <section id="team" className="section-gap team">
@@ -166,33 +135,12 @@ export default function Team() {
               <p className="eyebrow team-eyebrow">{t('eyebrow')}</p>
               <h2 className="team-title">{t('title')}</h2>
             </div>
-
-            <div className="team-views">
-              <button
-                type="button"
-                className="team-view"
-                onClick={() => scrollByCards(-1)}
-                disabled={atStart}
-                aria-label="Iepriekšējie"
-              >
-                <span aria-hidden="true">&#8592;</span>
-              </button>
-              <button
-                type="button"
-                className="team-view"
-                onClick={() => scrollByCards(1)}
-                disabled={atEnd}
-                aria-label="Nākamie"
-              >
-                <span aria-hidden="true">&#8594;</span>
-              </button>
-            </div>
           </div>
 
           <p className="team-intro">{t('intro')}</p>
         </Reveal>
 
-        <div className="team-track" ref={trackRef}>
+        <div className="team-track">
           {PEOPLE.map((person, i) => (
             <article className="person" key={`${person.name}-${i}`}>
               <div className="person-media">
@@ -206,7 +154,7 @@ export default function Team() {
               <div className="person-body">
                 <p className="person-role">{person.role}</p>
 
-                <Link href={`/${locale}#contact`} className="person-name">
+                <Link href={`/${locale}/kontakti`} className="person-name">
                   <span className="person-name-text">{person.name}</span>
                   <span className="person-name-arrow" aria-hidden="true">&#8594;</span>
                 </Link>
@@ -295,28 +243,32 @@ export default function Team() {
         .team-view:disabled { opacity: 0.32; cursor: default; }
         .team-view span { font-size: 17px; line-height: 1; }
 
-        /* A scroll container rather than a transform track: swipe, trackpad and
-           keyboard all work without extra code, and the arrows just scroll it. */
+        /* All members visible at once as a matrix: a responsive grid that fits
+           as many compact cards per row as the width allows and wraps the rest. */
         .team-track {
-          display: flex;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
           gap: 20px;
           margin-top: 30px;
-          padding: 4px 4px 10px;
-          overflow-x: auto;
-          scroll-snap-type: x mandatory;
-          scrollbar-width: none;
+          padding: 4px;
         }
-        .team-track::-webkit-scrollbar { display: none; }
+        @media (max-width: 1024px) {
+          .team-track { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 720px) {
+          .team-track { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 460px) {
+          .team-track { grid-template-columns: 1fr; }
+        }
 
         /* Card as on the reference: a soft grey shell holding the portrait,
            with a white panel inset over the photograph's lower edge. The panel
            is what carries the text, so the picture never has to fight it. */
         .person {
-          flex: 0 0 clamp(226px, 23vw, 276px);
-          scroll-snap-align: start;
           display: flex;
           flex-direction: column;
-          border-radius: 22px;
+          border-radius: 18px;
           background: var(--color-linen-tint);
           transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
                       box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
@@ -331,15 +283,15 @@ export default function Team() {
           display: flex;
           align-items: flex-end;
           justify-content: center;
-          border-radius: 22px 22px 0 0;
+          border-radius: 18px 18px 0 0;
           overflow: hidden;
         }
         .person-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
         .person-monogram {
-          margin-bottom: 24px;
+          margin-bottom: 20px;
           font-family: var(--font-display);
           font-weight: 700;
-          font-size: 44px;
+          font-size: 36px;
           letter-spacing: -0.02em;
           color: var(--color-gilt);
           opacity: 0.4;
@@ -351,30 +303,30 @@ export default function Team() {
           display: flex;
           flex-direction: column;
           flex: 1;
-          margin: -26px 10px 10px;
-          padding: 22px 20px 20px;
-          border-radius: 16px;
+          margin: -22px 8px 8px;
+          padding: 16px 16px 16px;
+          border-radius: 14px;
           background: var(--color-canvas-white);
           box-shadow: 0 14px 30px -22px rgba(12,10,7,0.30);
         }
         .person-role {
           font-family: var(--font-body);
-          font-size: 12px;
+          font-size: 11px;
           font-weight: 400;
-          letter-spacing: 0.09em;
+          letter-spacing: 0.08em;
           text-transform: uppercase;
           color: var(--color-stone);
-          line-height: 1.5;
-          min-height: 54px;
+          line-height: 1.45;
+          min-height: 42px;
         }
         .person-name {
           display: flex;
           align-items: center;
-          gap: 12px;
-          margin: 6px 0 16px;
+          gap: 10px;
+          margin: 5px 0 12px;
           font-family: var(--font-body);
           font-weight: 600;
-          font-size: 19px;
+          font-size: 16px;
           letter-spacing: -0.01em;
           line-height: 1.25;
           color: var(--color-gilt);
@@ -383,7 +335,7 @@ export default function Team() {
         .person-name-text { flex: 1; }
         .person-name-arrow {
           flex-shrink: 0;
-          font-size: 19px;
+          font-size: 16px;
           line-height: 1;
           transition: transform 0.22s cubic-bezier(0.16,1,0.3,1);
         }
@@ -392,10 +344,10 @@ export default function Team() {
         .person-meta {
           display: flex;
           align-items: center;
-          gap: 10px;
-          padding: 5px 0;
+          gap: 9px;
+          padding: 4px 0;
           font-family: var(--font-body);
-          font-size: 13.5px;
+          font-size: 12.5px;
           color: var(--color-graphite);
           text-decoration: none;
         }

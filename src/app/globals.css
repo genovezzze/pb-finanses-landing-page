@@ -17,10 +17,10 @@
 
   /* Typography */
   --font-heading: var(--font-playfair), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-playfair), 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-body: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), var(--font-playfair), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-poppins), var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
   /* Was JetBrains Mono - retired; mapped to the body sans so it is never used again */
-  --font-mono: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-poppins), var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
 
   /* Layout */
   --page-max: 1200px;
@@ -90,7 +90,9 @@ h2 {
   gap: 8px;
   padding: 8px 18px;
   border-radius: 999px;
-  background: var(--color-linen-tint);
+  /* A shade deeper than the section grounds (white AND linen), so the chip
+     stays visible on every section instead of vanishing on linen blocks. */
+  background: var(--color-parchment-rule);
   font-family: var(--font-body);
   font-size: 13px;
   font-weight: 600;

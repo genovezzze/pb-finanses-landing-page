@@ -3,10 +3,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import NavSearch from './NavSearch'
 
-const LANGUAGES = ['lv', 'en', 'ru'] as const
+const LANGUAGES = ['lv', 'en'] as const
 
 export default function Navbar() {
   const t = useTranslations('nav')
@@ -18,43 +18,13 @@ export default function Navbar() {
   const router = useRouter()
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
-  const [langOpen, setLangOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
-  const [hidden, setHidden] = useState(false)
-  // True while the header is still sitting on top of the dark hero, where it
-  // has to invert to cream-on-teal instead of the usual ink-on-white.
-  const isHome = /^\/(lv|en|ru)?\/?$/.test(pathname)
-  const [overHero, setOverHero] = useState(isHome)
+  // The header always wears its dark, cream-on-teal treatment now, on every
+  // page and at every scroll position - never the ink-on-white variant. It also
+  // stays fixed in place: no hide-on-scroll-down behaviour.
+  const overHero = true
   // Flipped one frame after mount so the bar has a state to animate *from*.
   const [ready, setReady] = useState(false)
-  const langRef = useRef<HTMLDivElement>(null)
-  const lastY = useRef(0)
-
-  // Hide the header on scroll down, reveal on scroll up (always shown near the top)
-  useEffect(() => {
-    lastY.current = window.scrollY
-    let raf = 0
-    const update = () => {
-      raf = 0
-      const y = window.scrollY
-      const delta = y - lastY.current
-      if (y < 80) setHidden(false)
-      else if (delta > 4) setHidden(true)
-      else if (delta < -4) setHidden(false)
-      const hero = document.getElementById('hero')
-      setOverHero(!!hero && hero.getBoundingClientRect().bottom > 72)
-      lastY.current = y
-    }
-    update()
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      if (raf) cancelAnimationFrame(raf)
-    }
-  }, [])
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setReady(true))
@@ -65,18 +35,7 @@ export default function Navbar() {
     const segments = pathname.split('/')
     segments[1] = newLocale
     router.push(segments.join('/'))
-    setLangOpen(false)
   }
-
-  useEffect(() => {
-    const onClickOutside = (e: MouseEvent) => {
-      if (langRef.current && !langRef.current.contains(e.target as Node)) {
-        setLangOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', onClickOutside)
-    return () => document.removeEventListener('mousedown', onClickOutside)
-  }, [])
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -84,12 +43,18 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
-  const navLinks = ['services', 'pricing', 'about', 'clients', 'insights', 'contact'] as const
-  // "Klienti" points at the industries block - that is where the client base lives
-  const anchorFor = (key: string) => (key === 'clients' ? 'industries' : key)
-  // Pricing lives on its own page; everything else is an anchor on the home page.
-  const hrefFor = (key: string) =>
-    key === 'pricing' ? `/${locale}/cenas` : `/${locale}#${anchorFor(key)}`
+  const navLinks = ['services', 'pricing', 'about', 'insights', 'contact'] as const
+  const pageFor = {
+    services: 'pakalpojumi',
+    pricing: 'cenas',
+    about: 'par-mums',
+    clients: 'klienti',
+    insights: 'jaunumi',
+    contact: 'kontakti',
+  } as const
+  const hrefFor = (key: keyof typeof pageFor) =>
+    // Jaunumi is a section on the home page, not a standalone route.
+    key === 'insights' ? `/${locale}#insights` : `/${locale}/${pageFor[key]}`
 
   return (
     <>
@@ -109,8 +74,7 @@ export default function Navbar() {
           background: overHero && !menuOpen ? '#001d20' : 'var(--color-canvas-white)',
           borderBottom:
             overHero && !menuOpen ? 'none' : '1px solid var(--color-parchment-rule)',
-          transform: hidden && !menuOpen ? 'translateY(-100%)' : 'translateY(0)',
-          transition: 'transform 0.55s cubic-bezier(0.22,1,0.36,1)',
+          transform: 'translateY(0)',
         }}
       >
         <nav
@@ -122,6 +86,7 @@ export default function Navbar() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            position: 'relative',
           }}
         >
           {/* Brand logo. The file is teal + grey, which reads on the white bar;
@@ -140,7 +105,19 @@ export default function Navbar() {
           {/* Desktop nav links */}
           <div
             className="desktop-nav"
-            style={{ display: 'flex', gap: 36, alignItems: 'center', marginLeft: 'auto', marginRight: 42 }}
+            style={{
+              display: 'flex',
+              gap: 36,
+              alignItems: 'center',
+              justifyContent: 'center',
+              // Centred across the bar WITHOUT a transform: a transformed
+              // ancestor would become the containing block for the fixed mega
+              // panel and collapse it to this element's width.
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              pointerEvents: 'none',
+            }}
           >
             {navLinks.map((key) => {
               if (key === 'services') {
@@ -152,7 +129,7 @@ export default function Navbar() {
                     onMouseLeave={() => setServicesOpen(false)}
                   >
                     <Link
-                      href={`/${locale}#services`}
+                      href={`/${locale}/pakalpojumi`}
                       className="nav-link"
                       style={{ display: 'flex', alignItems: 'center', gap: 5 }}
                     >
@@ -174,7 +151,7 @@ export default function Navbar() {
                         {serviceItems.map((item, i) => (
                           <Link
                             key={i}
-                            href={`/${locale}#services`}
+                            href={`/${locale}/pakalpojumi`}
                             onClick={() => setServicesOpen(false)}
                             className="mega-item"
                           >
@@ -201,38 +178,21 @@ export default function Navbar() {
             {/* Search (desktop) */}
             <div className="reference-nav-tools"><NavSearch /></div>
 
-            {/* Language dropdown (desktop) */}
-            <div ref={langRef} className="desktop-lang" style={{ position: 'relative' }}>
-              <button className="lang-btn" onClick={() => setLangOpen((v) => !v)}>
-                {locale.toUpperCase()}
-                <svg
-                  width="8"
-                  height="8"
-                  viewBox="0 0 10 6"
-                  fill="none"
-                  style={{ transform: langOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
+            {/* Language switch: segmented pill toggle (desktop) */}
+            <div className="desktop-lang lang-seg">
+              {LANGUAGES.map((lang) => (
+                <button
+                  key={lang}
+                  onClick={() => switchLocale(lang)}
+                  className={`lang-seg-btn${locale === lang ? ' is-active' : ''}`}
                 >
-                  <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-
-              {langOpen && (
-                <div className="nav-dropdown lang-dropdown">
-                  {LANGUAGES.map((lang) => (
-                    <button
-                      key={lang}
-                      onClick={() => switchLocale(lang)}
-                      className={`lang-item${locale === lang ? ' is-active' : ''}`}
-                    >
-                      {lang.toUpperCase()}
-                    </button>
-                  ))}
-                </div>
-              )}
+                  {lang.toUpperCase()}
+                </button>
+              ))}
             </div>
 
             {/* Consultation pill */}
-            <Link href={`/${locale}#contact`} className="nav-pill">
+            <Link href={`/${locale}/kontakti`} className="nav-pill">
               {h('ctaPrimary')}
             </Link>
 
@@ -344,7 +304,7 @@ export default function Navbar() {
 
         {/* CTA button */}
         <Link
-          href={`/${locale}#contact`}
+          href={`/${locale}/kontakti`}
           onClick={() => setMenuOpen(false)}
           className="btn-primary"
           style={{ alignSelf: 'flex-start', marginBottom: 32 }}
@@ -482,6 +442,16 @@ export default function Navbar() {
         }
         header[data-over-hero='true'] .mega-item:hover .mega-item-name { color: #f1ede3; }
 
+        /* The centred nav overlay ignores pointer events across its empty width;
+           its actual links/menu re-enable them, so the logo and pill under it
+           stay clickable. */
+        .desktop-nav > * { pointer-events: auto; }
+
+        /* Nav links dim to grey on hover over the dark header (not teal). */
+        header[data-over-hero='true'] .nav-link:hover,
+        header[data-over-hero='true'] .nav-link.is-active { color: #9aa5a5; }
+        header[data-over-hero='true'] .nav-link::after { background: #9aa5a5; }
+
         .nav-link {
           position: relative;
           font-family: var(--font-body);
@@ -604,6 +574,34 @@ export default function Navbar() {
         }
         .lang-btn:hover { color: var(--color-gilt); }
 
+        /* Segmented language toggle: dark track with a cream pill on the active
+           locale, cream-on-teal to match the rest of the dark header. */
+        .lang-seg {
+          display: inline-flex;
+          gap: 2px;
+          padding: 3px;
+          border-radius: 999px;
+          background: rgba(241, 237, 227, 0.14);
+        }
+        .lang-seg-btn {
+          border: none;
+          background: transparent;
+          cursor: pointer;
+          padding: 6px 13px;
+          border-radius: 999px;
+          font-family: var(--font-mono);
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          color: rgba(241, 237, 227, 0.62);
+          transition: background 0.2s ease, color 0.2s ease;
+        }
+        .lang-seg-btn:hover { color: #f1ede3; }
+        .lang-seg-btn.is-active {
+          background: #f1ede3;
+          color: #001d20;
+        }
+
         .lang-dropdown {
           position: absolute;
           top: calc(100% + 10px);
@@ -697,17 +695,17 @@ export default function Navbar() {
         .mega-inner {
           max-width: 1672px;
           margin: 0 auto;
-          padding: 40px 40px 44px;
+          padding: 22px 40px 26px;
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 4px 40px;
+          gap: 2px 40px;
         }
         .mega-item {
           position: relative;
           display: flex;
           flex-direction: column;
-          gap: 6px;
-          padding: 16px 18px;
+          gap: 3px;
+          padding: 10px 14px;
           text-decoration: none;
           border-left: 2px solid transparent;
           transition: border-color 0.2s ease, background 0.2s ease, padding-left 0.22s cubic-bezier(0.16,1,0.3,1);
@@ -715,11 +713,11 @@ export default function Navbar() {
         .mega-item:hover {
           border-left-color: var(--color-gilt);
           background: var(--color-linen-tint);
-          padding-left: 24px;
+          padding-left: 20px;
         }
         .mega-item-name {
           font-family: var(--font-display);
-          font-size: 18px;
+          font-size: 15px;
           font-weight: 500;
           letter-spacing: -0.01em;
           color: var(--color-ink-black);
@@ -728,8 +726,8 @@ export default function Navbar() {
         .mega-item:hover .mega-item-name { color: var(--color-gilt); }
         .mega-item-desc {
           font-family: var(--font-body);
-          font-size: 13px;
-          line-height: 1.5;
+          font-size: 12px;
+          line-height: 1.45;
           color: var(--color-stone);
         }
         @media (prefers-reduced-motion: reduce) {
@@ -748,7 +746,7 @@ export default function Navbar() {
         @media (min-width: 769px) {
           .mobile-menu { display: none !important; }
           .hamburger { display: none !important; }
-          .reference-nav-tools, .desktop-lang { display: none !important; }
+          .reference-nav-tools { display: none !important; }
         }
       ` }} />
     </>

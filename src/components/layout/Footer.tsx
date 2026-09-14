@@ -8,6 +8,7 @@ export default async function Footer() {
   const locale = await getLocale()
 
   const links = ['services', 'about', 'insights', 'contact'] as const
+  const pages = { services: 'pakalpojumi', about: 'par-mums', insights: 'jaunumi', contact: 'kontakti' }
 
   return (
     <footer
@@ -75,7 +76,7 @@ export default async function Footer() {
             {links.map((key) => (
               <Link
                 key={key}
-                href={`/${locale}#${key}`}
+                href={`/${locale}/${pages[key]}`}
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: 14,

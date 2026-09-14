@@ -82,7 +82,7 @@ export default function Pricing() {
 
                 <p className="plan-fine">{plan.fine}</p>
 
-                <Link href={`/${locale}#contact`} className="plan-link">
+                <Link href={`/${locale}/kontakti`} className="plan-link">
                   {t('cta')} <span aria-hidden="true">→</span>
                 </Link>
               </div>
@@ -150,8 +150,8 @@ export default function Pricing() {
 
         .pricing-head {
           max-width: 660px;
-          margin: 0 auto 56px;
-          text-align: center;
+          margin: 0 0 56px;
+          text-align: left;
         }
         .pricing-eyebrow { margin-bottom: 18px; }
         .pricing-title {
@@ -178,8 +178,7 @@ export default function Pricing() {
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 0 56px;
           align-items: start;
-          max-width: 900px;
-          margin: 0 auto 48px;
+          margin: 0 0 48px;
         }
         .plan {
           display: flex;

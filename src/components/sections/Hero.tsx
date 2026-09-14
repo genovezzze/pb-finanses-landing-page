@@ -47,7 +47,7 @@ export default function Hero() {
         </p>
 
         <div className="photo-hero-actions">
-          <Link href={`/${locale}#contact`} className="photo-hero-button is-primary">
+          <Link href={`/${locale}/kontakti`} className="photo-hero-button is-primary">
             Pieteikt konsultāciju
           </Link>
           <Link href={`/${locale}#services`} className="photo-hero-button is-secondary">
@@ -135,7 +135,10 @@ export default function Hero() {
           font-family: var(--font-display) !important;
           font-size: clamp(30px, 3.6vw, 54px);
           font-weight: 700 !important;
-          line-height: 1.1;
+          /* A touch more leading and top padding so the Latvian macron on ī/ā
+             is not clipped by the tight line box. */
+          line-height: 1.18;
+          padding-top: 0.08em;
           letter-spacing: -.02em;
         }
 

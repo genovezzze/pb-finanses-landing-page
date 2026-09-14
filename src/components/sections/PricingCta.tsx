@@ -27,7 +27,7 @@ export default function PricingCta() {
               <Link href={`/${locale}/cenas`} className="pcb-button is-primary">
                 {t('button')}
               </Link>
-              <Link href={`/${locale}#contact`} className="pcb-button is-secondary">
+              <Link href={`/${locale}/kontakti`} className="pcb-button is-secondary">
                 {t('secondary')}
               </Link>
             </div>

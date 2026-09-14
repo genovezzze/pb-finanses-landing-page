@@ -79,10 +79,11 @@ export default function Stats({ embedded = false }: { embedded?: boolean }) {
   return (
     <section
       ref={ref}
+      id={embedded ? undefined : 'success-story'}
       className={embedded ? 'hero-stats' : 'stats-section'}
       style={{
         background: embedded ? 'transparent' : 'var(--color-canvas-white)',
-        padding: embedded ? 0 : '64px 0 44px',
+        padding: embedded ? 0 : '44px 0 28px',
       }}
     >
       <div className={embedded ? undefined : 'section-wrap'}>
@@ -110,14 +111,14 @@ export default function Stats({ embedded = false }: { embedded?: boolean }) {
           flex-wrap: wrap;
           justify-content: center;
           align-items: flex-start;
-          gap: 40px 76px;
+          gap: 32px 52px;
         }
         #stats-row .stat {
           display: flex;
           flex-direction: column;
           align-items: center;
           text-align: center;
-          min-width: 140px;
+          min-width: 120px;
           opacity: 0;
           transform: translateY(26px) scale(0.94);
           transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
@@ -128,10 +129,10 @@ export default function Stats({ embedded = false }: { embedded?: boolean }) {
         }
         #stats-row .stat-num {
           font-family: var(--font-display);
-          font-weight: 800;
-          font-size: clamp(40px, 4.6vw, 60px);
+          font-weight: 700;
+          font-size: clamp(30px, 2.8vw, 40px);
           line-height: 0.95;
-          letter-spacing: -0.03em;
+          letter-spacing: -0.02em;
           font-variant-numeric: tabular-nums;
           background: linear-gradient(135deg, var(--color-gilt) 0%, var(--color-gilt-dark) 55%, var(--color-gilt) 100%);
           -webkit-background-clip: text;
@@ -144,14 +145,14 @@ export default function Stats({ embedded = false }: { embedded?: boolean }) {
         /* Same chip as the section labels: soft grey pill, sentence case, no
            letterspacing - see .eyebrow in globals.css. */
         #stats-row .stat-label {
-          margin-top: 16px;
+          margin-top: 12px;
           display: inline-flex;
           align-items: center;
-          padding: 8px 18px;
+          padding: 7px 15px;
           border-radius: 999px;
           background: var(--color-linen-tint);
           font-family: var(--font-body);
-          font-size: 13px;
+          font-size: 11px;
           font-weight: 600;
           text-transform: none;
           letter-spacing: 0;

@@ -1,33 +1,11 @@
 'use client'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'motion/react'
 import { Reveal } from '@/components/ui/reveal'
 
 export default function Founder() {
   const t = useTranslations('founder')
   const bio = t.raw('bio') as string[]
-  const [open, setOpen] = useState(false)
-  const preview = bio.slice(0, 3)
-
-  // Lock body scroll while the modal is open
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [open])
-
-  // Close on Escape
-  useEffect(() => {
-    if (!open) return
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false)
-    }
-    document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
-  }, [open])
 
   return (
     <section
@@ -41,7 +19,7 @@ export default function Founder() {
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
             gap: 80,
-            alignItems: 'center',
+            alignItems: 'start',
           }}
         >
           {/* Left: text */}
@@ -73,8 +51,8 @@ export default function Founder() {
             >
               {t('credentials')}
             </div>
-            <div className="founder-fade" style={{ maxWidth: '62ch' }}>
-              {preview.map((paragraph, i) => (
+            <div style={{ maxWidth: '62ch', marginBottom: 28 }}>
+              {bio.map((paragraph, i) => (
                 <p
                   key={paragraph}
                   style={{
@@ -89,16 +67,6 @@ export default function Founder() {
                 </p>
               ))}
             </div>
-
-            <button
-              type="button"
-              className="founder-more"
-              onClick={() => setOpen(true)}
-              style={{ marginBottom: 28, position: 'relative', zIndex: 1 }}
-            >
-              {t('readMore')}
-              <span className="founder-more-arrow" aria-hidden="true">→</span>
-            </button>
 
             {/* Pull quote */}
             <blockquote
@@ -145,9 +113,9 @@ export default function Founder() {
                 aspectRatio: '1 / 1',
                 borderRadius: 2,
                 overflow: 'hidden',
-                alignSelf: 'center',
+                alignSelf: 'start',
                 justifySelf: 'center',
-                marginTop: 40,
+                marginTop: 0,
               }}
             >
               <Image
@@ -161,128 +129,6 @@ export default function Founder() {
           </Reveal>
         </div>
       </div>
-
-      {/* Detailed bio modal */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            className="founder-modal-backdrop"
-            onClick={() => setOpen(false)}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
-            role="dialog"
-            aria-modal="true"
-            aria-label={t('name')}
-          >
-            <motion.div
-              className="founder-modal-card"
-              onClick={(e) => e.stopPropagation()}
-              initial={{ opacity: 0, y: 26, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 18, scale: 0.98 }}
-              transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <button
-                type="button"
-                className="founder-modal-close"
-                onClick={() => setOpen(false)}
-                aria-label={t('close')}
-              >
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M4 4l10 10M14 4L4 14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                </svg>
-              </button>
-
-              {/* Header */}
-              <div className="founder-modal-header">
-                <div className="founder-modal-photo">
-                  <Image
-                    src="/images/founder-agnese.jpg"
-                    alt="Agnese Pastare"
-                    fill
-                    sizes="96px"
-                    style={{ objectFit: 'cover' }}
-                  />
-                </div>
-                <div>
-                  <p className="eyebrow" style={{ marginBottom: 8 }}>
-                    {t('eyebrow')}
-                  </p>
-                  <h3
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontWeight: 700,
-                      fontSize: 30,
-                      color: 'var(--color-ink-black)',
-                      letterSpacing: '-0.02em',
-                      lineHeight: 1.1,
-                      marginBottom: 8,
-                    }}
-                  >
-                    {t('name')}
-                  </h3>
-                  <div
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: 11.5,
-                      color: 'var(--color-gilt)',
-                      letterSpacing: '0.04em',
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {t('credentials')}
-                  </div>
-                </div>
-              </div>
-
-              {/* Full bio */}
-              <div className="founder-modal-body">
-                {bio.map((paragraph, i) => (
-                  <p
-                    key={paragraph}
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontSize: 15.5,
-                      color: 'var(--color-graphite)',
-                      lineHeight: 1.75,
-                      marginTop: i === 0 ? 0 : 16,
-                    }}
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-
-                <blockquote
-                  style={{
-                    borderLeft: '2px solid var(--color-gilt)',
-                    paddingLeft: 20,
-                    margin: '28px 0 0',
-                  }}
-                >
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontStyle: 'italic',
-                      fontSize: 20,
-                      color: 'var(--color-ink-black)',
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    &ldquo;{t('quote')}&rdquo;
-                  </p>
-                </blockquote>
-
-                <a href="mailto:info@pbfinanses.lv" className="founder-more" style={{ marginTop: 28 }}>
-                  {t('contact')}
-                  <span className="founder-more-arrow" aria-hidden="true">→</span>
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       <style
         dangerouslySetInnerHTML={{

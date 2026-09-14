@@ -49,7 +49,7 @@ export default function Services() {
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'flex-end',
-              marginBottom: 48,
+              marginBottom: 32,
               paddingBottom: 8,
             }}
           >
@@ -58,7 +58,7 @@ export default function Services() {
                 style={{
                   fontFamily: 'var(--font-display)',
                   fontWeight: 700,
-                  fontSize: 'clamp(36px, 4vw, 52px)',
+                  fontSize: 'clamp(26px, 2.6vw, 36px)',
                   color: 'var(--color-ink-black)',
                   letterSpacing: '-0.02em',
                   lineHeight: 1.1,
@@ -76,7 +76,7 @@ export default function Services() {
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '0 40px',
+            gap: '0 32px',
           }}
         >
           {items.map((item, i) => (
@@ -85,8 +85,8 @@ export default function Services() {
               className="service-card"
               style={{
                 position: 'relative',
-                paddingTop: 24,
-                paddingBottom: 32,
+                paddingTop: 18,
+                paddingBottom: 24,
                 transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1)',
               }}
             >
@@ -94,13 +94,13 @@ export default function Services() {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 10,
-                  marginBottom: 14,
+                  gap: 9,
+                  marginBottom: 11,
                 }}
               >
                 <svg
-                  width={24}
-                  height={24}
+                  width={20}
+                  height={20}
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                   style={{ display: 'block', flexShrink: 0, color: 'var(--color-gilt)' }}
@@ -110,7 +110,7 @@ export default function Services() {
                 <span
                   style={{
                     fontFamily: 'var(--font-display)',
-                    fontSize: 13,
+                    fontSize: 11,
                     fontWeight: 600,
                     letterSpacing: '0.03em',
                     textTransform: 'uppercase',
@@ -118,7 +118,7 @@ export default function Services() {
                     background: item.premium ? 'var(--color-gilt)' : 'transparent',
                     border: item.premium ? 'none' : '1px solid var(--color-gilt)',
                     borderRadius: 999,
-                    padding: '4px 12px',
+                    padding: '3px 10px',
                   }}
                 >
                   {item.badge}
@@ -129,10 +129,10 @@ export default function Services() {
                   style={{
                     fontFamily: 'var(--font-display)',
                     fontWeight: 700,
-                    fontSize: 22,
+                    fontSize: 18,
                     color: 'var(--color-ink-black)',
                     lineHeight: 1.2,
-                    marginBottom: 10,
+                    marginBottom: 8,
                   }}
                 >
                   {item.name}
@@ -140,20 +140,20 @@ export default function Services() {
                 <p
                   style={{
                     fontFamily: 'var(--font-body)',
-                    fontSize: 14,
+                    fontSize: 13,
                     color: 'var(--color-graphite)',
-                    lineHeight: 1.65,
-                    marginBottom: 16,
+                    lineHeight: 1.6,
+                    marginBottom: 12,
                   }}
                 >
                   {item.description}
                 </p>
               </Reveal>
               <a
-                href={`/${locale}#contact`}
+                href={`/${locale}/kontakti`}
                 style={{
                   fontFamily: 'var(--font-body)',
-                  fontSize: 13,
+                  fontSize: 12,
                   fontWeight: 500,
                   color: 'var(--color-gilt)',
                   textDecoration: 'none',

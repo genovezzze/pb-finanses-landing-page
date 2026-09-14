@@ -66,7 +66,7 @@ interface Props {
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = params
 
-  if (!routing.locales.includes(locale as 'lv' | 'en' | 'ru')) {
+  if (!routing.locales.includes(locale as 'lv' | 'en')) {
     notFound()
   }
 

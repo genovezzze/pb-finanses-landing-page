@@ -3,13 +3,41 @@
 import Link from 'next/link'
 import { useLocale } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
+import { Tappable } from '@/components/ui/tappable'
 
 const TEAM_PHOTO = '/images/team-hero.jpg'
 
 export default function Hero() {
   const locale = useLocale()
   const heroRef = useRef<HTMLElement>(null)
+  const copyRef = useRef<HTMLDivElement>(null)
   const [inView, setInView] = useState(false)
+
+  // Fade the hero copy up and out as the page scrolls past it, matching the
+  // service-page banners. Applied to the wrapper so it does not fight the
+  // per-element entrance transforms on the title/sub/actions.
+  useEffect(() => {
+    const el = copyRef.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const p = Math.min(Math.max(window.scrollY / 420, 0), 1)
+      el.style.transform = `translateY(${-p * 14}px)`
+      el.style.opacity = String(1 - p)
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [])
 
   // One observer for the whole section rather than one per element: the pieces
   // are staggered in CSS instead. Keeping the switch on a single, full-height
@@ -38,8 +66,8 @@ export default function Hero() {
       />
       <div className="photo-hero-scrim" aria-hidden="true" />
 
-      <div className="photo-hero-copy">
-        <h1 className="photo-hero-title">Grāmatvedība ir intīms bizness</h1>
+      <div className="photo-hero-copy" ref={copyRef} style={{ willChange: 'transform, opacity' }}>
+        <h1 className="photo-hero-title">Grāmatvedība<br />ir intīms bizness</h1>
 
         <p className="photo-hero-sub">
           Mēs par tavu biznesu bieži zinām vairāk nekā tu pats.
@@ -47,12 +75,16 @@ export default function Hero() {
         </p>
 
         <div className="photo-hero-actions">
-          <Link href={`/${locale}/kontakti`} className="photo-hero-button is-primary">
-            Pieteikt konsultāciju
-          </Link>
-          <Link href={`/${locale}#services`} className="photo-hero-button is-secondary">
-            Pakalpojumi
-          </Link>
+          <Tappable>
+            <Link href={`/${locale}/kontakti`} className="photo-hero-button is-primary">
+              Pieteikt konsultāciju
+            </Link>
+          </Tappable>
+          <Tappable>
+            <Link href={`/${locale}#services`} className="photo-hero-button is-secondary">
+              Pakalpojumi
+            </Link>
+          </Tappable>
         </div>
       </div>
 

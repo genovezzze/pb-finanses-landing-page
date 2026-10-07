@@ -142,7 +142,14 @@ export default function Team() {
 
         <div className="team-track">
           {PEOPLE.map((person, i) => (
-            <article className="person" key={`${person.name}-${i}`}>
+            <Reveal
+              key={`${person.name}-${i}`}
+              variant="up"
+              duration={0.45}
+              delay={(i % 4) * 0.06}
+              className="team-cell"
+            >
+            <article className="person">
               <div className="person-media">
                 {person.photo ? (
                   <img src={person.photo} alt={person.name} className="person-photo" />
@@ -186,6 +193,7 @@ export default function Team() {
                 )}
               </div>
             </article>
+            </Reveal>
           ))}
         </div>
 
@@ -252,6 +260,10 @@ export default function Team() {
           margin-top: 30px;
           padding: 4px;
         }
+        /* The reveal wrapper is the grid cell now; make it stretch so the card
+           inside keeps equal height across a row. */
+        .team-cell { display: flex; }
+        .team-cell > .person { width: 100%; }
         @media (max-width: 1024px) {
           .team-track { grid-template-columns: repeat(3, 1fr); }
         }

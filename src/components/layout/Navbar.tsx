@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import NavSearch from './NavSearch'
+import { Tappable } from '@/components/ui/tappable'
 
 const LANGUAGES = ['lv', 'en'] as const
 
@@ -192,9 +193,11 @@ export default function Navbar() {
             </div>
 
             {/* Consultation pill */}
-            <Link href={`/${locale}/kontakti`} className="nav-pill">
-              {h('ctaPrimary')}
-            </Link>
+            <Tappable>
+              <Link href={`/${locale}/kontakti`} className="nav-pill">
+                {h('ctaPrimary')}
+              </Link>
+            </Tappable>
 
             {/* Hamburger (mobile only) */}
             <button

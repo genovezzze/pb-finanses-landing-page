@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 import { Reveal } from '@/components/ui/reveal'
+import { Tappable } from '@/components/ui/tappable'
 
 /**
  * Stands in for the pricing block on the landing page now that the numbers live
@@ -24,12 +25,16 @@ export default function PricingCta() {
             </div>
 
             <div className="pcb-actions">
-              <Link href={`/${locale}/cenas`} className="pcb-button is-primary">
-                {t('button')}
-              </Link>
-              <Link href={`/${locale}/kontakti`} className="pcb-button is-secondary">
-                {t('secondary')}
-              </Link>
+              <Tappable>
+                <Link href={`/${locale}/cenas`} className="pcb-button is-primary">
+                  {t('button')}
+                </Link>
+              </Tappable>
+              <Tappable>
+                <Link href={`/${locale}/kontakti`} className="pcb-button is-secondary">
+                  {t('secondary')}
+                </Link>
+              </Tappable>
             </div>
           </div>
         </Reveal>

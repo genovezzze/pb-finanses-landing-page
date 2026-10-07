@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <title>PB Finanses favicon</title>
+  <rect x="7" y="7" width="498" height="498" rx="99" fill="#ffffff" stroke="#236e74" stroke-width="10"/>
+  <g transform="translate(61.3 110.8) scale(1.65)">
+    <path fill="#236e74" d="M0 41.5H28V176H0Z M41.7 41.5H111.3V135H41.7V107.2H83.4V69.4H41.7Z"/>
+    <path fill="#c1c1c1" d="M125.1 0H153V135H125.1Z M166.8 41.5H236V135H166.8V107.2H208.2V69.4H166.8Z"/>
+  </g>
+</svg>

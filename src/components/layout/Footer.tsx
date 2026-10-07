@@ -10,6 +10,41 @@ export default async function Footer() {
   const links = ['services', 'about', 'insights', 'contact'] as const
   const pages = { services: 'pakalpojumi', about: 'par-mums', insights: 'jaunumi', contact: 'kontakti' }
 
+  const socials = [
+    {
+      label: 'Facebook',
+      href: 'https://www.facebook.com/PBFinanses/',
+      icon: (
+        <path d="M15 3h-2.9A4.1 4.1 0 0 0 8 7.1V10H5.6v3H8v8h3v-8h2.6l.5-3H11V7.3a1 1 0 0 1 1-1h3V3z" fill="currentColor" />
+      ),
+    },
+    {
+      label: 'Instagram',
+      href: 'https://www.instagram.com/pbfinanses/',
+      icon: (
+        <>
+          <rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" strokeWidth="1.6" />
+          <circle cx="12" cy="12" r="3.4" fill="none" stroke="currentColor" strokeWidth="1.6" />
+          <circle cx="16.5" cy="7.5" r="1.05" fill="currentColor" />
+        </>
+      ),
+    },
+    {
+      label: 'TikTok',
+      href: 'https://www.tiktok.com/@pb.finanses',
+      icon: (
+        <path d="M14 4c.3 2 1.6 3.4 3.6 3.6v2.4c-1.2 0-2.4-.4-3.6-1.1v5.6a4.9 4.9 0 1 1-4.9-4.9c.3 0 .6 0 .9.1v2.5a2.4 2.4 0 1 0 1.6 2.3V4H14z" fill="currentColor" />
+      ),
+    },
+    {
+      label: 'LinkedIn',
+      href: 'https://www.linkedin.com/company/pb-finanses/',
+      icon: (
+        <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm6 0h3.8v1.64h.05c.53-1 1.82-2.05 3.75-2.05 4.01 0 4.75 2.64 4.75 6.07V21h-4v-5.35c0-1.28-.02-2.92-1.78-2.92-1.78 0-2.05 1.39-2.05 2.83V21H9V9z" fill="currentColor" />
+      ),
+    },
+  ]
+
   return (
     <footer
       style={{
@@ -56,6 +91,24 @@ export default async function Footer() {
           >
             {t('tagline')}
           </p>
+
+          {/* Social profiles */}
+          <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
+            {socials.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="footer-social"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                  {s.icon}
+                </svg>
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Nav */}
@@ -162,6 +215,30 @@ export default async function Footer() {
           pbfinanses.lv
         </span>
       </div>
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        .footer-social {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 38px;
+          height: 38px;
+          border-radius: 999px;
+          border: 1px solid rgba(255,255,255,0.16);
+          color: rgba(255,255,255,0.72);
+          transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s cubic-bezier(0.16,1,0.3,1);
+        }
+        .footer-social:hover {
+          color: #001d20;
+          background: #f1ede3;
+          border-color: #f1ede3;
+          transform: translateY(-2px);
+        }
+      `,
+        }}
+      />
     </footer>
   )
 }

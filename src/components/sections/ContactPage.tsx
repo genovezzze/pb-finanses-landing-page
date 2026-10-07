@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { useState, type FormEvent } from 'react'
+import { Tappable } from '@/components/ui/tappable'
 
 /**
  * Contacts page, modelled on the Numeri layout: a light two-column block with
@@ -116,9 +117,11 @@ export default function ContactPage() {
                 <input name="phone" type="tel" placeholder={form('phonePlaceholder')} className="ck-input" />
                 <input name="company" placeholder="Uzņēmuma nosaukums" className="ck-input" />
                 <textarea name="message" required rows={4} placeholder={form('messagePlaceholder')} className="ck-input ck-textarea" />
-                <button type="submit" className="ck-submit" disabled={submitting}>
-                  {submitting ? 'Sūta...' : form('submit')}
-                </button>
+                <Tappable>
+                  <button type="submit" className="ck-submit" disabled={submitting}>
+                    {submitting ? 'Sūta...' : form('submit')}
+                  </button>
+                </Tappable>
                 {error && <p className="ck-error">{error}</p>}
               </form>
             )}

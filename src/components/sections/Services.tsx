@@ -10,6 +10,7 @@ export default function Services() {
     badge: string
     description: string
     premium: boolean
+    slug: string
   }>
 
   // Геометрические маркеры как SVG: юникод-глифы вроде ◻ на части систем
@@ -80,8 +81,8 @@ export default function Services() {
           }}
         >
           {items.map((item, i) => (
+            <Reveal key={item.name} variant="up" duration={0.5} delay={i * 0.07}>
             <div
-              key={item.name}
               className="service-card"
               style={{
                 position: 'relative',
@@ -150,7 +151,7 @@ export default function Services() {
                 </p>
               </Reveal>
               <a
-                href={`/${locale}/kontakti`}
+                href={`/${locale}/pakalpojumi/${item.slug}`}
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: 12,
@@ -163,6 +164,7 @@ export default function Services() {
                 {t('learnMore')}
               </a>
             </div>
+            </Reveal>
           ))}
         </div>
       </div>

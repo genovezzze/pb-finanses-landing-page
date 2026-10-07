@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useState, type FormEvent } from 'react'
+import { Tappable } from '@/components/ui/tappable'
 
 /**
  * "Vai tava grāmatvedība tev maksā par daudz?" - the quiz funnel.
@@ -253,9 +254,11 @@ export default function Quiz() {
               <input name="email" type="email" required placeholder="E-pasts" className="quiz-input" />
               <input name="phone" type="tel" required placeholder="Tālrunis" className="quiz-input" />
 
-              <button type="submit" className="quiz-submit" disabled={submitting}>
-                {submitting ? 'Sūta...' : 'Saņemt personīgo analīzi'}
-              </button>
+              <Tappable style={{ alignSelf: 'stretch' }}>
+                <button type="submit" className="quiz-submit" disabled={submitting} style={{ width: '100%' }}>
+                  {submitting ? 'Sūta...' : 'Saņemt personīgo analīzi'}
+                </button>
+              </Tappable>
               {error && <p className="quiz-error">{error}</p>}
               <p className="quiz-note">
                 Konsultācija 100 € - bezmaksas, ja kļūsti par klientu. Tavi dati netiek nodoti trešajām pusēm.

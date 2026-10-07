@@ -2,7 +2,9 @@
 import { motion, type Transition } from 'motion/react'
 import type { CSSProperties, ReactNode } from 'react'
 
-const EASE: Transition['ease'] = [0.16, 1, 0.3, 1]
+// A gentle overshoot so every reveal lands with a little spring rather than a
+// flat glide - the base motion feel shared across the whole site.
+const EASE: Transition['ease'] = [0.22, 1.2, 0.36, 1]
 
 export type RevealVariant = 'up' | 'down' | 'left' | 'right' | 'scale' | 'blur' | 'rise' | 'tilt' | 'wipe'
 

@@ -2,6 +2,7 @@
 import { useTranslations } from 'next-intl'
 import { useState, type FormEvent } from 'react'
 import { Reveal } from '@/components/ui/reveal'
+import { Tappable } from '@/components/ui/tappable'
 
 export default function Contact() {
   const t = useTranslations('contact')
@@ -190,14 +191,15 @@ export default function Contact() {
                   className="contact-input"
                   style={{ ...inputStyle, resize: 'vertical' as const }}
                 />
-                <button type="submit" className="contact-cta btn-teal" style={{
-                  border: 'none',
-                  cursor: 'pointer',
-                  letterSpacing: '0.02em',
-                  alignSelf: 'flex-start',
-                }}>
-                  {form('submit')}
-                </button>
+                <Tappable style={{ alignSelf: 'flex-start' }}>
+                  <button type="submit" className="contact-cta btn-teal" style={{
+                    border: 'none',
+                    cursor: 'pointer',
+                    letterSpacing: '0.02em',
+                  }}>
+                    {form('submit')}
+                  </button>
+                </Tappable>
               </form>
             )}
           </Reveal>

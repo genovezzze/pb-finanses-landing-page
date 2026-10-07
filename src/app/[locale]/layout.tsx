@@ -102,7 +102,12 @@ export default async function LocaleLayout({ children, params }: Props) {
       },
       knowsLanguage: ['lv', 'ru', 'en', 'de', 'it'],
     },
-    sameAs: [],
+    sameAs: [
+      'https://www.facebook.com/PBFinanses/',
+      'https://www.instagram.com/pbfinanses/',
+      'https://www.tiktok.com/@pb.finanses',
+      'https://www.linkedin.com/company/pb-finanses/',
+    ],
     taxID: '41203042116',
     hasCredential: {
       '@type': 'EducationalOccupationalCredential',

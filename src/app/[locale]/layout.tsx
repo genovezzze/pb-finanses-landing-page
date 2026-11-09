@@ -74,11 +74,18 @@ export default async function LocaleLayout({ children, params }: Props) {
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'AccountingService',
+    '@id': `${SITE_URL}/#organization`,
     name: 'PB Finanses',
+    legalName: 'SIA "PB Finanses"',
+    description:
+      'Pilna servisa finanšu ārpakalpojumi Latvijā: grāmatvedība, nodokļu konsultācijas, biznesa konsultācijas un finanšu direktors ārpakalpojumā. Licencēts grāmatvedis Ventspilī.',
     image: `${SITE_URL}/images/founder-agnese.jpg`,
+    logo: `${SITE_URL}/images/PBFinanses_LOGO_500.png`,
     url: SITE_URL,
     telephone: '+37129716434',
     email: 'info@pbfinanses.lv',
+    currenciesAccepted: 'EUR',
+    paymentAccepted: 'Bank transfer',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Lielais prospekts 54-9',
@@ -86,8 +93,44 @@ export default async function LocaleLayout({ children, params }: Props) {
       postalCode: 'LV-3601',
       addressCountry: 'LV',
     },
-    areaServed: 'LV',
-    priceRange: '$$',
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 57.3937,
+      longitude: 21.5647,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '17:00',
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: 'Latvia',
+    },
+    knowsAbout: [
+      'Grāmatvedība',
+      'Nodokļu konsultācijas',
+      'Biznesa konsultācijas',
+      'Finanšu direktors ārpakalpojumā',
+      'Finanšu plānošana un budžetēšana',
+      'Start-up risinājumi',
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Pakalpojumi',
+      itemListElement: [
+        'Grāmatvedības pakalpojumi',
+        'Nodokļu konsultācijas',
+        'Biznesa konsultācijas',
+        'Finanšu plānošana un budžetēšana',
+        'Start-up risinājumi',
+      ].map((s) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: s },
+      })),
+    },
+    priceRange: '€€',
     foundingDate: '2011',
     founder: {
       '@type': 'Person',

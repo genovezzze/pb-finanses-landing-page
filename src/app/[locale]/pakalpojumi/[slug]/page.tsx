@@ -96,8 +96,21 @@ export default async function ServiceDetailPage({
   }
   const banner = BANNERS[slug]
 
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'PB Finanses', item: `https://www.pbfinanses.lv/${locale}` },
+      { '@type': 'ListItem', position: 2, name: item.name, item: `https://www.pbfinanses.lv/${locale}/pakalpojumi/${slug}` },
+    ],
+  }
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
       {/* Shared banner: identical size/style to /cenas and /par-mums. */}
       <PageHero
         eyebrow={item.badge}

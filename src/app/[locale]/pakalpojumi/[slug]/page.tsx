@@ -53,7 +53,6 @@ export async function generateMetadata({
       languages: {
         lv: `/lv/pakalpojumi/${slug}`,
         en: `/en/pakalpojumi/${slug}`,
-        ru: `/ru/pakalpojumi/${slug}`,
         'x-default': `/lv/pakalpojumi/${slug}`,
       },
     },

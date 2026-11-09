@@ -26,7 +26,6 @@ export async function generateMetadata({
       languages: {
         lv: '/lv/cenas',
         en: '/en/cenas',
-        ru: '/ru/cenas',
         'x-default': '/lv/cenas',
       },
     },

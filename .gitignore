@@ -29,4 +29,6 @@ yarn-error.log*
 next-env.d.ts
 
 # Large media (keep out of git - exceeds GitHub 100MB limit; host/compress separately)
-public/videos/
+public/videos/*
+# ...but ship the web-optimised consultation clip so it deploys with the site
+!public/videos/konsultacija-web.mp4

@@ -14,15 +14,14 @@ export default function Navbar() {
   const h = useTranslations('hero')
   const c = useTranslations('contact')
   const s = useTranslations('services')
-  const serviceItems = s.raw('items') as { name: string; description: string }[]
+  const serviceItems = s.raw('items') as { name: string; description: string; slug: string }[]
   const locale = useLocale()
   const router = useRouter()
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
-  // The header always wears its dark, cream-on-teal treatment now, on every
-  // page and at every scroll position - never the ink-on-white variant. It also
-  // stays fixed in place: no hide-on-scroll-down behaviour.
+  // The header wears its teal cream-on-brand treatment on every page. It stays
+  // fixed in place: no hide-on-scroll-down behaviour.
   const overHero = true
   // Flipped one frame after mount so the bar has a state to animate *from*.
   const [ready, setReady] = useState(false)
@@ -46,7 +45,9 @@ export default function Navbar() {
 
   const navLinks = ['services', 'pricing', 'about', 'insights', 'contact'] as const
   const pageFor = {
-    services: 'pakalpojumi',
+    // The services landing page was removed; the menu opens the dropdown on
+    // desktop, and on mobile this points at the first service page.
+    services: 'pakalpojumi/biznesa-konsultacijas',
     pricing: 'cenas',
     about: 'par-mums',
     clients: 'klienti',
@@ -71,7 +72,7 @@ export default function Navbar() {
           position: 'sticky',
           top: 0,
           zIndex: 100,
-          /* matches the hero ground, so bar and hero read as one dark band */
+          /* Matches the hero ground, so bar and hero read as one dark band. */
           background: overHero && !menuOpen ? '#001d20' : 'var(--color-canvas-white)',
           borderBottom:
             overHero && !menuOpen ? 'none' : '1px solid var(--color-parchment-rule)',
@@ -129,10 +130,20 @@ export default function Navbar() {
                     onMouseEnter={() => setServicesOpen(true)}
                     onMouseLeave={() => setServicesOpen(false)}
                   >
-                    <Link
-                      href={`/${locale}/pakalpojumi`}
+                    <button
+                      type="button"
                       className="nav-link"
-                      style={{ display: 'flex', alignItems: 'center', gap: 5 }}
+                      onClick={() => setServicesOpen((o) => !o)}
+                      aria-expanded={servicesOpen}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 5,
+                        background: 'none',
+                        border: 'none',
+                        padding: 0,
+                        cursor: 'pointer',
+                      }}
                     >
                       {t(key)}
                       <svg
@@ -144,7 +155,7 @@ export default function Navbar() {
                       >
                         <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
-                    </Link>
+                    </button>
 
                     {/* Full-width mega panel */}
                     <div className="mega-panel" data-open={servicesOpen}>
@@ -152,7 +163,7 @@ export default function Navbar() {
                         {serviceItems.map((item, i) => (
                           <Link
                             key={i}
-                            href={`/${locale}/pakalpojumi`}
+                            href={`/${locale}/pakalpojumi/${item.slug}`}
                             onClick={() => setServicesOpen(false)}
                             className="mega-item"
                           >
@@ -346,12 +357,15 @@ export default function Navbar() {
           align-items: center;
           text-decoration: none;
           flex-shrink: 0;
+          /* Nudge the logo right so its left edge lines up with the hero copy
+             (which sits at 4.65% of the viewport), past the nav's 40px padding. */
+          margin-left: max(0px, calc(4.65vw - 40px));
         }
         .brand-logo {
           width: auto;
           /* The full mark carries the tagline under the wordmark, so it needs
              more height than the plain lockup did to stay legible. */
-          height: 48px;
+          height: 46px;
           display: block;
           transition: filter 0.35s ease, opacity 0.35s ease;
         }
@@ -413,11 +427,11 @@ export default function Navbar() {
           }
         }
 
-        /* Sitting on the dark hero: the whole bar inverts to ivory. */
-        /* over the dark hero the teal/grey logo is knocked out to ivory */
+        /* Sitting on the teal bar: the controls read in ivory, and the logo is
+           shown in its own native teal/grey colours (no knock-out). */
         header[data-over-hero='true'] .brand-logo {
           filter: brightness(0) invert(1);
-          opacity: 0.92;
+          opacity: 0.95;
         }
         header[data-over-hero='true'] .nav-link,
         header[data-over-hero='true'] .lang-btn { color: #f1ede3; }

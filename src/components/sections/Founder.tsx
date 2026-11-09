@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { Reveal } from '@/components/ui/reveal'
 
-export default function Founder() {
+export default function Founder({ headerInBanner = false }: { headerInBanner?: boolean }) {
   const t = useTranslations('founder')
   const bio = t.raw('bio') as string[]
 
@@ -24,22 +24,33 @@ export default function Founder() {
         >
           {/* Left: text */}
           <Reveal variant="left">
-            <p className="eyebrow" style={{ marginBottom: 20 }}>
-              {t('eyebrow')}
-            </p>
-            <h2
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontWeight: 700,
-                fontSize: 'clamp(36px, 4vw, 52px)',
-                color: 'var(--color-ink-black)',
-                letterSpacing: '-0.02em',
-                marginBottom: 8,
-                lineHeight: 1.1,
-              }}
-            >
-              {t('name')}
-            </h2>
+            <Image
+              src="/images/PBFinanses_LOGO_500.png"
+              alt="PB Finanses"
+              width={500}
+              height={270}
+              style={{ width: 'auto', height: 54, display: 'block', marginBottom: 24 }}
+            />
+            {!headerInBanner && (
+              <>
+                <p className="eyebrow" style={{ marginBottom: 20 }}>
+                  {t('eyebrow')}
+                </p>
+                <h2
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 700,
+                    fontSize: 'clamp(36px, 4vw, 52px)',
+                    color: 'var(--color-ink-black)',
+                    letterSpacing: '-0.02em',
+                    marginBottom: 8,
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {t('name')}
+                </h2>
+              </>
+            )}
             <div
               style={{
                 fontFamily: 'var(--font-mono)',
@@ -100,7 +111,7 @@ export default function Founder() {
                 letterSpacing: '0.02em',
               }}
             >
-              {t('contact')} →
+              {t('contact')}
             </a>
           </Reveal>
 

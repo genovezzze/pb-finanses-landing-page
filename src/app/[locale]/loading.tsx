@@ -33,8 +33,8 @@ export default function Loading() {
           align-items: center;
           justify-content: center;
           gap: 34px;
-          background: #001d20;
-          animation: pbLoaderIn 0.3s ease both;
+          background: #ffffff;
+          animation: pbLoaderIn 0.15s ease both;
         }
         .pb-loader-mark {
           position: relative;
@@ -44,31 +44,29 @@ export default function Loading() {
           align-items: center;
           justify-content: center;
         }
-        /* The teal/grey logo is knocked out to ivory to read on the dark ground,
-           and breathes in scale + opacity. */
+        /* Native teal/grey logo on the white ground; breathes in scale + opacity. */
         .pb-loader-logo {
           width: 132px;
           height: auto;
-          filter: brightness(0) invert(1);
-          opacity: 0.94;
-          animation: pbLoaderBreath 2.2s ease-in-out infinite;
+          opacity: 0.96;
+          animation: pbLoaderBreath 1.4s ease-in-out infinite;
         }
         /* Rotating accent ring: a single gilt arc chasing around the mark. */
         .pb-loader-ring {
           position: absolute;
           inset: 0;
           border-radius: 50%;
-          border: 2px solid rgba(241, 237, 227, 0.12);
-          border-top-color: #f1ede3;
-          border-right-color: rgba(241, 237, 227, 0.5);
-          animation: pbLoaderSpin 1s linear infinite;
+          border: 2px solid rgba(35, 110, 116, 0.14);
+          border-top-color: #236E74;
+          border-right-color: rgba(35, 110, 116, 0.5);
+          animation: pbLoaderSpin 0.7s linear infinite;
         }
         .pb-loader-bar {
           position: relative;
           width: 168px;
           height: 3px;
           border-radius: 999px;
-          background: rgba(241, 237, 227, 0.14);
+          background: rgba(35, 110, 116, 0.12);
           overflow: hidden;
         }
         .pb-loader-bar > span {
@@ -78,8 +76,8 @@ export default function Loading() {
           height: 100%;
           width: 40%;
           border-radius: 999px;
-          background: #f1ede3;
-          animation: pbLoaderSweep 1.25s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+          background: #236E74;
+          animation: pbLoaderSweep 0.85s cubic-bezier(0.65, 0, 0.35, 1) infinite;
         }
         @keyframes pbLoaderIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes pbLoaderSpin { to { transform: rotate(360deg); } }
@@ -93,7 +91,7 @@ export default function Loading() {
         }
         @media (prefers-reduced-motion: reduce) {
           .pb-loader-logo, .pb-loader-ring, .pb-loader-bar > span { animation: none; }
-          .pb-loader-ring { border-top-color: #f1ede3; }
+          .pb-loader-ring { border-top-color: #236E74; }
         }
       `,
         }}

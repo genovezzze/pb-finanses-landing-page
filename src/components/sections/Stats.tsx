@@ -56,7 +56,7 @@ export default function Stats({ embedded = false }: { embedded?: boolean }) {
   const m = useTranslations('metrics')
 
   const stats = [
-    { end: 23, prefix: '', suffix: '', label: m('years') },
+    { end: 30, prefix: '', suffix: '+', label: m('years') },
     { end: 571, prefix: '€', suffix: 'K', label: m('turnover') },
     { end: 12, prefix: '', suffix: '', label: m('employees') },
     { end: 120, prefix: '', suffix: '+', label: m('clients') },

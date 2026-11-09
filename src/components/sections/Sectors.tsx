@@ -10,9 +10,10 @@ const SECTOR_IMAGES = [
 ]
 
 const SECTOR_ALTS = [
-  'Jauns bizness - zelta pildspalva uz krēmkrāsas papīra',
-  'Holdingi un korporācijas - biroju ēkas arhitektūra',
-  'Pašvaldības un NVO - klasiskā arhitektūra',
+  'Jaunuzņēmumi',
+  'Holdingi un korporācijas',
+  'Starptautiskas korporācijas',
+  'NVO - biedrības un nodibinājumi',
 ]
 
 export default function Sectors() {
@@ -22,8 +23,6 @@ export default function Sectors() {
   const ref = useRef<HTMLElement>(null)
   const [inView, setInView] = useState(false)
 
-  // One observer for the section, stagger handled in CSS - same pattern as the
-  // hero, and it replays when the section is scrolled back to.
   useEffect(() => {
     const el = ref.current
     if (!el) return
@@ -39,33 +38,26 @@ export default function Sectors() {
     <section
       ref={ref}
       className={inView ? 'is-in' : undefined}
-      style={{
-        background: 'var(--color-linen-tint)',
-        padding: '64px 0',
-      }}
+      style={{ background: 'var(--color-linen-tint)', padding: '64px 0' }}
     >
       <div className="section-wrap">
         <h2
-            id="sectors-title"
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontWeight: 700,
-              fontSize: 'clamp(36px, 4vw, 52px)',
-              color: 'var(--color-ink-black)',
-              letterSpacing: '-0.02em',
-              lineHeight: 1.1,
-              marginBottom: 40,
-            }}
-          >
-            {t('title')}
-          </h2>
+          id="sectors-title"
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontWeight: 700,
+            fontSize: 'clamp(26px, 2.6vw, 36px)',
+            color: 'var(--color-ink-black)',
+            letterSpacing: '-0.02em',
+            lineHeight: 1.1,
+            marginBottom: 40,
+          }}
+        >
+          {t('title')}
+        </h2>
         <div
           className="sector-card-grid"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: 16,
-          }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}
         >
           {items.map((item, i) => (
             <div
@@ -82,26 +74,26 @@ export default function Sectors() {
               }}
             >
               {/* Image block */}
-              <div
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  aspectRatio: '16/9',
-                  overflow: 'hidden',
-                }}
-              >
-                <Image
-                  src={SECTOR_IMAGES[i]}
-                  alt={SECTOR_ALTS[i]}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  style={{
-                    objectFit: 'cover',
-                    transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1)',
-                  }}
-                  className="sector-img"
-                />
-                {/* Gilt overlay on hover */}
+              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden' }}>
+                {SECTOR_IMAGES[i] ? (
+                  <Image
+                    src={SECTOR_IMAGES[i]}
+                    alt={SECTOR_ALTS[i]}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    style={{ objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.16,1,0.3,1)' }}
+                    className="sector-img"
+                  />
+                ) : (
+                  <div
+                    className="sector-img"
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(135deg, var(--color-gilt), var(--color-gilt-dark))',
+                    }}
+                  />
+                )}
                 <div
                   className="sector-overlay"
                   style={{
@@ -116,29 +108,29 @@ export default function Sectors() {
 
               {/* Text */}
               <div style={{ padding: '24px 28px 28px' }}>
-                  <h3
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontWeight: 700,
-                      fontSize: 22,
-                      color: 'var(--color-ink-black)',
-                      marginBottom: 10,
-                      lineHeight: 1.2,
-                      letterSpacing: '-0.02em',
-                    }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontSize: 14,
-                      color: 'var(--color-graphite)',
-                      lineHeight: 1.65,
-                    }}
-                  >
-                    {item.body}
-                  </p>
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 700,
+                    fontSize: 22,
+                    color: 'var(--color-ink-black)',
+                    marginBottom: 10,
+                    lineHeight: 1.2,
+                    letterSpacing: '-0.02em',
+                  }}
+                >
+                  {item.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: 14,
+                    color: 'var(--color-graphite)',
+                    lineHeight: 1.65,
+                  }}
+                >
+                  {item.body}
+                </p>
               </div>
             </div>
           ))}
@@ -146,8 +138,6 @@ export default function Sectors() {
       </div>
 
       <style>{`
-        /* Entrance: heading first, then the cards left to right. Delays are
-           cleared on hover so the lift stays instant. */
         #sectors-title, .sector-card {
           opacity: 0;
           transform: translateY(26px);
@@ -158,35 +148,29 @@ export default function Sectors() {
         .is-in #sectors-title { opacity: 1; transform: none; }
         .is-in .sector-card { opacity: 1; transform: none; }
         .is-in .sector-card:nth-child(1) { transition-delay: .12s; }
-        .is-in .sector-card:nth-child(2) { transition-delay: .22s; }
-        .is-in .sector-card:nth-child(3) { transition-delay: .32s; }
+        .is-in .sector-card:nth-child(2) { transition-delay: .20s; }
+        .is-in .sector-card:nth-child(3) { transition-delay: .28s; }
+        .is-in .sector-card:nth-child(4) { transition-delay: .36s; }
         .sector-card:hover { transition-delay: 0s; }
         @media (prefers-reduced-motion: reduce) {
           #sectors-title, .sector-card { opacity: 1; transform: none; transition: none; }
         }
-        .sector-card h3 {
-          transition: color 0.3s ease;
-        }
+        .sector-card h3 { transition: color 0.3s ease; }
         .sector-card:hover {
           transform: translateY(-8px);
           box-shadow: 0 30px 50px -24px rgba(12,10,7,0.28);
         }
-        .sector-card:hover .sector-img {
-          transform: scale(1.06);
-        }
-        .sector-card:hover .sector-overlay {
-          opacity: 1;
-        }
-        .sector-card:hover h3 {
-          color: var(--color-gilt);
-        }
+        .sector-card:hover .sector-img { transform: scale(1.06); }
+        .sector-card:hover .sector-overlay { opacity: 1; }
+        .sector-card:hover h3 { color: var(--color-gilt); }
         @media (prefers-reduced-motion: reduce) {
-          .sector-card, .sector-card .sector-img, .sector-card .sector-overlay, .sector-card h3 {
-            transition: none;
-          }
+          .sector-card, .sector-card .sector-img, .sector-card .sector-overlay, .sector-card h3 { transition: none; }
           .sector-card:hover { transform: none; }
         }
-        @media (max-width: 768px) {
+        @media (max-width: 1040px) {
+          .sector-card-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 560px) {
           .sector-card-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>

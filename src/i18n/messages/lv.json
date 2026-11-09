@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "PB Finanses - Grāmatvedība un finanšu direktors ārpakalpojumā | Ventspils, Latvija",
-    "description": "Pilna servisa finanšu ārpakalpojumi Latvijā: grāmatvedība, nodokļu konsultācijas un finanšu direktors ārpakalpojumā. Uzticama komanda Ventspilī ar 20+ gadu pieredzi",
+    "description": "Pilna servisa finanšu ārpakalpojumi Latvijā: grāmatvedība, nodokļu konsultācijas un finanšu direktors ārpakalpojumā. Uzticama komanda Ventspilī ar 30+ gadu pieredzi",
     "keywords": "grāmatvedība Ventspilī, finanšu direktors ārpakalpojumā, nodokļu konsultācijas Latvijā, grāmatvedības pakalpojumi, CFO ārpakalpojumā, biznesa konsultācijas Latvija"
   },
   "nav": {
@@ -19,7 +19,7 @@
       "office": "Birojs"
     }
   },
-  "announcement": "Nodokļu konsultācija 2026 - piesakies šodien →",
+  "announcement": "Nodokļu konsultācija 2026 - piesakies šodien",
   "hero": {
     "eyebrow": "Pilna servisa finanšu kompānija",
     "headline": "Grāmatvedība ir intīms bizness",
@@ -62,22 +62,26 @@
     "title": "Strādājam ar",
     "items": [
       {
-        "title": "Jaunu biznesu",
-        "body": "Tikko sākāt uzņēmumu un vēlaties zināt, ka finanses ir kārtībā un nodokļi - pareizi"
+        "title": "Jaunuzņēmumiem",
+        "body": "Tikko sākāt uzņēmumu un vēlaties pārliecināties, ka finanses ir kārtībā un nodokļi tiek aprēķināti un plānoti pareizi"
       },
       {
         "title": "Holdingiem un korporācijām",
-        "body": "Optimizējam finanšu darbību, uzlabojam rādītājus investoriem un pārvaldām sarežģītas struktūras"
+        "body": "Uzlabojam finanšu rādītājus investoriem un pārvaldām sarežģītas struktūras"
       },
       {
-        "title": "Pašvaldībām un NVO",
-        "body": "Uzticams padomdevējs, kas saprot gan publiskā sektora specifiku, gan globālos finanšu procesus"
+        "title": "Starptautiskām korporācijām",
+        "body": "Sarežģītas struktūras, starptautiski darījumi un atskaites investoriem dažādās jurisdikcijās"
+      },
+      {
+        "title": "NVO - biedrībām un nodibinājumiem",
+        "body": "Projektu uzskaite, finansējuma atskaites un specifiskās prasības, ko mēs labi pārzinām"
       }
     ]
   },
   "industries": {
-    "title": "Nozares, kuras pārzinām",
-    "subtitle": "Seši virzieni, kuros mums ir visvairāk klientu un praktiskās pieredzes",
+    "title": "Populārākās nozares",
+    "subtitle": "Mēs pārzinām visas nozares",
     "clients": "klienti",
     "cardCta": "Pieteikties konsultācijai",
     "items": [
@@ -105,31 +109,22 @@
         "title": "Biznesa pakalpojumi, mārketings un izglītība",
         "body": "Liels skaits nelielu darījumu, uzņēmuma līgumi un autoratlīdzības, rentabilitāte pa klientiem"
       }
-    ]
+    ],
+    "eyebrow": "Nozares",
+    "headline": "Mēs pārzinām visas nozares",
+    "body": "Lai kāda būtu jūsu nozare, mēs to pārzinām - no IT un būvniecības līdz kokapstrādei, tirdzniecībai, viesmīlībai un pakalpojumiem. Katrai ir savas nianses, un mēs tās zinām.",
+    "topLabel": "Top 3 nozares",
+    "moreLabel": "Un ne tikai - strādājam arī ar",
+    "moreTag": "un citas"
   },
   "services": {
     "title": "Pakalpojumi",
-    "learnMore": "Uzzināt vairāk →",
+    "learnMore": "Uzzināt vairāk",
     "items": [
-      {
-        "name": "Finanšu direktors ārpakalpojumā",
-        "badge": "Populārākais",
-        "description": "Naudas plūsmas pārvaldība, budžeta kontrole, risku analīze un ārējā finansējuma koordinācija bez pastāvīga darbinieka izmaksām",
-        "premium": true,
-        "slug": "finansu-direktors",
-        "intro": "Stratēģiska finanšu vadība jūsu uzņēmumam bez pastāvīga darbinieka izmaksām.",
-        "points": [
-          "Naudas plūsmas prognozēšana un kontrole",
-          "Budžeta plānošana un izpildes uzraudzība",
-          "Risku analīze un vadības atskaites",
-          "Ārējā finansējuma piesaiste un koordinācija",
-          "Finanšu procesu optimizācija"
-        ]
-      },
       {
         "name": "Biznesa konsultācijas",
         "badge": "Premium",
-        "description": "Finansējuma stratēģija, refinansēšana un restrukturizācija. Atbilde uz jautājumu: kas notiks sliktākajā variantā?",
+        "description": "Finansējuma stratēģija, refinansēšana un restrukturizācija. Atbilde uz jautājumu: kas notiks sliktākajā variantā un kāds būtu labākais?",
         "premium": true,
         "slug": "biznesa-konsultacijas",
         "intro": "Palīdzam pieņemt pārdomātus lēmumus par finansējumu un uzņēmuma attīstību.",
@@ -143,29 +138,31 @@
       {
         "name": "Nodokļu konsultācijas",
         "badge": "Aktuāli",
-        "description": "Optimāla nodokļu struktūra, PVN jautājumi, darba spēka nodokļi un nodokļu risku novērtēšana",
+        "description": "Precīza un godīga nodokļu struktūra, PVN jautājumi, darbaspēka nodokļi un nodokļu risku novērtēšana",
         "premium": false,
         "slug": "nodoklu-konsultacijas",
         "intro": "Skaidrība nodokļu jautājumos un risku samazināšana.",
         "points": [
-          "Optimāla nodokļu struktūra",
+          "Precīza un godīga nodokļu struktūra",
           "PVN jautājumi un reģistrācija",
           "Darbaspēka nodokļi",
-          "Nodokļu risku novērtēšana"
+          "Nodokļu risku novērtēšana",
+          "Kā nepārmaksāt nodokļus un neuzkāpt uz grābekļa"
         ]
       },
       {
         "name": "Grāmatvedības pakalpojumi",
         "badge": "Pamats",
-        "description": "Pilna ārpakalpojuma grāmatvedība - no primārajiem dokumentiem līdz gada pārskatam",
+        "description": "Pilna ārpakalpojuma grāmatvedība visā Latvijā - no pirmdokumentiem līdz gada pārskatam",
         "premium": false,
         "slug": "gramatvedibas-pakalpojumi",
-        "intro": "Pilna ārpakalpojuma grāmatvedība - no primārajiem dokumentiem līdz gada pārskatam.",
+        "intro": "Pilna ārpakalpojuma grāmatvedība - no pirmdokumentiem līdz gada pārskatam, neatkarīgi no jūsu atrašanās vietas.",
         "points": [
           "Primāro dokumentu apstrāde",
           "Grāmatvedības kārtošana pilnā apjomā",
           "Algu aprēķins un atskaites",
-          "Gada pārskata sagatavošana"
+          "Gada pārskata sagatavošana",
+          "Grāmatvedība visā Latvijā - neatkarīgi no atrašanās vietas"
         ]
       },
       {
@@ -192,8 +189,9 @@
         "description": "Ilgtermiņa finanšu modelēšana, budžeta veidošana un izpildes kontrole",
         "premium": false,
         "slug": "finansu-planosana",
-        "intro": "Ilgtermiņa skatījums uz jūsu uzņēmuma finansēm.",
+        "intro": "Budžets ir vajadzīgs katram uzņēmumam - tā nav milzīga Excel tabula, bet skaidrs ceļš no vismazākā budžeta līdz vislielākajam. Palīdzam to izveidot un kontrolēt.",
         "points": [
+          "Budžets katram - no vismazākā līdz vislielākajam",
           "Ilgtermiņa finanšu modelēšana",
           "Budžeta veidošana",
           "Izpildes kontrole un korekcijas",
@@ -217,16 +215,31 @@
   },
   "pricing": {
     "eyebrow": "Cenas un sadarbība",
-    "title": "Cena, kas zināma jau pirms līguma",
-    "subtitle": "Divi modeļi - izvēlaties to, kas atbilst jūsu dokumentu plūsmai. Modelis tiek noteikts līgumā",
+    "title": "Skaidra cena jau pirms līguma",
+    "subtitle": "Divi modeļi - izvēlaties to, kas atbilst jūsu dokumentu plūsmai. Minimālā mēneša maksa ir 100 EUR + PVN - princips, kas der katram mūsu klientam",
     "plans": [
+      {
+        "name": "Mainīga maksa pēc apjoma",
+        "price": "no 100 EUR",
+        "priceSuffix": "/ mēnesī",
+        "priceNote": "+ PVN, iekļautas 80 transakcijas",
+        "body": "Maksājat pēc fakta - piemērota sezonālam biznesam ar mainīgu dokumentu plūsmu",
+        "featured": true,
+        "features": [
+          "80 transakcijas iekļautas pamatcenā",
+          "Katra nākamā transakcija 1,30 EUR + PVN",
+          "Maksājat par faktisko apjomu",
+          "Mēnešos bez grāmatvedības maksa netiek piemērota"
+        ],
+        "fine": "Piemērots: jūnijā 500 transakcijas = 100 + 1,30 × 420 = 646 EUR + PVN. Mēnesi grāmatojam nākamajā mēnesī, tāpēc rēķins seko ar viena mēneša nobīdi"
+      },
       {
         "name": "Fiksēta mēneša maksa",
         "price": "Individuāli",
         "priceSuffix": "",
-        "priceNote": "atkarībā no apjoma un nozares",
+        "priceNote": "sākot no 100 EUR/mēnesī, atkarībā no apjoma",
         "body": "Viena summa katru mēnesi neatkarīgi no sezonas. Piemērota uzņēmumiem ar stabilu un prognozējamu dokumentu plūsmu",
-        "featured": true,
+        "featured": false,
         "features": [
           "Viena, iepriekš zināma summa katru mēnesi",
           "Cena un apjoms noteikti līgumā",
@@ -234,31 +247,16 @@
           "Budžets plānojams gadu uz priekšu"
         ],
         "fine": "Ja faktiskais transakciju skaits pārsniedz līgumā noteikto vismaz divus mēnešus pēc kārtas, pārsniegumam tiek piemērots tarifs 1,30 EUR + PVN par transakciju"
-      },
-      {
-        "name": "Mainīga maksa pēc apjoma",
-        "price": "no 100 EUR",
-        "priceSuffix": "/ mēnesī",
-        "priceNote": "+ PVN, iekļautas 80 transakcijas",
-        "body": "Maksājat pēc fakta - piemērota sezonālam biznesam ar mainīgu dokumentu plūsmu",
-        "featured": false,
-        "features": [
-          "80 transakcijas iekļautas pamatcenā",
-          "Katra nākamā transakcija 1,30 EUR + PVN",
-          "Maksājat par faktisko apjomu",
-          "Klusajos mēnešos maksājat minimumu"
-        ],
-        "fine": "Piemērots: jūnijā 500 transakcijas = 100 + 1,30 × 420 = 646 EUR + PVN. Mēnesi grāmatojam nākamajā mēnesī, tāpēc rēķins seko ar viena mēneša nobīdi"
       }
     ],
     "includedTitle": "Abos modeļos iekļauts",
     "included": [
       "Pilna grāmatvedība un pirmdokumentu apstrāde",
       "Algu aprēķins, darbinieku pieņemšana un atlaišana",
-      "Nodokļu atskaites VID",
+      "Nodokļu atskaites VID (izņemot gada pārskatu)",
       "PVN pielikumi un atskaites par darījumiem ar ES partneriem",
-      "Operatīvais pārskats 4 × gadā (pēc nepieciešamības)",
-      "1 bezmaksas konsultāciju stunda",
+      "Operatīvais pārskats līdz 4 × gadā (pēc nepieciešamības)",
+      "1 bezmaksas konsultāciju stunda mēnesī",
       "Ikdienas saziņa ar VID",
       "Līgumu, rīkojumu un komandējumu atskaišu paraugi",
       "Neierobežots bankas kontu skaits - bez piemaksas"
@@ -283,7 +281,7 @@
       },
       {
         "name": "Statistikas atskaites, maksājumu ievietošana bankā",
-        "price": "pēc stundu tarifa"
+        "price": "pēc stundu tarifa likmes"
       },
       {
         "name": "Stundu tarifs ārpus līguma",
@@ -319,7 +317,7 @@
       }
     ],
     "cta": "Pieteikt konsultāciju",
-    "ctaNote": "Precīzu cenu nosakām pēc jūsu dokumentu apjoma un nozares",
+    "ctaNote": "Precīzu cenu nosakām pēc jūsu dokumentu apjoma",
     "badge": "Populārākais",
     "metaTitle": "Cenas - grāmatvedības ārpakalpojums | PB Finanses",
     "metaDescription": "PB Finanses cenas: fiksēta mēneša maksa vai maksa pēc apjoma no 100 EUR + PVN. Papildu pakalpojumu tarifi un sadarbības noteikumi"
@@ -390,9 +388,9 @@
   "founder": {
     "eyebrow": "Par kompāniju",
     "name": "Agnese Pastare",
-    "credentials": "Mag.oec  ·  25+ gadi  ·  IFRS  ·  LTRK Nacionālās stratēģijas padomes locekle",
+    "credentials": "Mag.oec  ·  30+ gadi  ·  IFRS  ·  LTRK Nacionālās stratēģijas padomes locekle",
     "bio": [
-      "PB Finanses dibinātāja Agnese Pastare ieguvusi ekonomikas maģistra grādu (Mag.oec) Rīgas Tehniskajā universitātē un finanšu un uzņēmējdarbības jomā strādā jau vairāk nekā 25 gadus",
+      "PB Finanses dibinātāja Agnese Pastare ieguvusi ekonomikas maģistra grādu (Mag.oec) Rīgas Tehniskajā universitātē un finanšu un uzņēmējdarbības jomā strādā jau vairāk nekā 30 gadus",
       "Pieredze gūta banku sektorā - kā Pirmās Bankas (šodien Luminor) Ventspils filiāles vadītājas vietniece un juridisko personu kredītspeciāliste - starptautiskiem standartiem atbilstošā grāmatvedības praksē, tranzītbiznesā un nekustamā īpašuma nozarē",
       "Agnesei ir IAB sertifikāti starptautiskajā grāmatvedībā, IFRS pārskatu sagatavošanā un finanšu analīzē, viņa ir ABZ Finance valdes priekšsēdētāja, kā arī LTRK Kurzemes uzņēmēju padomes un LTRK Nacionālās stratēģijas padomes locekle",
       "Agnese brīvi runā latviešu, krievu un angļu valodā. Ārpus finansēm viņa ir starptautiski titulēta mākslas fotogrāfe (AFIAP) un Ventspils pilsētas Balvas laureāte par ieguldījumu pilsētas saimnieciskajā un kultūras attīstībā"
@@ -460,8 +458,8 @@
   },
   "insights": {
     "title": "Jaunumi",
-    "all": "Visi raksti →",
-    "readMore": "Lasīt vairāk →",
+    "all": "Visi raksti",
+    "readMore": "Lasīt vairāk",
     "items": [
       {
         "date": "Janvāris 2026",
@@ -533,7 +531,7 @@
     "title": "Sazināties",
     "floatingTitle": "Parunāsim par jūsu biznesu?",
     "body": "Konsultācija maksā 100 EUR - un ir bez maksas, ja pēc tās kļūstat par mūsu klientu. Pastāstiet par savu uzņēmumu - mēs atradīsim labāko risinājumu",
-    "cta": "Pieteikties konsultācijai →",
+    "cta": "Pieteikties konsultācijai",
     "phone": "+371 29716434",
     "email": "info@pbfinanses.lv",
     "address": "Lielais prospekts 54-9, Ventspils, LV-3601",
@@ -542,16 +540,21 @@
       "phone": "TELEFONS",
       "email": "E-PASTS",
       "address": "ADRESE",
-      "languages": "VALODAS"
+      "languages": "VALODAS",
+      "hours": "DARBA LAIKS",
+      "bank": "BANKAS KONTS"
     },
     "form": {
       "namePlaceholder": "Jūsu vārds",
       "emailPlaceholder": "E-pasta adrese",
       "phonePlaceholder": "Tālruņa numurs (nav obligāti)",
       "messagePlaceholder": "Pastāstiet īsi par savu uzņēmumu un situāciju",
-      "submit": "Nosūtīt pieprasījumu →",
+      "submit": "Nosūtīt pieprasījumu",
       "success": "Paldies! Jūsu e-pasta klients tagad atvērsies, lai nosūtītu pieprasījumu"
-    }
+    },
+    "hours": "Darba dienās 9.00-17.00 - birojs vienmēr atvērts",
+    "bankName": "Swedbank AS",
+    "iban": "IBAN: LV__ HABA ____ ____ ____ _ (norādīt)"
   },
   "footer": {
     "tagline": "Finanšu pārvaldība - tā ir māksla",

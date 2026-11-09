@@ -1,31 +1,22 @@
-import Image from 'next/image'
+import { getTranslations } from 'next-intl/server'
 import Founder from '@/components/sections/Founder'
 import Team from '@/components/sections/Team'
 import Office from '@/components/sections/Office'
+import PageHero from '@/components/sections/PageHero'
 
-export default function AboutPage() {
+export default async function AboutPage({
+  params,
+}: {
+  params: { locale: string }
+}) {
+  const { locale } = params
+  const t = await getTranslations({ locale, namespace: 'founder' })
+  const nav = await getTranslations({ locale, namespace: 'nav' })
   return (
     <main>
-      {/* Wide banner under the navbar, then the rest of the page unchanged. */}
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: 'clamp(96px, 11vw, 150px)',
-          overflow: 'hidden',
-        }}
-      >
-        <Image
-          src="/images/team-hero.jpg"
-          alt="PB Finanses komanda"
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover' }}
-        />
-      </div>
+      <PageHero eyebrow={t('eyebrow')} title={nav('about')} />
 
-      <Founder />
+      <Founder headerInBanner />
       <Team />
       <Office />
     </main>

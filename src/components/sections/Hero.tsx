@@ -5,12 +5,13 @@ import { useLocale } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
 import { Tappable } from '@/components/ui/tappable'
 
-const TEAM_PHOTO = '/images/team-hero.jpg'
+const TEAM_PHOTO = '/images/team-hero.webp'
 
 export default function Hero() {
   const locale = useLocale()
   const heroRef = useRef<HTMLElement>(null)
   const copyRef = useRef<HTMLDivElement>(null)
+  const mediaRef = useRef<HTMLDivElement>(null)
   const [inView, setInView] = useState(false)
 
   // Fade the hero copy up and out as the page scrolls past it, matching the
@@ -21,12 +22,20 @@ export default function Hero() {
     if (!el) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
+    const media = mediaRef.current
     let raf = 0
     const update = () => {
       raf = 0
-      const p = Math.min(Math.max(window.scrollY / 420, 0), 1)
+      const y = window.scrollY
+      const p = Math.min(Math.max(y / 420, 0), 1)
       el.style.transform = `translateY(${-p * 14}px)`
       el.style.opacity = String(1 - p)
+      // Parallax: the photograph drifts down slower than the page scrolls, for
+      // a sense of depth.
+      if (media) {
+        const pm = Math.min(y / 700, 1)
+        media.style.backgroundPosition = `center calc(28% + ${pm * 46}px)`
+      }
     }
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update)
@@ -60,6 +69,7 @@ export default function Hero() {
           frame, and so the slow zoom can run without touching layout. */}
       <div
         className="photo-hero-media"
+        ref={mediaRef}
         role="img"
         aria-label="PB Finanses komanda Ventspils birojā"
         style={{ backgroundImage: `url('${TEAM_PHOTO}')` }}
@@ -67,7 +77,9 @@ export default function Hero() {
       <div className="photo-hero-scrim" aria-hidden="true" />
 
       <div className="photo-hero-copy" ref={copyRef} style={{ willChange: 'transform, opacity' }}>
-        <h1 className="photo-hero-title">Grāmatvedība<br />ir intīms bizness</h1>
+        <h1 className="photo-hero-title">
+          Finanšu pārvaldība<br />tā ir māksla!
+        </h1>
 
         <p className="photo-hero-sub">
           Mēs par tavu biznesu bieži zinām vairāk nekā tu pats.
@@ -169,10 +181,11 @@ export default function Hero() {
           font-weight: 700 !important;
           /* A touch more leading and top padding so the Latvian macron on ī/ā
              is not clipped by the tight line box. */
-          line-height: 1.18;
-          padding-top: 0.08em;
+          line-height: 1.38;
+          padding-top: 0.26em;
           letter-spacing: -.02em;
         }
+        .photo-hero-accent { color: var(--hero-ivory); }
 
         .photo-hero-sub {
           margin-top: 22px;

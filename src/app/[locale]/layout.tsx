@@ -7,6 +7,7 @@ import { editorialSerif, playfair, inter, neueHaasDisplayBlack, posterDisplay, p
 import '../globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import IntroSplash from '@/components/layout/IntroSplash'
 
 const SITE_URL = 'https://www.pbfinanses.lv'
 const OG_LOCALES: Record<string, string> = { lv: 'lv_LV', en: 'en_US', ru: 'ru_RU' }
@@ -139,6 +140,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <NextIntlClientProvider messages={messages}>
+          <IntroSplash />
           <Navbar />
           {children}
           <Footer />

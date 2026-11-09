@@ -116,7 +116,7 @@ export default function Office() {
                   textDecoration: 'none',
                 }}
               >
-                {c('phone')} →
+                {c('phone')}
               </a>
             </div>
           </Reveal>

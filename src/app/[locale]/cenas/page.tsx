@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
 import Pricing from '@/components/sections/Pricing'
-import Contact from '@/components/sections/Contact'
+import ContactPage from '@/components/sections/ContactPage'
+import PageHero from '@/components/sections/PageHero'
 import { Tappable } from '@/components/ui/tappable'
 
 const SITE_URL = 'https://www.pbfinanses.lv'
@@ -40,34 +40,18 @@ export async function generateMetadata({
   }
 }
 
-export default function PricingPage({
+export default async function PricingPage({
   params,
 }: {
   params: { locale: string }
 }) {
   const { locale } = params
+  const t = await getTranslations({ locale, namespace: 'pricing' })
   return (
     <main>
-      {/* Wide banner under the navbar, same pattern as the Par mums page. */}
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: 'clamp(96px, 11vw, 150px)',
-          overflow: 'hidden',
-        }}
-      >
-        <Image
-          src="/images/481015454_1556450015297497_8823412931938160365_n.jpg"
-          alt="PB Finanses"
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', objectPosition: 'center 55%', transform: 'scale(1.6)' }}
-        />
-      </div>
+      <PageHero eyebrow={t('eyebrow')} title={t('title')} />
 
-      <Pricing />
+      <Pricing headerInBanner />
 
       {/* Consultation explainer: readable copy on the left, the vertical
           (9:16) video on the right - read it or watch it. Poster is a
@@ -94,23 +78,23 @@ export default function PricingPage({
             </p>
             <Tappable>
               <Link href={`/${locale}/kontakti`} className="konsult-btn">
-                Pieteikt konsultāciju <span aria-hidden="true">→</span>
+                Pieteikt konsultāciju
               </Link>
             </Tappable>
           </div>
 
           <figure className="konsult-media">
-            <video
-              src="/videos/konsultacija.mp4"
-              poster="/images/pb_finanses_konsultacija.svg"
-              controls
-              playsInline
-              preload="metadata"
-            />
-            <figcaption className="konsult-caption">
-              <span className="konsult-caption-play" aria-hidden="true">▶</span>
-              Cik maksā mūsu konsultācija? <span className="konsult-caption-dim">1:26</span>
-            </figcaption>
+            <div className="konsult-embed">
+              <iframe
+                src="https://www.tiktok.com/embed/v2/7680849764703014146"
+                title="Cik maksā mūsu konsultācija?"
+                loading="lazy"
+                allow="encrypted-media; fullscreen; picture-in-picture"
+                allowFullScreen
+                scrolling="no"
+                frameBorder="0"
+              />
+            </div>
           </figure>
         </div>
 
@@ -166,19 +150,27 @@ export default function PricingPage({
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-end;
+            justify-content: center;
             gap: 14px;
           }
-          .konsult-media video {
-            height: 100%;
-            width: auto;
-            max-height: 400px;
-            aspect-ratio: 9 / 16;
-            object-fit: cover;
-            border-radius: 22px;
-            background: #001d20;
+          /* TikTok's embed has a 325px min width, so it is scaled down with a
+             transform; full height is kept so the whole video stays visible. */
+          .konsult-embed {
+            --embed-scale: 0.74;
+            width: calc(325px * var(--embed-scale));
+            height: calc(580px * var(--embed-scale));
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
             box-shadow: 0 34px 70px -32px rgba(12,10,7,0.45);
+          }
+          .konsult-embed iframe {
+            width: 325px;
+            height: 580px;
+            border: 0;
             display: block;
+            transform: scale(var(--embed-scale));
+            transform-origin: top left;
           }
           .konsult-caption {
             display: inline-flex;
@@ -212,17 +204,14 @@ export default function PricingPage({
           @media (max-width: 860px) {
             .konsult-grid { grid-template-columns: 1fr; }
             .konsult-media { justify-self: center; }
-            .konsult-media video {
-              width: min(50vw, 210px);
-            }
-            .konsult-caption { max-width: min(50vw, 210px); }
+            .konsult-caption { max-width: calc(325px * 0.74); }
           }
         `,
           }}
         />
       </section>
 
-      <Contact />
+      <ContactPage />
     </main>
   )
 }

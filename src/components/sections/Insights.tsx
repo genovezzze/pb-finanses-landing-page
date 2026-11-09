@@ -1,7 +1,6 @@
 import { useTranslations } from 'next-intl'
 import { useLocale } from 'next-intl'
 import Image from 'next/image'
-import { Reveal } from '@/components/ui/reveal'
 
 // Article art. Deliberately thematic rather than portraits of the team - these
 // headlines are placeholders, and a real colleague's face next to one would read
@@ -37,7 +36,7 @@ export default function Insights({ compact = false }: { compact?: boolean }) {
     >
       <div className="section-wrap insights-wrap">
         {/* Header */}
-        <Reveal variant="scale">
+        <div>
           <div
             style={{
               display: 'flex',
@@ -61,11 +60,11 @@ export default function Insights({ compact = false }: { compact?: boolean }) {
               {t('all')}
             </a>
           </div>
-        </Reveal>
+        </div>
 
         <div className="insights-layout">
           {/* ── Latest article, played large ── */}
-          <Reveal variant="up" duration={0.5} className="insight-feature-wrap">
+          <div className="insight-feature-wrap">
             <article className="insight-card insight-feature">
               <div className="insight-media">
                 <Image
@@ -85,12 +84,12 @@ export default function Insights({ compact = false }: { compact?: boolean }) {
                 </p>
               </div>
             </article>
-          </Reveal>
+          </div>
 
           {/* ── The rest, 2 × 2 ── */}
           <div className="insight-grid">
             {rest.map((item, i) => (
-              <Reveal key={item.title} variant="up" duration={0.45} delay={0.05 * (i + 1)}>
+              <div key={item.title}>
                 <article className="insight-card insight-small">
                   <div className="insight-media">
                     <Image
@@ -109,7 +108,7 @@ export default function Insights({ compact = false }: { compact?: boolean }) {
                     </p>
                   </div>
                 </article>
-              </Reveal>
+              </div>
             ))}
           </div>
         </div>

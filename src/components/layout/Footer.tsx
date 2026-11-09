@@ -8,7 +8,7 @@ export default async function Footer() {
   const locale = await getLocale()
 
   const links = ['services', 'about', 'insights', 'contact'] as const
-  const pages = { services: 'pakalpojumi', about: 'par-mums', insights: 'jaunumi', contact: 'kontakti' }
+  const pages = { services: 'pakalpojumi/biznesa-konsultacijas', about: 'par-mums', insights: 'jaunumi', contact: 'kontakti' }
 
   const socials = [
     {
@@ -48,9 +48,10 @@ export default async function Footer() {
   return (
     <footer
       style={{
-        background: 'var(--color-espresso)',
-        color: 'var(--color-canvas-white)',
+        background: 'var(--color-canvas-white)',
+        color: 'var(--color-ink-black)',
         padding: '56px 0 32px',
+        borderTop: '1px solid var(--color-parchment-rule)',
       }}
     >
       <div
@@ -60,7 +61,7 @@ export default async function Footer() {
           gridTemplateColumns: '1fr 1fr 1fr',
           gap: 40,
           paddingBottom: 40,
-          borderBottom: '1px solid rgba(255,255,255,0.08)',
+          borderBottom: '1px solid var(--color-parchment-rule)',
         }}
       >
         {/* Brand */}
@@ -72,12 +73,9 @@ export default async function Footer() {
             height={270}
             style={{
               width: 'auto',
-              height: 64,
+              height: 46,
               display: 'block',
               marginBottom: 16,
-              /* logo is teal + grey; knock it out to white on the dark footer */
-              filter: 'brightness(0) invert(1)',
-              opacity: 0.92,
             }}
           />
 
@@ -85,7 +83,7 @@ export default async function Footer() {
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: 14,
-              color: 'rgba(255,255,255,0.5)',
+              color: 'var(--color-stone)',
               lineHeight: 1.6,
             }}
           >
@@ -115,11 +113,16 @@ export default async function Footer() {
         <div>
           <div
             style={{
+              display: 'inline-block',
               fontFamily: 'var(--font-body)',
               fontSize: 10,
-              fontWeight: 500,
-              letterSpacing: '0.12em',
-              color: 'rgba(255,255,255,0.35)',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: '#fff',
+              background: 'var(--color-gilt)',
+              borderRadius: 999,
+              padding: '4px 12px',
               marginBottom: 16,
             }}
           >
@@ -133,7 +136,7 @@ export default async function Footer() {
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: 14,
-                  color: 'rgba(255,255,255,0.65)',
+                  color: 'var(--color-graphite)',
                   textDecoration: 'none',
                   transition: 'color 0.15s',
                 }}
@@ -148,11 +151,16 @@ export default async function Footer() {
         <div>
           <div
             style={{
+              display: 'inline-block',
               fontFamily: 'var(--font-body)',
               fontSize: 10,
-              fontWeight: 500,
-              letterSpacing: '0.12em',
-              color: 'rgba(255,255,255,0.35)',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: '#fff',
+              background: 'var(--color-gilt)',
+              borderRadius: 999,
+              padding: '4px 12px',
               marginBottom: 16,
             }}
           >
@@ -170,7 +178,7 @@ export default async function Footer() {
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: 14,
-                  color: 'rgba(255,255,255,0.65)',
+                  color: 'var(--color-graphite)',
                   textDecoration: 'none',
                 }}
               >
@@ -195,7 +203,7 @@ export default async function Footer() {
           style={{
             fontFamily: 'var(--font-body)',
             fontSize: 12,
-            color: 'rgba(255,255,255,0.3)',
+            color: 'var(--color-stone)',
           }}
         >
           {t('copyright')}
@@ -208,7 +216,7 @@ export default async function Footer() {
           style={{
             fontFamily: 'var(--font-mono)',
             fontSize: 11,
-            color: 'rgba(255,255,255,0.3)',
+            color: 'var(--color-stone)',
             letterSpacing: '0.06em',
           }}
         >
@@ -226,14 +234,14 @@ export default async function Footer() {
           width: 38px;
           height: 38px;
           border-radius: 999px;
-          border: 1px solid rgba(255,255,255,0.16);
-          color: rgba(255,255,255,0.72);
+          border: 1px solid var(--color-gilt);
+          color: var(--color-gilt);
           transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s cubic-bezier(0.16,1,0.3,1);
         }
         .footer-social:hover {
-          color: #001d20;
-          background: #f1ede3;
-          border-color: #f1ede3;
+          color: #fff;
+          background: var(--color-gilt);
+          border-color: var(--color-gilt);
           transform: translateY(-2px);
         }
       `,

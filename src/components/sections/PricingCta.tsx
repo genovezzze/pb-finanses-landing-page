@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 import { Reveal } from '@/components/ui/reveal'
@@ -15,6 +16,14 @@ export default function PricingCta() {
 
   return (
     <section className="section-gap pricing-cta-band">
+      <Image
+        src="/images/PBFinanses_LOGO_500.png"
+        alt=""
+        aria-hidden="true"
+        width={500}
+        height={270}
+        className="pcb-watermark"
+      />
       <div className="section-wrap">
         <Reveal variant="up" duration={0.5}>
           <div className="pcb-inner">
@@ -43,7 +52,19 @@ export default function PricingCta() {
       <style
         dangerouslySetInnerHTML={{
           __html: `
-        .pricing-cta-band { background: var(--color-canvas-white); }
+        .pricing-cta-band { background: var(--color-canvas-white); position: relative; overflow: hidden; }
+        .pcb-watermark {
+          position: absolute;
+          top: 50%;
+          right: -40px;
+          transform: translateY(-50%);
+          width: clamp(220px, 26vw, 360px);
+          height: auto;
+          opacity: 0.06;
+          pointer-events: none;
+          user-select: none;
+        }
+        @media (max-width: 900px) { .pcb-watermark { display: none; } }
         .pcb-inner {
           display: flex;
           align-items: flex-end;

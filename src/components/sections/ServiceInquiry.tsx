@@ -97,7 +97,7 @@ export default function ServiceInquiry({ serviceName }: { serviceName: string })
         }
         .svc-inquiry-body button {
           margin-top: 4px;
-          background: var(--color-gilt);
+          background: #001d20;
           color: #fff;
           font-family: var(--font-body);
           font-size: 15px;

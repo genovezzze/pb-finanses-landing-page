@@ -95,6 +95,17 @@ export default function ContactPage() {
               </div>
 
               <div className="ck-detail">
+                <span className="ck-detail-label">{t('labels.hours')}</span>
+                <span className="ck-detail-value">{t('hours')}</span>
+              </div>
+
+              <div className="ck-detail">
+                <span className="ck-detail-label">{t('labels.bank')}</span>
+                <span className="ck-detail-value">{t('bankName')}</span>
+                <span className="ck-detail-sub">{t('iban')}</span>
+              </div>
+
+              <div className="ck-detail">
                 <span className="ck-detail-label">Rekvizīti</span>
                 <span className="ck-detail-value">SIA &ldquo;PB Finanses&rdquo;</span>
                 <span className="ck-detail-sub">Reģ. Nr. 41203042116 · PVN LV41203042116</span>

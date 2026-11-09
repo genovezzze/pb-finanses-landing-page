@@ -3,7 +3,6 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { Testimonial } from '@/components/ui/testimonials-columns-1'
-import { Reveal } from '@/components/ui/reveal'
 
 export default function Testimonials({ compact = false }: { compact?: boolean }) {
   const t = useTranslations('testimonials')
@@ -52,8 +51,9 @@ export default function Testimonials({ compact = false }: { compact?: boolean })
       style={{ background: 'var(--color-linen-tint)' }}
     >
       <div className="section-wrap">
-        {/* Header row: eyebrow on the left, carousel arrows on the right. */}
-        <Reveal variant="blur">
+        {/* Header row: eyebrow on the left, carousel arrows on the right.
+            No reveal here - the whole section shows at once, no entrance flash. */}
+        <div>
           <div className="testimonials-head">
             <h2 className="testimonials-title">{t('eyebrow')}</h2>
 
@@ -82,17 +82,11 @@ export default function Testimonials({ compact = false }: { compact?: boolean })
               </button>
             </div>
           </div>
-        </Reveal>
+        </div>
 
         <div className="testimonials-track" ref={trackRef}>
-          {items.map(({ quote, name, role, initials, photo }, index) => (
-            <Reveal
-              key={name}
-              variant="up"
-              duration={0.6}
-              delay={(index % 3) * 0.1}
-              className="testimonial-cell"
-            >
+          {items.map(({ quote, name, role, initials, photo }) => (
+            <div key={name} className="testimonial-cell">
               <article className="testimonial-card">
                 <span className="testimonial-quote-mark" aria-hidden="true">“</span>
                 <p className="testimonial-quote">{quote}</p>
@@ -114,7 +108,7 @@ export default function Testimonials({ compact = false }: { compact?: boolean })
                   </div>
                 </div>
               </article>
-            </Reveal>
+            </div>
           ))}
         </div>
       </div>
@@ -178,6 +172,10 @@ export default function Testimonials({ compact = false }: { compact?: boolean })
              clipped by overflow-x:auto; the horizontal edge does the full-bleed. */
           padding: 10px var(--edge) 40px;
           margin: -10px calc(50% - 50vw) -24px;
+          /* Match the section ground and stop horizontal overscroll so the white
+             body background never flashes behind the full-bleed track. */
+          background: var(--color-linen-tint);
+          overscroll-behavior-x: contain;
           -ms-overflow-style: none;
           scrollbar-width: none;
         }

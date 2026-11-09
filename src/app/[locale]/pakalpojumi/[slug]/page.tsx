@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import ServiceInquiry from '@/components/sections/ServiceInquiry'
-import ServiceHero from '@/components/sections/ServiceHero'
+import PageHero from '@/components/sections/PageHero'
 import Testimonials from '@/components/sections/Testimonials'
 
 const SITE_URL = 'https://www.pbfinanses.lv'
@@ -81,35 +80,35 @@ export default async function ServiceDetailPage({
   const detail = await getTranslations({ locale, namespace: 'services.detail' })
   const isStartup = slug === 'start-up-risinajumi'
 
+  // Per-service banner photos (Agnese Pastare). Services without an entry fall
+  // back to the default flowers banner.
+  const chess = {
+    image: '/images/strategy-chess.webp',
+    objectPosition: 'center 32%',
+    imageScale: 1.35,
+    imageOrigin: 'left center',
+  }
+  const BANNERS: Record<string, { image: string; objectPosition?: string; imageScale?: number; imageOrigin?: string }> = {
+    'biznesa-konsultacijas': chess,
+    'finansu-planosana': chess,
+    'start-up-risinajumi': { image: '/images/startup-ezers.webp', objectPosition: 'center 42%' },
+    'gramatvedibas-pakalpojumi': { image: '/images/gramatvediba-ziedi.webp', objectPosition: 'center 45%' },
+    'nodoklu-konsultacijas': { image: '/images/nodokli-magones.webp', objectPosition: 'center 50%' },
+  }
+  const banner = BANNERS[slug]
+
   return (
     <main>
-      {/* Banner under the navbar, same pattern as /cenas and /par-mums. */}
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: 'clamp(140px, 22vw, 300px)',
-          overflow: 'hidden',
-        }}
-      >
-        <Image
-          src="/images/481015454_1556450015297497_8823412931938160365_n.jpg"
-          alt="PB Finanses"
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', objectPosition: 'center 55%' }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'linear-gradient(to bottom, rgba(0,29,32,0.35), rgba(0,29,32,0.72))',
-          }}
-        />
-        <ServiceHero badge={item.badge} name={item.name} />
-      </div>
+      {/* Shared banner: identical size/style to /cenas and /par-mums. */}
+      <PageHero
+        eyebrow={item.badge}
+        title={item.name}
+        image={banner?.image}
+        objectPosition={banner?.objectPosition}
+        imageScale={banner?.imageScale}
+        imageOrigin={banner?.imageOrigin}
+        credit={banner ? 'Agnese Pastare' : undefined}
+      />
 
       <section className="svc-detail">
         <div className="section-wrap">
@@ -153,41 +152,6 @@ export default async function ServiceDetailPage({
       <style
         dangerouslySetInnerHTML={{
           __html: `
-        .svc-banner-inner {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          gap: 12px;
-          max-width: 1180px;
-          margin: 0 auto;
-          padding: 0 24px clamp(20px, 3vw, 40px);
-          width: 100%;
-        }
-        .svc-badge {
-          align-self: flex-start;
-          font-family: var(--font-display);
-          font-size: 11px;
-          font-weight: 600;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          color: #fff;
-          background: rgba(255,255,255,0.18);
-          border: 1px solid rgba(255,255,255,0.5);
-          border-radius: 999px;
-          padding: 4px 12px;
-          backdrop-filter: blur(4px);
-        }
-        .svc-title {
-          font-family: var(--font-display);
-          font-weight: 700;
-          font-size: clamp(28px, 4vw, 46px);
-          line-height: 1.1;
-          letter-spacing: -0.02em;
-          color: #fff;
-          margin: 0;
-        }
         .svc-detail {
           background: var(--color-canvas-white);
           padding: clamp(32px, 5vw, 64px) 0 clamp(48px, 7vw, 90px);

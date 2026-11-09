@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 import { Reveal } from '@/components/ui/reveal'
@@ -36,7 +37,7 @@ const Tick = () => (
  * page of promises. The individual fixed fee stays out - it is quoted per
  * company once the document volume is known.
  */
-export default function Pricing() {
+export default function Pricing({ headerInBanner = false }: { headerInBanner?: boolean }) {
   const t = useTranslations('pricing')
   const locale = useLocale()
   const plans = t.raw('plans') as Plan[]
@@ -46,12 +47,26 @@ export default function Pricing() {
 
   return (
     <section id="pricing" className="section-gap pricing">
+      <Image
+        src="/images/PBFinanses_LOGO_500.png"
+        alt=""
+        aria-hidden="true"
+        width={500}
+        height={270}
+        className="pricing-watermark"
+      />
       <div className="section-wrap">
-        {/* Header, centred over the cards the way a price table expects */}
+        {/* Header, centred over the cards the way a price table expects. When the
+            page banner already carries the eyebrow + title, only the subtitle
+            stays here so it is not repeated. */}
         <Reveal variant="blur">
           <div className="pricing-head">
-            <p className="eyebrow pricing-eyebrow">{t('eyebrow')}</p>
-            <h2 className="pricing-title">{t('title')}</h2>
+            {!headerInBanner && (
+              <>
+                <p className="eyebrow pricing-eyebrow">{t('eyebrow')}</p>
+                <h2 className="pricing-title">{t('title')}</h2>
+              </>
+            )}
             <p className="pricing-subtitle">{t('subtitle')}</p>
           </div>
         </Reveal>
@@ -83,7 +98,7 @@ export default function Pricing() {
                 <p className="plan-fine">{plan.fine}</p>
 
                 <Link href={`/${locale}/kontakti`} className="plan-link">
-                  {t('cta')} <span aria-hidden="true">→</span>
+                  {t('cta')}
                 </Link>
               </div>
             </Reveal>
@@ -146,7 +161,20 @@ export default function Pricing() {
       <style
         dangerouslySetInnerHTML={{
           __html: `
-        .pricing { background: var(--color-canvas-white); }
+        .pricing { background: var(--color-canvas-white); position: relative; overflow: hidden; }
+        .pricing-watermark {
+          position: absolute;
+          top: 40px;
+          right: -30px;
+          width: clamp(200px, 22vw, 320px);
+          height: auto;
+          opacity: 0.07;
+          pointer-events: none;
+          user-select: none;
+          z-index: 0;
+        }
+        .pricing .section-wrap { position: relative; z-index: 1; }
+        @media (max-width: 900px) { .pricing-watermark { display: none; } }
 
         .pricing-head {
           max-width: 660px;

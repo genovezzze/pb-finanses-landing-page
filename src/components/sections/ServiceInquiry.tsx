@@ -62,7 +62,7 @@ export default function ServiceInquiry({ serviceName }: { serviceName: string })
           box-shadow: 0 24px 50px -34px rgba(12,10,7,0.3);
         }
         .svc-inquiry-head {
-          background: #001d20;
+          background: var(--color-gilt);
           color: #fff;
           font-family: var(--font-display);
           font-weight: 700;
@@ -97,7 +97,7 @@ export default function ServiceInquiry({ serviceName }: { serviceName: string })
         }
         .svc-inquiry-body button {
           margin-top: 4px;
-          background: #001d20;
+          background: var(--color-gilt);
           color: #fff;
           font-family: var(--font-body);
           font-size: 15px;

@@ -34,7 +34,7 @@ export default function Hero() {
       // a sense of depth.
       if (media) {
         const pm = Math.min(y / 700, 1)
-        media.style.backgroundPosition = `center calc(28% + ${pm * 46}px)`
+        media.style.backgroundPosition = `center calc(45% + ${pm * 46}px)`
       }
     }
     const onScroll = () => {
@@ -83,7 +83,7 @@ export default function Hero() {
 
         <p className="photo-hero-sub">
           Mēs par tavu biznesu bieži zinām vairāk nekā tu pats.
-          Tāpēc tā ir uzticības lieta - un mēs to sargājam.
+          Tāpēc tā ir uzticības lieta, un mēs to sargājam.
         </p>
 
         <div className="photo-hero-actions">
@@ -123,8 +123,8 @@ export default function Hero() {
           background-repeat: no-repeat;
           background-size: cover;
           /* Faces sit in the upper half of the frame, so the crop is held above
-             centre - at hero proportions a centred crop cuts them in half. */
-          background-position: center 28%;
+             centre, at hero proportions a centred crop cuts them in half. */
+          background-position: center 45%;
           transform: scale(1.06);
           opacity: 0;
           transition: opacity 1.2s ease, transform 6s cubic-bezier(.16,1,.3,1);

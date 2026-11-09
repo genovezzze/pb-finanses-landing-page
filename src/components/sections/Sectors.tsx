@@ -4,16 +4,16 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
 const SECTOR_IMAGES = [
-  'https://d8j0ntlcm91z4.cloudfront.net/user_3GG0etPk7kKigScTFkcs4Y7pOC7/hf_20260709_130046_e68e3537-dead-4fd1-97a3-e5809b7a9209.png',
-  'https://d8j0ntlcm91z4.cloudfront.net/user_3GG0etPk7kKigScTFkcs4Y7pOC7/hf_20260709_130048_c00b668c-9acd-4595-8d33-cabc172dfddd.png',
-  'https://d8j0ntlcm91z4.cloudfront.net/user_3GG0etPk7kKigScTFkcs4Y7pOC7/hf_20260709_130050_083c73a9-eda1-4d7d-8080-e656b2e7cbae.png',
+  '/images/sector-jaunuznemumi.webp',
+  '/images/sector-holdingi.webp',
+  '/images/sector-starptautiskas.webp',
 ]
 
 const SECTOR_ALTS = [
   'Jaunuzņēmumi',
   'Holdingi un korporācijas',
   'Starptautiskas korporācijas',
-  'NVO - biedrības un nodibinājumi',
+  'NVO, biedrības un nodibinājumi',
 ]
 
 export default function Sectors() {
@@ -104,6 +104,23 @@ export default function Sectors() {
                     transition: 'opacity 0.4s',
                   }}
                 />
+                {SECTOR_IMAGES[i]?.startsWith('/images/') && (
+                  <span
+                    style={{
+                      position: 'absolute',
+                      right: 8,
+                      bottom: 7,
+                      fontFamily: 'var(--font-body)',
+                      fontSize: 10.5,
+                      fontWeight: 500,
+                      color: 'rgba(255,255,255,0.85)',
+                      textShadow: '0 1px 3px rgba(0,0,0,0.6)',
+                      pointerEvents: 'none',
+                    }}
+                  >
+                    Agnese Pastare
+                  </span>
+                )}
               </div>
 
               {/* Text */}

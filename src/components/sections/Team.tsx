@@ -122,23 +122,25 @@ const ExpandIcon = () => (
   </svg>
 )
 
-export default function Team() {
+export default function Team({ showHeader = true }: { showHeader?: boolean }) {
   const t = useTranslations('team')
   const locale = useLocale()
 
   return (
     <section id="team" className="section-gap team">
       <div className="section-wrap">
-        <Reveal variant="blur" duration={0.5}>
-          <div className="team-head">
-            <div>
-              <p className="eyebrow team-eyebrow">{t('eyebrow')}</p>
-              <h2 className="team-title">{t('title')}</h2>
+        {showHeader && (
+          <Reveal variant="blur" duration={0.5}>
+            <div className="team-head">
+              <div>
+                <p className="eyebrow team-eyebrow">{t('eyebrow')}</p>
+                <h2 className="team-title">{t('title')}</h2>
+              </div>
             </div>
-          </div>
 
-          <p className="team-intro">{t('intro')}</p>
-        </Reveal>
+            <p className="team-intro">{t('intro')}</p>
+          </Reveal>
+        )}
 
         <div className="team-track">
           {PEOPLE.map((person, i) => (

@@ -71,7 +71,7 @@ export default function ContactPage() {
             <div className="ck-details">
               <div className="ck-detail">
                 <span className="ck-detail-label">Darba laiks</span>
-                <span className="ck-detail-value">Darba dienās: 09:00 - 17:00</span>
+                <span className="ck-detail-value">Darba dienās: no 09:00 līdz 17:00</span>
                 <span className="ck-detail-sub">Brīvdienās slēgts</span>
               </div>
 

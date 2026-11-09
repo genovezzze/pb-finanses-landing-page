@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "PB Finanses - Grāmatvedība un finanšu direktors ārpakalpojumā | Ventspils, Latvija",
+    "title": "PB Finanses, Grāmatvedība un finanšu direktors ārpakalpojumā | Ventspils, Latvija",
     "description": "Pilna servisa finanšu ārpakalpojumi Latvijā: grāmatvedība, nodokļu konsultācijas un finanšu direktors ārpakalpojumā. Uzticama komanda Ventspilī ar 30+ gadu pieredzi",
     "keywords": "grāmatvedība Ventspilī, finanšu direktors ārpakalpojumā, nodokļu konsultācijas Latvijā, grāmatvedības pakalpojumi, CFO ārpakalpojumā, biznesa konsultācijas Latvija"
   },
@@ -19,11 +19,11 @@
       "office": "Birojs"
     }
   },
-  "announcement": "Nodokļu konsultācija 2026 - piesakies šodien",
+  "announcement": "Nodokļu konsultācija 2026, piesakies šodien",
   "hero": {
     "eyebrow": "Pilna servisa finanšu kompānija",
     "headline": "Grāmatvedība ir intīms bizness",
-    "subtext": "Mēs par tavu biznesu bieži zinām vairāk nekā tu pats. Tāpēc tā ir uzticības lieta - un mēs to sargājam",
+    "subtext": "Mēs par tavu biznesu bieži zinām vairāk nekā tu pats. Tāpēc tā ir uzticības lieta, un mēs to sargājam",
     "audienceQuestions": [
       "Tikko sākāt jaunu biznesu un vēlaties būt pārliecināts, ka peļņa būs tieši paredzētajā termiņā un esošie resursi būs pietiekami, lai sasniegtu savus mērķus?",
       "Jūsu pašvaldībā vai NVO nepieciešams uzticams padomdevējs, kas filigrāni pārzina ne tikai biznesa norises, bet arī izprot globālos procesus?",
@@ -74,7 +74,7 @@
         "body": "Sarežģītas struktūras, starptautiski darījumi un atskaites investoriem dažādās jurisdikcijās"
       },
       {
-        "title": "NVO - biedrībām un nodibinājumiem",
+        "title": "NVO, biedrībām un nodibinājumiem",
         "body": "Projektu uzskaite, finansējuma atskaites un specifiskās prasības, ko mēs labi pārzinām"
       }
     ]
@@ -112,9 +112,9 @@
     ],
     "eyebrow": "Nozares",
     "headline": "Mēs pārzinām visas nozares",
-    "body": "Lai kāda būtu jūsu nozare, mēs to pārzinām - no IT un būvniecības līdz kokapstrādei, tirdzniecībai, viesmīlībai un pakalpojumiem. Katrai ir savas nianses, un mēs tās zinām.",
+    "body": "Lai kāda būtu jūsu nozare, mēs to pārzinām, no IT un būvniecības līdz kokapstrādei, tirdzniecībai, viesmīlībai un pakalpojumiem. Katrai ir savas nianses, un mēs tās zinām.",
     "topLabel": "Top 3 nozares",
-    "moreLabel": "Un ne tikai - strādājam arī ar",
+    "moreLabel": "Un ne tikai, strādājam arī ar",
     "moreTag": "un citas"
   },
   "services": {
@@ -153,16 +153,16 @@
       {
         "name": "Grāmatvedības pakalpojumi",
         "badge": "Pamats",
-        "description": "Pilna ārpakalpojuma grāmatvedība visā Latvijā - no pirmdokumentiem līdz gada pārskatam",
+        "description": "Pilna ārpakalpojuma grāmatvedība visā Latvijā, no pirmdokumentiem līdz gada pārskatam",
         "premium": false,
         "slug": "gramatvedibas-pakalpojumi",
-        "intro": "Pilna ārpakalpojuma grāmatvedība - no pirmdokumentiem līdz gada pārskatam, neatkarīgi no jūsu atrašanās vietas.",
+        "intro": "Pilna ārpakalpojuma grāmatvedība, no pirmdokumentiem līdz gada pārskatam, neatkarīgi no jūsu atrašanās vietas.",
         "points": [
           "Primāro dokumentu apstrāde",
           "Grāmatvedības kārtošana pilnā apjomā",
           "Algu aprēķins un atskaites",
           "Gada pārskata sagatavošana",
-          "Grāmatvedība visā Latvijā - neatkarīgi no atrašanās vietas"
+          "Grāmatvedība visā Latvijā, neatkarīgi no atrašanās vietas"
         ]
       },
       {
@@ -171,13 +171,13 @@
         "description": "Uzņēmuma reģistrācija, pirmie līgumi, nodokļu atbildes un izaugsmes plānošana",
         "premium": false,
         "slug": "start-up-risinajumi",
-        "intro": "Palīdzam uzsākt uzņēmējdarbību - no reģistrācijas līdz pirmajiem līgumiem un nodokļiem.",
+        "intro": "Palīdzam uzsākt uzņēmējdarbību, no reģistrācijas līdz pirmajiem līgumiem un nodokļiem.",
         "points": [
           "Kā izvēlēties uzņēmējdarbības formu?",
-          "Kā nodibināt uzņēmumu - dokumenti, reģistrācija UR, reģistrācija VID?",
-          "Sākotnējie līgumi - paraugi, t.sk. darba līgumi",
-          "PVN reģistrācija - nepieciešama vai nē?",
-          "Mikronodoklis - izdevīgs?",
+          "Kā nodibināt uzņēmumu, dokumenti, reģistrācija UR, reģistrācija VID?",
+          "Sākotnējie līgumi, paraugi, t.sk. darba līgumi",
+          "PVN reģistrācija, nepieciešama vai nē?",
+          "Mikronodoklis, izdevīgs?",
           "Kādi nodokļi būs jāmaksā?",
           "Kādi nodokļu riski var rasties?",
           "Kādi ar darbaspēku saistītie nodokļu maksājumi radīsies?"
@@ -189,9 +189,9 @@
         "description": "Ilgtermiņa finanšu modelēšana, budžeta veidošana un izpildes kontrole",
         "premium": false,
         "slug": "finansu-planosana",
-        "intro": "Budžets ir vajadzīgs katram uzņēmumam - tā nav milzīga Excel tabula, bet skaidrs ceļš no vismazākā budžeta līdz vislielākajam. Palīdzam to izveidot un kontrolēt.",
+        "intro": "Budžets ir vajadzīgs katram uzņēmumam, tā nav milzīga Excel tabula, bet skaidrs ceļš no vismazākā budžeta līdz vislielākajam. Palīdzam to izveidot un kontrolēt.",
         "points": [
-          "Budžets katram - no vismazākā līdz vislielākajam",
+          "Budžets katram, no vismazākā līdz vislielākajam",
           "Ilgtermiņa finanšu modelēšana",
           "Budžeta veidošana",
           "Izpildes kontrole un korekcijas",
@@ -209,21 +209,21 @@
   "pricingCta": {
     "eyebrow": "Cenas",
     "title": "Cena zināma jau pirms līguma",
-    "body": "Divi modeļi - fiksēta mēneša maksa vai maksa pēc apjoma no 100 EUR. Publicējam arī papildu pakalpojumu tarifus un sadarbības noteikumus",
+    "body": "Divi modeļi, fiksēta mēneša maksa vai maksa pēc apjoma no 100 EUR. Publicējam arī papildu pakalpojumu tarifus un sadarbības noteikumus",
     "button": "Skatīt cenas",
     "secondary": "Pieteikt konsultāciju"
   },
   "pricing": {
     "eyebrow": "Cenas un sadarbība",
     "title": "Skaidra cena jau pirms līguma",
-    "subtitle": "Divi modeļi - izvēlaties to, kas atbilst jūsu dokumentu plūsmai. Minimālā mēneša maksa ir 100 EUR + PVN - princips, kas der katram mūsu klientam",
+    "subtitle": "Divi modeļi, izvēlaties to, kas atbilst jūsu dokumentu plūsmai. Minimālā mēneša maksa ir 100 EUR + PVN, princips, kas der katram mūsu klientam",
     "plans": [
       {
         "name": "Mainīga maksa pēc apjoma",
         "price": "no 100 EUR",
         "priceSuffix": "/ mēnesī",
         "priceNote": "+ PVN, iekļautas 80 transakcijas",
-        "body": "Maksājat pēc fakta - piemērota sezonālam biznesam ar mainīgu dokumentu plūsmu",
+        "body": "Maksājat pēc fakta, piemērota sezonālam biznesam ar mainīgu dokumentu plūsmu",
         "featured": true,
         "features": [
           "80 transakcijas iekļautas pamatcenā",
@@ -259,7 +259,7 @@
       "1 bezmaksas konsultāciju stunda mēnesī",
       "Ikdienas saziņa ar VID",
       "Līgumu, rīkojumu un komandējumu atskaišu paraugi",
-      "Neierobežots bankas kontu skaits - bez piemaksas"
+      "Neierobežots bankas kontu skaits, bez piemaksas"
     ],
     "extrasTitle": "Papildus pakalpojumi",
     "extras": [
@@ -288,15 +288,15 @@
         "price": "100 EUR/h + PVN"
       }
     ],
-    "extrasNote": "Gada pārskatam minimālā maksa ir 100 EUR + PVN, bet, ja uzņēmumam ir revidents - 500 EUR + PVN. Stundu tarifam var tikt piemērotas apjoma atlaides",
+    "extrasNote": "Gada pārskatam minimālā maksa ir 100 EUR + PVN, bet, ja uzņēmumam ir revidents, 500 EUR + PVN. Stundu tarifam var tikt piemērotas apjoma atlaides",
     "termsTitle": "Kā notiek sadarbība",
     "terms": [
       {
-        "title": "Dokumenti - tikai elektroniski",
+        "title": "Dokumenti, tikai elektroniski",
         "body": "Sūtiet uz info@pbfinanses.lv, tiklīdz dokuments ir jūsu rīcībā, neatkarīgi no tā, vai tas ir apmaksāts. Šogad atvērsim PB klientu portālu, kur dokumentus varēs augšupielādēt"
       },
       {
-        "title": "Termiņš - mēneša 7. datums",
+        "title": "Termiņš, mēneša 7. datums",
         "body": "Visiem iepriekšējā mēneša dokumentiem jābūt pie mums līdz nākamā mēneša 7. datumam. Pēc 10. datuma tie tiek uzskatīti par kavētiem"
       },
       {
@@ -305,21 +305,21 @@
       },
       {
         "title": "Programma un jūsu dati",
-        "body": "Strādājam Tildes Jumī. Līguma izbeigšanas gadījumā saņemat datu bāzes kopiju - dati paliek jūsu rīcībā"
+        "body": "Strādājam Tildes Jumī. Līguma izbeigšanas gadījumā saņemat datu bāzes kopiju, dati paliek jūsu rīcībā"
       },
       {
         "title": "Jūsu komanda",
-        "body": "Ar jums strādā viens atbildīgais grāmatvedis, kuru atvaļinājuma vai slimības laikā aizvieto nozīmēts kolēģis. Ikdienas jautājumi - ar grāmatvedi, stratēģiskie - ar uzņēmuma vadītāju"
+        "body": "Ar jums strādā viens atbildīgais grāmatvedis, kuru atvaļinājuma vai slimības laikā aizvieto nozīmēts kolēģis. Ikdienas jautājumi, ar grāmatvedi, stratēģiskie, ar uzņēmuma vadītāju"
       },
       {
         "title": "Līguma izbeigšana",
-        "body": "Brīdinot mēnesi iepriekš. 5-10 dienu laikā saņemat visus reģistrus, virsgrāmatu, digitālo dokumentu mapi un datu bāzes kopiju. Pēdējais mēnesis tiek apstrādāts nākamajā mēnesī - tāpēc arī šis brīdinājuma termiņš"
+        "body": "Brīdinot mēnesi iepriekš. 5 līdz 10 dienu laikā saņemat visus reģistrus, virsgrāmatu, digitālo dokumentu mapi un datu bāzes kopiju. Pēdējais mēnesis tiek apstrādāts nākamajā mēnesī, tāpēc arī šis brīdinājuma termiņš"
       }
     ],
     "cta": "Pieteikt konsultāciju",
     "ctaNote": "Precīzu cenu nosakām pēc jūsu dokumentu apjoma",
     "badge": "Populārākais",
-    "metaTitle": "Cenas - grāmatvedības ārpakalpojums | PB Finanses",
+    "metaTitle": "Cenas, grāmatvedības ārpakalpojums | PB Finanses",
     "metaDescription": "PB Finanses cenas: fiksēta mēneša maksa vai maksa pēc apjoma no 100 EUR + PVN. Papildu pakalpojumu tarifi un sadarbības noteikumi"
   },
   "testimonials": {
@@ -346,7 +346,7 @@
         "role": "Uzņēmējs, LSF Holdings",
         "initials": "EJ",
         "photo": "/images/edgars-jansons.jpg",
-        "quote": "Ar Agnesi Pastari sadarbojos laikā, kad vadīju tranzītbiznesa kompāniju LSF Holdings - kopā panācām multimiljonu apgrozījumu. Agnesei pilnībā var uzticēties"
+        "quote": "Ar Agnesi Pastari sadarbojos laikā, kad vadīju tranzītbiznesa kompāniju LSF Holdings, kopā panācām multimiljonu apgrozījumu. Agnesei pilnībā var uzticēties"
       },
       {
         "name": "Natālija Nudga",
@@ -367,14 +367,14 @@
         "role": "Tirdzniecības uzņēmuma īpašniece",
         "initials": "IK",
         "photo": "",
-        "quote": "PB Finanses komanda ir ārkārtīgi atbildīga un precīza. Mans uzņēmums strādā ar viņiem jau 7 gadus un nedomāju mainīt - šī ir uzticamākā finanšu komanda, ko zinu"
+        "quote": "PB Finanses komanda ir ārkārtīgi atbildīga un precīza. Mans uzņēmums strādā ar viņiem jau 7 gadus un nedomāju mainīt, šī ir uzticamākā finanšu komanda, ko zinu"
       },
       {
         "name": "Jānis Bērziņš",
         "role": "IT uzņēmuma dibinātājs",
         "initials": "JB",
         "photo": "",
-        "quote": "Kā tehnoloģiju uzņēmumam mums bija nepieciešams finanšu eksperts, kurš saprot starptautisko vidi. Agnese to nodrošina pilnīgi - atsaucīgi, precīzi un ar skatu nākotnē"
+        "quote": "Kā tehnoloģiju uzņēmumam mums bija nepieciešams finanšu eksperts, kurš saprot starptautisko vidi. Agnese to nodrošina pilnīgi, atsaucīgi, precīzi un ar skatu nākotnē"
       },
       {
         "name": "Sandra Liepiņa",
@@ -391,7 +391,7 @@
     "credentials": "Mag.oec  ·  30+ gadi  ·  IFRS  ·  LTRK Nacionālās stratēģijas padomes locekle",
     "bio": [
       "PB Finanses dibinātāja Agnese Pastare ieguvusi ekonomikas maģistra grādu (Mag.oec) Rīgas Tehniskajā universitātē un finanšu un uzņēmējdarbības jomā strādā jau vairāk nekā 30 gadus",
-      "Pieredze gūta banku sektorā - kā Pirmās Bankas (šodien Luminor) Ventspils filiāles vadītājas vietniece un juridisko personu kredītspeciāliste - starptautiskiem standartiem atbilstošā grāmatvedības praksē, tranzītbiznesā un nekustamā īpašuma nozarē",
+      "Pieredze gūta banku sektorā, kā Pirmās Bankas (šodien Luminor) Ventspils filiāles vadītājas vietniece un juridisko personu kredītspeciāliste, starptautiskiem standartiem atbilstošā grāmatvedības praksē, tranzītbiznesā un nekustamā īpašuma nozarē",
       "Agnesei ir IAB sertifikāti starptautiskajā grāmatvedībā, IFRS pārskatu sagatavošanā un finanšu analīzē, viņa ir ABZ Finance valdes priekšsēdētāja, kā arī LTRK Kurzemes uzņēmēju padomes un LTRK Nacionālās stratēģijas padomes locekle",
       "Agnese brīvi runā latviešu, krievu un angļu valodā. Ārpus finansēm viņa ir starptautiski titulēta mākslas fotogrāfe (AFIAP) un Ventspils pilsētas Balvas laureāte par ieguldījumu pilsētas saimnieciskajā un kultūras attīstībā"
     ],
@@ -403,7 +403,7 @@
   "history": {
     "eyebrow": "Mūsu ceļš",
     "title": "Vēsture",
-    "intro": "PB Finanses izauga no vienkāršas idejas - apvienot grāmatvedības precizitāti ar finanšu direktora domāšanu",
+    "intro": "PB Finanses izauga no vienkāršas idejas, apvienot grāmatvedības precizitāti ar finanšu direktora domāšanu",
     "milestones": [
       {
         "year": "2003",
@@ -425,16 +425,16 @@
   "team": {
     "eyebrow": "Cilvēki",
     "title": "Komanda",
-    "intro": "Neliela grāmatvedības, nodokļu un finanšu vadības speciālistu komanda, ko vieno viena pieeja - iedziļināties klienta biznesā, nevis tikai kārtot uzskaiti",
-    "note": "Komanda aug līdz ar PB Finanses klientiem - par aktuālo sastāvu jautājiet konsultācijā"
+    "intro": "Neliela grāmatvedības, nodokļu un finanšu vadības speciālistu komanda, ko vieno viena pieeja, iedziļināties klienta biznesā, nevis tikai kārtot uzskaiti",
+    "note": "Komanda aug līdz ar PB Finanses klientiem, par aktuālo sastāvu jautājiet konsultācijā"
   },
   "office": {
     "eyebrow": "Kur mēs esam",
     "title": "Birojs",
-    "intro": "PB Finanses birojs atrodas Ventspilī - tiekamies klātienē vai strādājam attālināti, atkarībā no tā, kas klientam ir ērtāk",
+    "intro": "PB Finanses birojs atrodas Ventspilī, tiekamies klātienē vai strādājam attālināti, atkarībā no tā, kas klientam ir ērtāk",
     "addressLabel": "ADRESE",
     "hoursLabel": "DARBA LAIKS",
-    "hours": "P.-Pk., 9:00-18:00 (iepriekš piesakoties)"
+    "hours": "No pirmdienas līdz piektdienai, no 9:00 līdz 17:00"
   },
   "process": {
     "title": "Kā mēs strādājam",
@@ -447,7 +447,7 @@
       {
         "num": "02",
         "title": "Izstrādājam risinājumu",
-        "body": "Piedāvājam individuālu pakalpojumu komplektu - ne universālu, bet tieši jums piemērotu"
+        "body": "Piedāvājam individuālu pakalpojumu komplektu, ne universālu, bet tieši jums piemērotu"
       },
       {
         "num": "03",
@@ -464,35 +464,35 @@
       {
         "date": "Janvāris 2026",
         "tag": "Nodokļi",
-        "title": "Nodokļu izmaiņas 2026 - kas jāzina katra uzņēmuma vadītājam",
+        "title": "Nodokļu izmaiņas 2026, kas jāzina katra uzņēmuma vadītājam",
         "excerpt": "Jaunais gads ienāk ar virkni nodokļu grozījumu, kas ietekmē gan darba devējus, gan individuālos uzņēmējus",
         "readTime": "4 min. lasīšana"
       },
       {
         "date": "Decembris 2025",
         "tag": "Finanšu direktors",
-        "title": "Finanšu direktors ārpakalpojumā - vai tas ir izdevīgi mazajam biznesam?",
-        "excerpt": "Izanalizējam, kad finanšu direktors ārpakalpojumā atmaksājas un ko tas sniedz uzņēmumiem ar 5-50 darbiniekiem",
+        "title": "Finanšu direktors ārpakalpojumā, vai tas ir izdevīgi mazajam biznesam?",
+        "excerpt": "Izanalizējam, kad finanšu direktors ārpakalpojumā atmaksājas un ko tas sniedz uzņēmumiem ar 5 līdz 50 darbiniekiem",
         "readTime": "6 min. lasīšana"
       },
       {
         "date": "Novembris 2025",
         "tag": "Start-up",
         "title": "Start-up dibināšanas 7 biežākās kļūdas Latvijā",
-        "excerpt": "No uzņēmuma formas izvēles līdz PVN reģistrācijai - kļūdas, kas var maksāt ļoti dārgi",
+        "excerpt": "No uzņēmuma formas izvēles līdz PVN reģistrācijai, kļūdas, kas var maksāt ļoti dārgi",
         "readTime": "5 min. lasīšana"
       },
       {
         "date": "Oktobris 2025",
         "tag": "Gada pārskats",
-        "title": "Gada pārskats 2025 - termiņi, ko vērts atzīmēt kalendārā jau tagad",
+        "title": "Gada pārskats 2025, termiņi, ko vērts atzīmēt kalendārā jau tagad",
         "excerpt": "Kad sākt gatavoties, kādi dokumenti jāsavāc un kāpēc decembris ir pēdējais brīdis kļūdu labošanai",
         "readTime": "3 min. lasīšana"
       },
       {
         "date": "Septembris 2025",
         "tag": "Algas",
-        "title": "Minimālā alga un darbaspēka nodokļi - ko ielikt nākamā gada budžetā",
+        "title": "Minimālā alga un darbaspēka nodokļi, ko ielikt nākamā gada budžetā",
         "excerpt": "Aprēķinām, cik reāli maksā viens darbinieks, un kā izmaiņas ietekmē mazus un vidējus uzņēmumus",
         "readTime": "4 min. lasīšana"
       }
@@ -503,15 +503,15 @@
     "items": [
       {
         "q": "Kāda ir atšķirība starp grāmatvedi un finanšu konsultantu?",
-        "a": "Grāmatvedis strādā ar faktu un skatās uz pagātni - reģistrē notikušos darījumus un sagatavo pārskatus. Finansists strādā ar plānu un skatās uz nākotni - palīdz pieņemt lēmumus, kas ietekmēs uzņēmuma rezultātus. PB Finanses piedāvā abus - gan ikdienas grāmatvedību, gan finanšu direktora skatījumu uz jūsu biznesu"
+        "a": "Grāmatvedis strādā ar faktu un skatās uz pagātni, reģistrē notikušos darījumus un sagatavo pārskatus. Finansists strādā ar plānu un skatās uz nākotni, palīdz pieņemt lēmumus, kas ietekmēs uzņēmuma rezultātus. PB Finanses piedāvā abus, gan ikdienas grāmatvedību, gan finanšu direktora skatījumu uz jūsu biznesu"
       },
       {
         "q": "Cik maksā konsultācija?",
-        "a": "Konsultācija maksā 100 EUR. Ja pēc tās kļūstat par mūsu klientu, konsultācijas maksa netiek piemērota. Konsultācijā iepazīstamies ar jūsu uzņēmuma specifiku, mērķiem un aktuālajām finanšu problēmām, lai piedāvātu tieši jums piemērotu risinājumu - nevis universālu paketi"
+        "a": "Konsultācija maksā 100 EUR. Ja pēc tās kļūstat par mūsu klientu, konsultācijas maksa netiek piemērota. Konsultācijā iepazīstamies ar jūsu uzņēmuma specifiku, mērķiem un aktuālajām finanšu problēmām, lai piedāvātu tieši jums piemērotu risinājumu, nevis universālu paketi"
       },
       {
         "q": "Kādi jautājumi jārisina, tikko dibinot uzņēmumu?",
-        "a": "Uzņēmējdarbības formas izvēle, reģistrācija Uzņēmumu reģistrā un VID, PVN reģistrācijas nepieciešamība, mikronodokļa izdevīguma izvērtējums, sākotnējie līgumi un darbaspēka nodokļi - ar visu to palīdzam jau no pirmās dienas"
+        "a": "Uzņēmējdarbības formas izvēle, reģistrācija Uzņēmumu reģistrā un VID, PVN reģistrācijas nepieciešamība, mikronodokļa izdevīguma izvērtējums, sākotnējie līgumi un darbaspēka nodokļi, ar visu to palīdzam jau no pirmās dienas"
       },
       {
         "q": "Vai strādājat arī ar starptautiskiem uzņēmumiem?",
@@ -519,18 +519,18 @@
       },
       {
         "q": "Kā tiek noteikta pakalpojuma cena?",
-        "a": "Cena veidojas individuāli - atkarībā no uzņēmuma apjoma, nozares un nepieciešamo pakalpojumu klāsta. Nepiedāvājam universālu paketi, bet gan risinājumu, kas piemērots tieši jūsu situācijai"
+        "a": "Cena veidojas individuāli, atkarībā no uzņēmuma apjoma, nozares un nepieciešamo pakalpojumu klāsta. Nepiedāvājam universālu paketi, bet gan risinājumu, kas piemērots tieši jūsu situācijai"
       },
       {
         "q": "Vai varat pārņemt finanšu direktora funkcijas bez pilnas slodzes darbinieka?",
-        "a": "Jā, tas ir viens no mūsu populārākajiem pakalpojumiem - naudas plūsmas pārvaldība, budžeta kontrole, risku analīze un ārējā finansējuma koordinācija bez pastāvīga darbinieka izmaksām"
+        "a": "Jā, tas ir viens no mūsu populārākajiem pakalpojumiem, naudas plūsmas pārvaldība, budžeta kontrole, risku analīze un ārējā finansējuma koordinācija bez pastāvīga darbinieka izmaksām"
       }
     ]
   },
   "contact": {
     "title": "Sazināties",
     "floatingTitle": "Parunāsim par jūsu biznesu?",
-    "body": "Konsultācija maksā 100 EUR - un ir bez maksas, ja pēc tās kļūstat par mūsu klientu. Pastāstiet par savu uzņēmumu - mēs atradīsim labāko risinājumu",
+    "body": "Konsultācija maksā 100 EUR, un ir bez maksas, ja pēc tās kļūstat par mūsu klientu. Pastāstiet par savu uzņēmumu, mēs atradīsim labāko risinājumu",
     "cta": "Pieteikties konsultācijai",
     "phone": "+371 29716434",
     "email": "info@pbfinanses.lv",
@@ -552,12 +552,12 @@
       "submit": "Nosūtīt pieprasījumu",
       "success": "Paldies! Jūsu e-pasta klients tagad atvērsies, lai nosūtītu pieprasījumu"
     },
-    "hours": "Darba dienās 9.00-17.00 - birojs vienmēr atvērts",
+    "hours": "Darba dienās no 9.00 līdz 17.00, birojs vienmēr atvērts",
     "bankName": "Swedbank AS",
     "iban": "IBAN: LV__ HABA ____ ____ ____ _ (norādīt)"
   },
   "footer": {
-    "tagline": "Finanšu pārvaldība - tā ir māksla",
+    "tagline": "Finanšu pārvaldība, tā ir māksla",
     "nav": {
       "services": "Pakalpojumi",
       "about": "Par kompāniju",

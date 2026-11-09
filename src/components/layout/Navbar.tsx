@@ -18,11 +18,11 @@ export default function Navbar() {
   const locale = useLocale()
   const router = useRouter()
   const pathname = usePathname()
+  const isHomePage = /^\/(lv|en|ru)\/?$/.test(pathname)
   const [menuOpen, setMenuOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
-  // The header wears its teal cream-on-brand treatment on every page. It stays
-  // fixed in place: no hide-on-scroll-down behaviour.
-  const overHero = true
+  const [overHero, setOverHero] = useState(isHomePage)
+  const darkHeader = isHomePage && overHero && !menuOpen
   // Flipped one frame after mount so the bar has a state to animate *from*.
   const [ready, setReady] = useState(false)
 
@@ -31,10 +31,47 @@ export default function Navbar() {
     return () => cancelAnimationFrame(id)
   }, [])
 
+  // Keep the dark treatment only while the navigation overlaps the homepage
+  // hero. Once the hero has passed under the sticky bar, switch to the light
+  // navigation and reveal the logo's original colours.
+  useEffect(() => {
+    let frame = 0
+
+    const update = () => {
+      frame = 0
+      const hero = document.getElementById('hero')
+
+      // During a locale transition the old hero is briefly removed before the
+      // translated one mounts. Keep the current navbar treatment in that gap
+      // instead of flashing the light state.
+      if (!hero && isHomePage) {
+        frame = requestAnimationFrame(update)
+        return
+      }
+
+      const next = hero ? hero.getBoundingClientRect().bottom > 72 : false
+      setOverHero((current) => (current === next ? current : next))
+    }
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+
+    frame = requestAnimationFrame(update)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (frame) cancelAnimationFrame(frame)
+    }
+  }, [pathname])
+
   const switchLocale = (newLocale: string) => {
     const segments = pathname.split('/')
     segments[1] = newLocale
-    router.push(segments.join('/'))
+    router.push(segments.join('/'), { scroll: false })
   }
 
   // Lock body scroll when mobile menu is open
@@ -60,23 +97,26 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Blurred backdrop behind the mega panel - kept OUTSIDE <header> so its
+      {/* Blurred backdrop behind the mega panel, kept OUTSIDE <header> so its
           position:fixed resolves against the viewport (a transform on the header
           would otherwise make it its containing block and collapse this to ~0px). */}
       <div className="mega-backdrop" data-open={servicesOpen} aria-hidden="true" />
 
       <header
-        data-over-hero={overHero && !menuOpen ? 'true' : undefined}
+        data-over-hero={darkHeader ? 'true' : undefined}
         data-ready={ready ? 'true' : undefined}
         style={{
           position: 'sticky',
           top: 0,
           zIndex: 100,
           /* Matches the hero ground, so bar and hero read as one dark band. */
-          background: overHero && !menuOpen ? '#001d20' : 'var(--color-canvas-white)',
+          backgroundColor: darkHeader ? '#001d20' : 'var(--color-canvas-white)',
           borderBottom:
-            overHero && !menuOpen ? 'none' : '1px solid var(--color-parchment-rule)',
+            darkHeader
+              ? '1px solid transparent'
+              : '1px solid var(--color-parchment-rule)',
           transform: 'translateY(0)',
+          transition: 'background-color 0.3s ease, border-color 0.3s ease',
         }}
       >
         <nav
@@ -96,7 +136,7 @@ export default function Navbar() {
           <Link href={`/${locale}`} aria-label="PB Finanses" className="brand-mark">
             <Image
               src="/images/PBFinanses_LOGO_500.png"
-              alt="PB Finanses - pilna servisa finanšu kompānija"
+              alt="PB Finanses, pilna servisa finanšu kompānija"
               width={500}
               height={270}
               priority
@@ -357,9 +397,12 @@ export default function Navbar() {
           align-items: center;
           text-decoration: none;
           flex-shrink: 0;
-          /* Nudge the logo right so its left edge lines up with the hero copy
-             (which sits at 4.65% of the viewport), past the nav's 40px padding. */
-          margin-left: max(0px, calc(4.65vw - 40px));
+          /* Match the footer's 1200px section wrapper while accounting for
+             the navigation's wider 1672px wrapper. */
+          margin-left: calc(
+            max(0px, (100vw - 1200px) / 2) -
+            max(0px, (100vw - 1672px) / 2)
+          );
         }
         .brand-logo {
           width: auto;
@@ -389,7 +432,7 @@ export default function Navbar() {
         .nav-pill:hover { transform: translateY(-1px); }
 
         /* Entrance: the bar assembles left to right on load. Transform is kept
-           off .mega-wrap on purpose - a transformed ancestor would become the
+           off .mega-wrap on purpose, a transformed ancestor would become the
            containing block for the fixed mega panel and collapse its width. */
         .brand-mark,
         .desktop-nav .nav-link,
@@ -591,14 +634,13 @@ export default function Navbar() {
         }
         .lang-btn:hover { color: var(--color-gilt); }
 
-        /* Segmented language toggle: dark track with a cream pill on the active
-           locale, cream-on-teal to match the rest of the dark header. */
+        /* Segmented language toggle on the light navigation. */
         .lang-seg {
           display: inline-flex;
           gap: 2px;
           padding: 3px;
           border-radius: 999px;
-          background: rgba(241, 237, 227, 0.14);
+          background: rgba(0, 29, 32, 0.06);
         }
         .lang-seg-btn {
           border: none;
@@ -610,11 +652,25 @@ export default function Navbar() {
           font-size: 11px;
           font-weight: 600;
           letter-spacing: 0.06em;
-          color: rgba(241, 237, 227, 0.62);
+          color: rgba(0, 29, 32, 0.62);
           transition: background 0.2s ease, color 0.2s ease;
         }
-        .lang-seg-btn:hover { color: #f1ede3; }
+        .lang-seg-btn:hover { color: #001d20; }
         .lang-seg-btn.is-active {
+          background: #f1ede3;
+          color: #001d20;
+        }
+        /* Cream text restores the required contrast while the bar is dark. */
+        header[data-over-hero='true'] .lang-seg {
+          background: rgba(241, 237, 227, 0.14);
+        }
+        header[data-over-hero='true'] .lang-seg-btn {
+          color: rgba(241, 237, 227, 0.68);
+        }
+        header[data-over-hero='true'] .lang-seg-btn:hover {
+          color: #f1ede3;
+        }
+        header[data-over-hero='true'] .lang-seg-btn.is-active {
           background: #f1ede3;
           color: #001d20;
         }

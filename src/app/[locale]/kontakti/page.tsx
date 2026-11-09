@@ -15,8 +15,8 @@ export default async function ContactRoute({
       <PageHero
         eyebrow={nav('contact')}
         title={c('title')}
-        image="/images/ventspils-nakts.webp"
-        objectPosition="center 85%"
+        image="/images/contact-restoration.jpg"
+        objectPosition="center top"
         credit="Agnese Pastare"
       />
       <ContactPage />

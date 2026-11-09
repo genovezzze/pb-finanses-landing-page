@@ -71,9 +71,9 @@ export default async function Footer() {
             alt="PB Finanses"
             width={500}
             height={270}
+            className="footer-brand-logo"
             style={{
               width: 'auto',
-              height: 46,
               display: 'block',
               marginBottom: 16,
             }}
@@ -132,7 +132,7 @@ export default async function Footer() {
             {links.map((key) => (
               <Link
                 key={key}
-                href={`/${locale}/${pages[key]}`}
+                href={key === 'insights' ? `/${locale}#insights` : `/${locale}/${pages[key]}`}
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: 14,
@@ -243,6 +243,14 @@ export default async function Footer() {
           background: var(--color-gilt);
           border-color: var(--color-gilt);
           transform: translateY(-2px);
+        }
+        .footer-brand-logo {
+          height: 46px;
+        }
+        @media (max-width: 768px) {
+          .footer-brand-logo {
+            height: 34px;
+          }
         }
       `,
         }}

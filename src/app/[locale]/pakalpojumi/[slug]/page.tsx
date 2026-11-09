@@ -90,9 +90,9 @@ export default async function ServiceDetailPage({
   }
   const BANNERS: Record<string, { image: string; objectPosition?: string; imageScale?: number; imageOrigin?: string }> = {
     'biznesa-konsultacijas': chess,
-    'finansu-planosana': chess,
-    'start-up-risinajumi': { image: '/images/startup-ezers.webp', objectPosition: 'center 42%' },
-    'gramatvedibas-pakalpojumi': { image: '/images/gramatvediba-ziedi.webp', objectPosition: 'center 45%' },
+    'finansu-planosana': { image: '/images/planosana-lauks.webp', objectPosition: 'center 55%' },
+    'start-up-risinajumi': { image: '/images/startup-flowers.jpg', objectPosition: 'center 72%' },
+    'gramatvedibas-pakalpojumi': { image: '/images/gramatvediba-birojs.webp', objectPosition: 'center 55%' },
     'nodoklu-konsultacijas': { image: '/images/nodokli-magones.webp', objectPosition: 'center 50%' },
   }
   const banner = BANNERS[slug]

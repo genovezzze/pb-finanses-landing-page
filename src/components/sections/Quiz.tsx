@@ -4,14 +4,14 @@ import { useEffect, useMemo, useState, type FormEvent } from 'react'
 import { Tappable } from '@/components/ui/tappable'
 
 /**
- * "Vai tava grāmatvedība tev maksā par daudz?" - the quiz funnel.
+ * "Vai tava grāmatvedība tev maksā par daudz?", the quiz funnel.
  *
  * Seven questions, each answer carries points; the total maps to a green /
  * yellow / red verdict. The result screen is the hook: to see the personal
  * breakdown the visitor leaves a contact, which is posted to /api/lead and on
  * to Brevo, where the warm-up automation takes over.
  *
- * Client-facing copy is Latvian by design - this page is the landing for
+ * Client-facing copy is Latvian by design, this page is the landing for
  * Latvian-language video traffic, so it is not wired through next-intl.
  */
 
@@ -34,7 +34,7 @@ const QUESTIONS: Question[] = [
     title: 'Vai tu saproti savu ikmēneša finanšu rezultātu bez papildu skaidrojumiem?',
     options: [
       { label: 'Jā, viss ir skaidrs', points: 0 },
-      { label: 'Daļēji - dažas lietas paliek neskaidras', points: 1 },
+      { label: 'Daļēji, dažas lietas paliek neskaidras', points: 1 },
       { label: 'Reti saprotu, kas tur īsti notiek', points: 2 },
     ],
   },
@@ -44,7 +44,7 @@ const QUESTIONS: Question[] = [
     options: [
       { label: 'Jā, regulāri nāk ar ieteikumiem', points: 0 },
       { label: 'Tikai tad, ja es pats pajautāju', points: 1 },
-      { label: 'Nekad - tikai kārto uzskaiti', points: 2 },
+      { label: 'Nekad, tikai kārto uzskaiti', points: 2 },
     ],
   },
   {
@@ -105,23 +105,23 @@ function verdictFor(score: number): Verdict {
     return {
       key: 'green',
       emoji: '🟢',
-      title: 'Zaļā zona - tava grāmatvedība strādā tavā labā',
-      text: 'Pēc atbildēm izskatās, ka pamati ir kārtībā. Tomēr pat labā sistēmā mēdz slēpties vietas, kur uzņēmums maksā vairāk nekā vajadzētu. Atstāj kontaktu - atsūtīsim personīgu pārbaudi un bezmaksas konsultāciju, lai pārliecinātos.',
+      title: 'Zaļā zona, tava grāmatvedība strādā tavā labā',
+      text: 'Pēc atbildēm izskatās, ka pamati ir kārtībā. Tomēr pat labā sistēmā mēdz slēpties vietas, kur uzņēmums maksā vairāk nekā vajadzētu. Atstāj kontaktu, atsūtīsim personīgu pārbaudi un bezmaksas konsultāciju, lai pārliecinātos.',
     }
   }
   if (ratio <= 0.55) {
     return {
       key: 'yellow',
       emoji: '🟡',
-      title: 'Dzeltenā zona - ir kur uzlabot',
-      text: 'Vairākas atbildes norāda uz vietām, kur tava grāmatvedība, visticamāk, tev izmaksā dārgāk vai rada risku. Atstāj kontaktu - atsūtīsim personīgu analīzi, kur tieši ir potenciāls ietaupīt.',
+      title: 'Dzeltenā zona, ir kur uzlabot',
+      text: 'Vairākas atbildes norāda uz vietām, kur tava grāmatvedība, visticamāk, tev izmaksā dārgāk vai rada risku. Atstāj kontaktu, atsūtīsim personīgu analīzi, kur tieši ir potenciāls ietaupīt.',
     }
   }
   return {
     key: 'red',
     emoji: '🔴',
-    title: 'Sarkanā zona - tava grāmatvedība, visticamāk, maksā par daudz',
-    text: 'Atbildes liecina, ka uzņēmums, iespējams, pārmaksā vai uzņemas nevajadzīgu risku. Tas ir labojams. Atstāj kontaktu - sagatavosim personīgu izvērtējumu un piedāvāsim bezmaksas konsultāciju, lai to sakārtotu.',
+    title: 'Sarkanā zona, tava grāmatvedība, visticamāk, maksā par daudz',
+    text: 'Atbildes liecina, ka uzņēmums, iespējams, pārmaksā vai uzņemas nevajadzīgu risku. Tas ir labojams. Atstāj kontaktu, sagatavosim personīgu izvērtējumu un piedāvāsim bezmaksas konsultāciju, lai to sakārtotu.',
   }
 }
 
@@ -261,7 +261,7 @@ export default function Quiz() {
               </Tappable>
               {error && <p className="quiz-error">{error}</p>}
               <p className="quiz-note">
-                Konsultācija 100 € - bezmaksas, ja kļūsti par klientu. Tavi dati netiek nodoti trešajām pusēm.
+                Konsultācija 100 €, bezmaksas, ja kļūsti par klientu. Tavi dati netiek nodoti trešajām pusēm.
               </p>
             </form>
           </div>
@@ -273,7 +273,7 @@ export default function Quiz() {
             <span className="quiz-emoji quiz-emoji--big">✓</span>
             <h2 className="quiz-q">Paldies! Saņēmām tavas atbildes.</h2>
             <p className="quiz-result-text">
-              Sagatavosim personīgu izvērtējumu un sazināsimies tuvākajā laikā. Ja vēlies ātrāk - zvani{' '}
+              Sagatavosim personīgu izvērtējumu un sazināsimies tuvākajā laikā. Ja vēlies ātrāk, zvani{' '}
               <a href="tel:+37129716434">+371 29 716 434</a>.
             </p>
           </div>

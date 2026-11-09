@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 import { Reveal } from '@/components/ui/reveal'
@@ -47,14 +46,6 @@ export default function Pricing({ headerInBanner = false }: { headerInBanner?: b
 
   return (
     <section id="pricing" className="section-gap pricing">
-      <Image
-        src="/images/PBFinanses_LOGO_500.png"
-        alt=""
-        aria-hidden="true"
-        width={500}
-        height={270}
-        className="pricing-watermark"
-      />
       <div className="section-wrap">
         {/* Header, centred over the cards the way a price table expects. When the
             page banner already carries the eyebrow + title, only the subtitle
@@ -161,20 +152,7 @@ export default function Pricing({ headerInBanner = false }: { headerInBanner?: b
       <style
         dangerouslySetInnerHTML={{
           __html: `
-        .pricing { background: var(--color-canvas-white); position: relative; overflow: hidden; }
-        .pricing-watermark {
-          position: absolute;
-          top: 40px;
-          right: -30px;
-          width: clamp(200px, 22vw, 320px);
-          height: auto;
-          opacity: 0.07;
-          pointer-events: none;
-          user-select: none;
-          z-index: 0;
-        }
-        .pricing .section-wrap { position: relative; z-index: 1; }
-        @media (max-width: 900px) { .pricing-watermark { display: none; } }
+        .pricing { background: var(--color-canvas-white); }
 
         .pricing-head {
           max-width: 660px;
@@ -233,12 +211,17 @@ export default function Pricing({ headerInBanner = false }: { headerInBanner?: b
           color: var(--color-ink-black);
         }
         .plan-flag {
+          display: inline-flex;
+          align-items: center;
           font-family: var(--font-body);
-          font-size: 10.5px;
-          font-weight: 700;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: var(--color-gilt);
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0;
+          text-transform: none;
+          color: var(--color-ink-black);
+          background: var(--color-parchment-rule);
+          border-radius: 999px;
+          padding: 8px 18px;
         }
         .plan-price {
           display: flex;

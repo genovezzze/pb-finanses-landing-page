@@ -49,12 +49,17 @@ export default async function PricingPage({
   const t = await getTranslations({ locale, namespace: 'pricing' })
   return (
     <main>
-      <PageHero eyebrow={t('eyebrow')} title={t('title')} />
+      <PageHero
+        eyebrow={t('eyebrow')}
+        title={t('title')}
+        image="/images/pricing-documents-wide.jpg"
+        objectPosition="center 70%"
+      />
 
       <Pricing headerInBanner />
 
       {/* Consultation explainer: readable copy on the left, the vertical
-          (9:16) video on the right - read it or watch it. Poster is a
+          (9:16) video on the right, read it or watch it. Poster is a
           placeholder until the real thumbnail lands at
           /images/konsultacija-thumb.jpg. */}
       <section className="konsult">
@@ -63,7 +68,7 @@ export default async function PricingPage({
             <p className="eyebrow">Konsultācija</p>
             <h2 className="konsult-title">Pieteikties konsultācijai</h2>
             <p>
-              Mūsu konsultācija nav bezmaksas - stundas likme ir 100 EUR (iespējamas atlaides).
+              Mūsu konsultācija nav bezmaksas, stundas likme ir 100 EUR (iespējamas atlaides).
               Taču ir veids, kā par to faktiski nemaksāt
             </p>
             <p>
@@ -73,7 +78,7 @@ export default async function PricingPage({
             </p>
             <p>
               Tātad, ja mūsu pakalpojumi jums šķiet piemēroti, konsultācija jums neizmaksā neko.
-              Gribat pamēģināt - rakstiet uz info@pbfinanses.lv vai sazinieties sociālajos tīklos,
+              Gribat pamēģināt, rakstiet uz info@pbfinanses.lv vai sazinieties sociālajos tīklos,
               un parunāsim
             </p>
             <Tappable>

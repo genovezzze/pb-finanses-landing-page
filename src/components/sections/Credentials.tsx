@@ -38,7 +38,7 @@ export default function Credentials() {
                 <article className="credential">
                   <div className="credential-mark">
                     {emblem ? (
-                      <img className="credential-emblem" src={emblem.src} alt={emblem.alt} />
+                      <img className="credential-emblem" src={emblem.src} alt={emblem.alt} width={168} height={80} loading="lazy" />
                     ) : (
                       <span className="credential-plate">
                         <span className="credential-plate-top">Licencēts</span>

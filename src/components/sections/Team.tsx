@@ -154,7 +154,7 @@ export default function Team({ showHeader = true }: { showHeader?: boolean }) {
             <article className="person">
               <div className="person-media">
                 {person.photo ? (
-                  <img src={person.photo} alt={person.name} className="person-photo" />
+                  <img src={person.photo} alt={person.name} className="person-photo" width={400} height={500} loading="lazy" />
                 ) : (
                   <span className="person-monogram" aria-hidden="true">{initials(person.name)}</span>
                 )}

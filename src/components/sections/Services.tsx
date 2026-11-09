@@ -152,6 +152,7 @@ export default function Services() {
               </Reveal>
               <a
                 href={`/${locale}/pakalpojumi/${item.slug}`}
+                aria-label={`${t('learnMore')}: ${item.name}`}
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: 12,

@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
-import { editorialSerif, playfair, inter, neueHaasDisplayBlack, posterDisplay, poppins } from '@/lib/fonts'
+import { playfair, inter, poppins } from '@/lib/fonts'
 import '../globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -173,7 +173,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html
       lang={locale}
-      className={`${playfair.variable} ${inter.variable} ${neueHaasDisplayBlack.variable} ${posterDisplay.variable} ${editorialSerif.variable} ${poppins.variable}`}
+      className={`${playfair.variable} ${inter.variable} ${poppins.variable}`}
     >
       <body>
         <script

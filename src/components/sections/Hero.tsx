@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { useLocale } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
@@ -31,10 +32,10 @@ export default function Hero() {
       el.style.transform = `translateY(${-p * 14}px)`
       el.style.opacity = String(1 - p)
       // Parallax: the photograph drifts down slower than the page scrolls, for
-      // a sense of depth.
+      // a sense of depth. Driven through a CSS var on the object-position.
       if (media) {
         const pm = Math.min(y / 700, 1)
-        media.style.backgroundPosition = `center calc(45% + ${pm * 46}px)`
+        media.style.setProperty('--hero-pos', `calc(45% + ${pm * 46}px)`)
       }
     }
     const onScroll = () => {
@@ -64,16 +65,19 @@ export default function Hero() {
 
   return (
     <section id="hero" className={`photo-hero${inView ? ' is-in' : ''}`} ref={heroRef}>
-      {/* The photograph is the hero. It is a background rather than an <img> so
-          that a missing file degrades to the brand ground instead of a broken
-          frame, and so the slow zoom can run without touching layout. */}
-      <div
-        className="photo-hero-media"
-        ref={mediaRef}
-        role="img"
-        aria-label="PB Finanses komanda Ventspils birojā"
-        style={{ backgroundImage: `url('${TEAM_PHOTO}')` }}
-      />
+      {/* The photograph is the hero and the LCP element, so it is a priority
+          next/image (preloaded, AVIF/WebP, responsive) rather than a CSS
+          background. Parallax rides on object-position via a CSS var. */}
+      <div className="photo-hero-media" ref={mediaRef}>
+        <Image
+          src={TEAM_PHOTO}
+          alt="PB Finanses komanda Ventspils birojā"
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', objectPosition: 'center var(--hero-pos, 45%)' }}
+        />
+      </div>
       <div className="photo-hero-scrim" aria-hidden="true" />
 
       <div className="photo-hero-copy" ref={copyRef} style={{ willChange: 'transform, opacity' }}>
@@ -120,11 +124,7 @@ export default function Hero() {
           position: absolute;
           inset: 0;
           background-color: var(--hero-ground);
-          background-repeat: no-repeat;
-          background-size: cover;
-          /* Faces sit in the upper half of the frame, so the crop is held above
-             centre, at hero proportions a centred crop cuts them in half. */
-          background-position: center 45%;
+          overflow: hidden;
           transform: scale(1.06);
           opacity: 0;
           transition: opacity 1.2s ease, transform 6s cubic-bezier(.16,1,.3,1);

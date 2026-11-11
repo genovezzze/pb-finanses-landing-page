@@ -9,7 +9,7 @@ const CARD_COUNT = 3
 
 // Фото под каждую карточку (2:1). Пока пусто - рендерится льняная заглушка.
 const IMAGES = [
-  '/images/industries/it-robotics.png',
+  '/images/industries/it-robotika.webp',
   '/images/industries/construction-buvnieciba.webp',
   '/images/industries/kokapstrade-malka.webp',
   '/images/industries/retail-logistics.png',
@@ -19,6 +19,7 @@ const IMAGES = [
 
 // Фото авторства Agnese Pastare - подписываются её именем.
 const CREDITED = new Set([
+  '/images/industries/it-robotika.webp',
   '/images/industries/construction-buvnieciba.webp',
   '/images/industries/kokapstrade-malka.webp',
 ])

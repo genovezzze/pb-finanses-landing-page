@@ -7,6 +7,7 @@ const SECTOR_IMAGES = [
   '/images/sector-jaunuznemumi.webp',
   '/images/sector-holdingi.webp',
   '/images/sector-starptautiskas.webp',
+  '/images/sector-nvo.webp',
 ]
 
 const SECTOR_ALTS = [

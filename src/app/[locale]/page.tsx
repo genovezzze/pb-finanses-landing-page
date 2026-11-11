@@ -1,4 +1,3 @@
-import { getTranslations } from 'next-intl/server'
 import Hero from '@/components/sections/Hero'
 import Stats from '@/components/sections/Stats'
 import Credentials from '@/components/sections/Credentials'
@@ -7,31 +6,11 @@ import Sectors from '@/components/sections/Sectors'
 import Industries from '@/components/sections/Industries'
 import Testimonials from '@/components/sections/Testimonials'
 import Insights from '@/components/sections/Insights'
-import FAQ from '@/components/sections/FAQ'
 import { Reveal } from '@/components/ui/reveal'
 
-export default async function HomePage({
-  params,
-}: {
-  params: { locale: string }
-}) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'faq' })
-  const faqItems = t.raw('items') as Array<{ q: string; a: string }>
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqItems.map((it) => ({
-      '@type': 'Question',
-      name: it.q,
-      acceptedAnswer: { '@type': 'Answer', text: it.a },
-    })),
-  }
+export default function HomePage() {
   return (
     <main>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Hero />
       <Reveal variant="up" duration={0.8}>
         <Stats />
@@ -53,9 +32,6 @@ export default async function HomePage({
         <Testimonials compact />
       </div>
       <Insights />
-      <Reveal variant="up" duration={0.85}>
-        <FAQ />
-      </Reveal>
       <Reveal variant="up" duration={0.8}>
         <Credentials />
       </Reveal>

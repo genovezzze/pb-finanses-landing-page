@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
+import { BANNER_BLUR } from '@/lib/blur'
 
 const DEFAULT_BANNER = '/images/481015454_1556450015297497_8823412931938160365_n.jpg'
 
@@ -57,6 +58,8 @@ export default function PageHero({
         fill
         priority
         sizes="100vw"
+        placeholder={BANNER_BLUR[image] ? 'blur' : 'empty'}
+        blurDataURL={BANNER_BLUR[image]}
         style={{
           objectFit: 'cover',
           objectPosition,
@@ -79,6 +82,9 @@ export default function PageHero({
           width: 100%;
           height: clamp(140px, 22vw, 300px);
           overflow: hidden;
+          /* Dark teal ground so the banner reads on-brand while the photo loads,
+             instead of a grey flash from the white body under the scrim. */
+          background: #001d20;
         }
         .page-hero-scrim {
           position: absolute;

@@ -1,0 +1,11 @@
+// Auto-generated tiny blur placeholders for banner images (next/image placeholder=blur).
+export const BANNER_BLUR: Record<string, string> = {
+  '/images/481015454_1556450015297497_8823412931938160365_n.jpg': 'data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAADwAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JZACdMoABdAzdFqraWb4AAPa8xkOWSqwpAHVYGBSJSbGLtzCAebT2jfuHD2eU/YH+DJtBIpMLCmS4FHw7e8i6cNDgYL5tgsqGUtL4qGzbZL/0tIJ1KIHsUDmSxqJswZ/4Dn6i6J8jl1jld4viRjUij2yLJmzhbqBgAA==',
+  '/images/contact-restoration.jpg': 'data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACQAwCdASoUAA0APu1yrU+pp6QiMAgBMB2JYwAAXgSO8WhCrAjYAP7oyhPalncck8Q8rzB+4Gc8g/1hWcfN3yLk6iZqnKFTjeqvvWUIUuiW0qAA',
+  '/images/gramatvediba-birojs.webp': 'data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAAAQBACdASoUAAsAPu1iqU2ppaOiMAgBMB2JYwCdAB9x901XoglNReidAAD+5Oq9zevruDSPEWsPWIEhfhfL1AlMC5dA4/kkKSFBCdiAHtAb6GElileKdX4yIkc0M7huSZfMulw5eYyyJjwYhzuvJH94X5qVB5Lpv5h1aRjQmsVi9LDfVSaAAA==',
+  '/images/nodokli-magones.webp': 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwAwCdASoUAA0APu1iqU2ppaOiMAgBMB2JaGHgRhYgAgF0vCKWUAD+6/Y/ewlwakaOjYZ85RNibz9WheqqL3XnlYnfqJwDsoNJpp3bNxCEJ2tAPN24oQyvlFX6mzLWNw1RkAAA',
+  '/images/planosana-lauks.webp': 'data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADQAwCdASoUAA0APu1kqU2ppaQiMAgBMB2JbACdACIcBGcpTRxjjoAA/u15U42IKEoj2h7Grw1PAp1gBFyapciD9DOJL7SrYxn/oULb8pjvi3ApXXyTmU8IQTYLVXw/xdSD9nYLxjwHVKaXM1TAAA==',
+  '/images/pricing-folders.jpg': 'data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADwAwCdASoUAA0APu1kqk4ppaQiMAgBMB2JZgC/ZwAB30J7Ek7TRHP4APl0jFeviIC3CifehfYNp6RMKUKbq273gjl6Dc3F+/qjoWOXRqfl5cIRNrlUrqrd8os1JPHMNIu5GxhEBOqiWQutXvrPAOftAAA=',
+  '/images/startup-flowers.jpg': 'data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADQAwCdASoUAA4APu1iqU2ppaOiMAgBMB2JZgC7ABf51VwVc+x0TgAA/Y39gOW25951LUIBc/kpfSWZZlhUpBJQ05iN591093uu8tqDLcIH5T1om7I11mXYErlhPnsIsBcE4pnB9agmRsz4wJjhqAAA',
+  '/images/strategy-chess.webp': 'data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAQBACdASoUAAsAPu1iqU2ppaQiMAgBMB2JagCw7CPzogSM1xEjTiZG0AD+74VTRPjyUwEchZvDEXTpbsFcdlwFxe4SfSADWRq0bOJrfLBX7rmtx5iUtmp1Jpw7aYxHOrDsV/dTaZlIP4mSF91Tn0Hw34AAAA==',
+}

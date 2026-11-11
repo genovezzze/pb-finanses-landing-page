@@ -211,6 +211,13 @@ export default async function Footer() {
           {/* Licence number is a legal credential, so it stays in view on
               every page rather than only in the block under the hero. */}
           SIA &quot;PB Finanses&quot;, reģ. Nr. 41203042116 · VID licence AGL0000018
+          {' · '}
+          <Link
+            href={`/${locale}/privatuma-politika`}
+            style={{ color: 'var(--color-graphite)', textDecoration: 'underline' }}
+          >
+            Privātuma politika
+          </Link>
         </span>
         <span
           style={{

@@ -7,6 +7,7 @@ import { playfair, inter, poppins } from '@/lib/fonts'
 import '../globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import CookieConsent from '@/components/layout/CookieConsent'
 
 const SITE_URL = 'https://www.pbfinanses.lv'
 const OG_LOCALES: Record<string, string> = { lv: 'lv_LV', en: 'en_US', ru: 'ru_RU' }
@@ -184,6 +185,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <Navbar />
           {children}
           <Footer />
+          <CookieConsent />
         </NextIntlClientProvider>
       </body>
     </html>

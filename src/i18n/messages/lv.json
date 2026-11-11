@@ -568,5 +568,46 @@
   },
   "partners": {
     "label": "Strādājam ar uzticamiem rīkiem un platformām"
+  },
+  "cookies": {
+    "title": "Sīkdatnes",
+    "text": "Mēs izmantojam sīkdatnes, lai nodrošinātu vietnes darbību un uzlabotu lietošanas pieredzi.",
+    "policy": "Privātuma politika",
+    "accept": "Piekrītu",
+    "decline": "Noraidīt"
+  },
+  "privacy": {
+    "title": "Privātuma politika",
+    "updated": "Atjaunināts: 2026. gada novembris",
+    "sections": [
+      {
+        "h": "Pārzinis",
+        "p": "Jūsu personas datu pārzinis ir SIA \"PB Finanses\", reģ. Nr. 41203042116, adrese: Lielais prospekts 54-9, Ventspils, LV-3601. E-pasts: info@pbfinanses.lv, tālrunis: +371 29716434."
+      },
+      {
+        "h": "Kādus datus mēs apstrādājam",
+        "p": "Kad aizpildāt saziņas formu, mēs saņemam jūsu vārdu, e-pasta adresi, tālruņa numuru (ja norādīts) un ziņojuma saturu. Vietnes darbības nodrošināšanai var tikt izmantotas tehniskas sīkdatnes."
+      },
+      {
+        "h": "Apstrādes mērķis un pamats",
+        "p": "Datus apstrādājam, lai atbildētu uz jūsu pieprasījumu un sniegtu pakalpojumus. Tiesiskais pamats ir jūsu piekrišana un pasākumu veikšana pirms līguma noslēgšanas pēc jūsu pieprasījuma (VDAR 6. panta 1. punkta a) un b) apakšpunkts)."
+      },
+      {
+        "h": "Glabāšanas termiņš",
+        "p": "Datus glabājam tik ilgi, cik nepieciešams pieprasījuma izskatīšanai un, ja kļūstat par klientu, saskaņā ar normatīvo aktu prasībām (grāmatvedības dokumentiem - likumā noteikto termiņu)."
+      },
+      {
+        "h": "Datu nodošana",
+        "p": "Mēs nepārdodam jūsu datus. Datus varam nodot tikai pakalpojumu sniedzējiem (piemēram, e-pasta vai mājaslapas uzturēšanai) un valsts iestādēm normatīvajos aktos noteiktajos gadījumos."
+      },
+      {
+        "h": "Jūsu tiesības",
+        "p": "Jums ir tiesības piekļūt saviem datiem, labot tos, dzēst, ierobežot apstrādi, iebilst pret apstrādi un atsaukt piekrišanu. Lai īstenotu tiesības, rakstiet uz info@pbfinanses.lv. Jums ir arī tiesības vērsties Datu valsts inspekcijā (dvi.gov.lv)."
+      },
+      {
+        "h": "Sīkdatnes",
+        "p": "Vietne izmanto nepieciešamās tehniskās sīkdatnes vietnes darbībai un jūsu izvēles (piemēram, valodas un sīkdatņu piekrišanas) saglabāšanai. Jūs varat pārvaldīt sīkdatnes sava pārlūka iestatījumos."
+      }
+    ]
   }
 }

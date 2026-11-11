@@ -568,5 +568,46 @@
   },
   "partners": {
     "label": "We work with trusted tools and platforms"
+  },
+  "cookies": {
+    "title": "Cookies",
+    "text": "We use cookies to make the site work and to improve your experience.",
+    "policy": "Privacy policy",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "updated": "Updated: November 2026",
+    "sections": [
+      {
+        "h": "Data controller",
+        "p": "The controller of your personal data is SIA \"PB Finanses\", reg. No. 41203042116, Lielais prospekts 54-9, Ventspils, LV-3601, Latvia. Email: info@pbfinanses.lv, phone: +371 29716434."
+      },
+      {
+        "h": "What data we process",
+        "p": "When you submit the contact form we receive your name, email, phone number (if provided) and the message. Technical cookies may be used to run the site."
+      },
+      {
+        "h": "Purpose and legal basis",
+        "p": "We process the data to answer your request and provide services. The legal basis is your consent and pre-contractual steps taken at your request (GDPR Art. 6(1)(a) and (b))."
+      },
+      {
+        "h": "Retention",
+        "p": "We keep the data as long as needed to handle your request and, if you become a client, as required by law (accounting records for the statutory period)."
+      },
+      {
+        "h": "Data sharing",
+        "p": "We do not sell your data. We may share it only with service providers (e.g. email or website hosting) and public authorities where required by law."
+      },
+      {
+        "h": "Your rights",
+        "p": "You have the right to access, rectify, erase, restrict and object to the processing of your data, and to withdraw consent. To exercise your rights, write to info@pbfinanses.lv. You may also lodge a complaint with the Data State Inspectorate (dvi.gov.lv)."
+      },
+      {
+        "h": "Cookies",
+        "p": "The site uses necessary technical cookies to operate and to remember your choices (such as language and cookie consent). You can manage cookies in your browser settings."
+      }
+    ]
   }
 }

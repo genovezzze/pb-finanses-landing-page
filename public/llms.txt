@@ -1,35 +1,36 @@
 # PB Finanses
 
-> SIA "PB Finanses" ir pilna servisa finanšu ārpakalpojumu kompānija Ventspilī, Latvijā. Licencēts grāmatvedības ārpakalpojums (VID licence Nr. AGL0000018) ar vairāk nekā 30 gadu pieredzi finanšu jomā. Dibinātāja - Agnese Pastare (Mag.oec, LTRK biedre).
+> SIA "PB Finanses" ir pilna servisa finanšu ārpakalpojumu kompānija Ventspilī, Latvijā. Licencēts grāmatvedības ārpakalpojums (VID licence Nr. AGL0000018) ar vairāk nekā 30 gadu pieredzi. Dibinātāja - Agnese Pastare (Mag.oec, LTRK biedre). Pakalpojumi pieejami visā Latvijā.
 
-PB Finanses offers full-service financial outsourcing in Latvia: accounting, tax advice, business consulting, outsourced CFO services, financial planning and start-up solutions. Based in Ventspils, serving clients across all of Latvia.
+PB Finanses offers full-service financial outsourcing in Latvia: accounting, tax advice, business consulting, outsourced CFO services, financial planning and start-up solutions. Based in Ventspils, serving clients across all of Latvia. Minimum monthly fee EUR 100 + VAT; a consultation costs EUR 100 and is free if you become a client.
 
 ## Pakalpojumi / Services
 
-- **Grāmatvedības pakalpojumi** - pilna ārpakalpojuma grāmatvedība visā Latvijā, no pirmdokumentiem līdz gada pārskatam.
-- **Nodokļu konsultācijas** - precīza un godīga nodokļu struktūra, PVN jautājumi, darbaspēka nodokļi, nodokļu risku novērtēšana.
-- **Biznesa konsultācijas** - finansējuma stratēģija, refinansēšana, restrukturizācija.
-- **Finanšu direktors ārpakalpojumā** - naudas plūsmas pārvaldība, budžeta kontrole, risku analīze bez pastāvīga darbinieka izmaksām.
-- **Finanšu plānošana un budžetēšana** - ilgtermiņa finanšu modelēšana, budžeta veidošana un izpildes kontrole.
-- **Start-up risinājumi** - uzņēmuma reģistrācija, pirmie līgumi, nodokļu atbildes, izaugsmes plānošana.
+- [Grāmatvedības pakalpojumi](https://www.pbfinanses.lv/lv/pakalpojumi/gramatvedibas-pakalpojumi): pilna ārpakalpojuma grāmatvedība visā Latvijā, no pirmdokumentiem līdz gada pārskatam.
+- [Nodokļu konsultācijas](https://www.pbfinanses.lv/lv/pakalpojumi/nodoklu-konsultacijas): precīza un godīga nodokļu struktūra, PVN, darbaspēka nodokļi, nodokļu risku novērtēšana.
+- [Biznesa konsultācijas](https://www.pbfinanses.lv/lv/pakalpojumi/biznesa-konsultacijas): finansējuma stratēģija, refinansēšana, restrukturizācija.
+- [Finanšu plānošana un budžetēšana](https://www.pbfinanses.lv/lv/pakalpojumi/finansu-planosana): ilgtermiņa finanšu modelēšana, budžeta veidošana un izpildes kontrole.
+- [Start-up risinājumi](https://www.pbfinanses.lv/lv/pakalpojumi/start-up-risinajumi): uzņēmuma reģistrācija, pirmie līgumi, nodokļu atbildes, izaugsmes plānošana.
 
-## Cenas / Pricing
+## Lapas / Pages
 
-- Minimālā mēneša maksa: 100 EUR + PVN (princips, kas der katram klientam).
-- Divi modeļi: mainīga maksa pēc apjoma (no 100 EUR/mēnesī) vai fiksēta mēneša maksa.
-- Konsultācija: 100 EUR; ja kļūstat par klientu, maksa netiek piemērota.
+- [Sākums / Home](https://www.pbfinanses.lv/lv): uzņēmuma pārskats un galvenie pakalpojumi.
+- [Cenas / Pricing](https://www.pbfinanses.lv/lv/cenas): sadarbības modeļi, cenas no 100 EUR/mēnesī + PVN, sadarbības noteikumi.
+- [Par mums / About](https://www.pbfinanses.lv/lv/par-mums): dibinātāja, komanda un pieredze.
+- [Kontakti / Contact](https://www.pbfinanses.lv/lv/kontakti): adrese, tālrunis, darba laiks, karte un pieteikuma forma.
+- [Privātuma politika / Privacy](https://www.pbfinanses.lv/lv/privatuma-politika): personas datu apstrāde (GDPR).
 
 ## Kontakti / Contact
 
 - Adrese: Lielais prospekts 54-9, Ventspils, LV-3601, Latvija
-- Tālrunis: +371 29716434
-- E-pasts: info@pbfinanses.lv
+- Tālrunis: [+371 29716434](tel:+37129716434)
+- E-pasts: [info@pbfinanses.lv](mailto:info@pbfinanses.lv)
 - Darba laiks: darba dienās 9:00-17:00
-- Vietne: https://www.pbfinanses.lv
+- Vietne: [www.pbfinanses.lv](https://www.pbfinanses.lv)
 
-## Links
+## Social
 
-- Pakalpojumi: https://www.pbfinanses.lv/lv/pakalpojumi/biznesa-konsultacijas
-- Cenas: https://www.pbfinanses.lv/lv/cenas
-- Par mums: https://www.pbfinanses.lv/lv/par-mums
-- Kontakti: https://www.pbfinanses.lv/lv/kontakti
+- [Facebook](https://www.facebook.com/PBFinanses/)
+- [Instagram](https://www.instagram.com/pbfinanses/)
+- [TikTok](https://www.tiktok.com/@pb.finanses)
+- [LinkedIn](https://www.linkedin.com/company/pb-finanses/)
